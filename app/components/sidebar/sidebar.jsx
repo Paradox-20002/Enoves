@@ -48,9 +48,7 @@ export default function Sidebar() {
             </h2>
             <h2 className="sidebar-city">Newyork</h2>
             <h5 className="sidebar-address">
-              <u>
-                123 Business St, Suite 456, City, State, ZIP Code 3456, Country.
-              </u>
+              123 Business St, Suite 456, City, State, ZIP Code 3456, Country.
             </h5>
             <div className="sidebar-mail">
               <div className="sidebar-mail-icon">

@@ -61,21 +61,30 @@ export default function Header() {
               </Link>
             </li>
 
-            <li className="dropdown">
-              <Link href="/about" className="nav-link">
-                Services <span className="dropdown-arrow">▼</span>
+            <li className="nav-item has-mega" aria-haspopup="false">
+              <Link href="/services" className="nav-link">
+                Services <span className="caret">▾</span>
               </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link href="/services/web">Web Development</Link>
-                </li>
-                <li>
-                  <Link href="/services/mobile">Mobile Apps</Link>
-                </li>
-                <li>
-                  <Link href="/services/design">UI/UX Design</Link>
-                </li>
-              </ul>
+
+              <div className="mega-menu" role="menu" aria-label="Services">
+                <div className="mega-content">
+                  <div className="mega-column">
+                    <h5>Web & Mobile</h5>
+                    <ul>
+                      <li>
+                        <Link href="/services/web">Web Development</Link>
+                      </li>
+                      <li>
+                        <Link href="/services/mobile">Mobile Apps</Link>
+                      </li>
+                      <li>
+                        <Link href="/services/pwa">PWA</Link>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* End of mega-column  and you can insert a new column here*/}
+                </div>
+              </div>
             </li>
 
             <li className="dropdown">
