@@ -118,6 +118,7 @@ export default function Header() {
               </Link>
             </li>
           </ul>
+          
           <LanguageSwitcher />
           <Sidebar />
         </div>
