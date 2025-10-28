@@ -1,10 +1,20 @@
+'use client';
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "framer-motion";
 import "./header.css";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Search from "../search/search";
 import Sidebar from "../sidebar/sidebar";
 import MegaMenu from "../mega-menu/mega-menu";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Contact us", href: "/contact" },
+];
 
 export default function Header() {
   const megaMenuData = [
@@ -155,8 +165,33 @@ export default function Header() {
     },
   ];
 
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [isMegaOpen, setIsMegaOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsScrolled(window.scrollY > 16);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isMobileNavOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileNavOpen]);
+
+  const closeMobileNav = () => setIsMobileNavOpen(false);
+
   return (
-    <header className="header">
+    <motion.header
+      className={`header ${isScrolled ? "header--scrolled" : ""}`}
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <nav className="nav">
         <Link href="/" className="logo-link" aria-label="Enoves home">
           {/* Inline SVG so color can be controlled precisely with CSS */}
@@ -203,21 +238,56 @@ export default function Header() {
           </svg>
         </Link>
 
+        <button
+          type="button"
+          className="nav-mobile-toggle"
+          aria-expanded={isMobileNavOpen}
+          aria-controls="site-navigation"
+          onClick={() => setIsMobileNavOpen((prev) => !prev)}
+        >
+          <span className="nav-mobile-toggle__bar" />
+          <span className="nav-mobile-toggle__bar" />
+          <span className="nav-mobile-toggle__bar" />
+          <span className="sr-only">Toggle navigation</span>
+        </button>
+
         <div className="nav-right1">
-          <ul className="nav-list1">
+          <ul className="nav-list1" id="site-navigation">
             <li>
               <Link href="/" className="nav-link">
                 Home
               </Link>
             </li>
 
-            <li className="nav-item has-mega" aria-haspopup="false">
-              <Link href="/services" className="nav-link nav-link--services">
+            <li
+              className="nav-item has-mega"
+              aria-haspopup="true"
+              onMouseEnter={() => setIsMegaOpen(true)}
+              onMouseLeave={() => setIsMegaOpen(false)}
+              onFocusCapture={() => setIsMegaOpen(true)}
+              onBlur={() => setIsMegaOpen(false)}
+            >
+              <Link
+                href="/services"
+                className="nav-link nav-link--services"
+                aria-expanded={isMegaOpen}
+              >
                 <span className="nav-link-text">Services</span>
-                <span className="caret" aria-hidden="true">▾</span>
+                <motion.span
+                  className="caret"
+                  aria-hidden="true"
+                  animate={{ rotate: isMegaOpen ? 180 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  ▾
+                </motion.span>
               </Link>
 
-              <MegaMenu columns={megaMenuData} />
+              <MegaMenu
+                columns={megaMenuData}
+                isOpen={isMegaOpen}
+                onClose={() => setIsMegaOpen(false)}
+              />
             </li>
 
             <li className="dropdown">
@@ -242,7 +312,7 @@ export default function Header() {
                 Contact us
               </Link>
             </li>
-            <li>
+            <li className="nav-search">
               <Search />
             </li>
             <li>
@@ -251,11 +321,90 @@ export default function Header() {
               </Link>
             </li>
           </ul>
-          
-          <LanguageSwitcher />
-          <Sidebar />
+
+          <div className="nav-utilities">
+            <LanguageSwitcher />
+            <Sidebar />
+          </div>
         </div>
       </nav>
-    </header>
+
+      <AnimatePresence>
+        {isMobileNavOpen && (
+          <motion.div
+            className="nav-mobile-panel"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+          >
+            <div className="nav-mobile-inner">
+              <div className="nav-mobile-meta">
+                <span className="nav-mobile-eyebrow">Menu</span>
+                <button
+                  type="button"
+                  className="nav-mobile-close"
+                  onClick={closeMobileNav}
+                >
+                  <span className="sr-only">Close navigation</span>
+                  ✕
+                </button>
+              </div>
+
+              <div className="nav-mobile-sections">
+                <div className="nav-mobile-group">
+                  <span className="nav-mobile-label">Browse</span>
+                  <ul>
+                    {navLinks.map((item) => (
+                      <li key={item.label}>
+                        <Link href={item.href} onClick={closeMobileNav}>
+                          {item.label}
+                        </Link>
+                      </li>
+                    ))}
+                    <li className="nav-mobile-services">
+                      <details>
+                        <summary>Services</summary>
+                        <ul>
+                          {megaMenuData.map((column) => (
+                            <li key={column.title}>
+                              <span className="nav-mobile-column">{column.title}</span>
+                              <ul>
+                                {column.subHeadings.map((service) => (
+                                  <li key={service.subHeading}>
+                                    <Link href={service.href} onClick={closeMobileNav}>
+                                      {service.subHeading}
+                                    </Link>
+                                  </li>
+                                ))}
+                              </ul>
+                            </li>
+                          ))}
+                        </ul>
+                      </details>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="nav-mobile-group">
+                  <span className="nav-mobile-label">Connect</span>
+                  <div className="nav-mobile-actions">
+                    <Link href="/contact" className="btn btn--primary" onClick={closeMobileNav}>
+                      Let's Talk
+                    </Link>
+                    <div className="nav-mobile-language">
+                      <LanguageSwitcher />
+                    </div>
+                    <div className="nav-mobile-search">
+                      <Search />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }

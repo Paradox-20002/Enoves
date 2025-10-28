@@ -7,18 +7,18 @@ const Slider = () => {
 
   const slides = [
     {
-      image: "/images/download1.webp",
+      image: "/images/download1.jpg",
       title: "Welcome to Our World",
       description:
         "Discover amazing possibilities with our innovative solutions",
     },
     {
-      image: "/images/download2.webp",
+      image: "/images/download2.jpg",
       title: "Excellence in Design",
       description: "Creating stunning experiences that captivate and inspire",
     },
     {
-      image: "/images/download3.webp",
+      image: "/images/download3.jpg",
       title: "Building the Future",
       description:
         "Leading the way with cutting-edge technology and creativity",
