@@ -168,6 +168,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 16);
@@ -363,25 +364,52 @@ export default function Header() {
                       </li>
                     ))}
                     <li className="nav-mobile-services">
-                      <details>
-                        <summary>Services</summary>
-                        <ul>
-                          {megaMenuData.map((column) => (
-                            <li key={column.title}>
-                              <span className="nav-mobile-column">{column.title}</span>
-                              <ul>
-                                {column.subHeadings.map((service) => (
-                                  <li key={service.subHeading}>
-                                    <Link href={service.href} onClick={closeMobileNav}>
-                                      {service.subHeading}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </details>
+                      <div className="nav-mobile-services-header">
+                        <Link href="/services" className="nav-mobile-services-link" onClick={closeMobileNav}>
+                          Services
+                        </Link>
+                        <button
+                          type="button"
+                          className="nav-mobile-services-toggle"
+                          onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                          aria-expanded={isMobileServicesOpen}
+                        >
+                          <motion.span
+                            animate={{ rotate: isMobileServicesOpen ? 180 : 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            ▼
+                          </motion.span>
+                        </button>
+                      </div>
+                      <AnimatePresence>
+                        {isMobileServicesOpen && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <ul className="nav-mobile-services-list">
+                              {megaMenuData.map((column) => (
+                                <li key={column.title}>
+                                  <span className="nav-mobile-column">{column.title}</span>
+                                  <ul className="nav-mobile-subservices">
+                                    {column.subHeadings.map((service) => (
+                                      <li key={service.subHeading}>
+                                        <Link href={service.href} onClick={closeMobileNav}>
+                                          <i className={`${service.icon} nav-mobile-service-icon`}></i>
+                                          {service.subHeading}
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </li>
+                              ))}
+                            </ul>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </li>
                   </ul>
                 </div>
