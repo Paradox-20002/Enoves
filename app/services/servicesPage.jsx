@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import "./servicesPage.css";
 
 const serviceHighlights = [
@@ -8,77 +10,96 @@ const serviceHighlights = [
     description:
       "We engineer responsive, scalable, and performance-driven web experiences powered by automation, deep analytics, and seamless integrations.",
     href: "/services/web-development",
+    icon: "fa-solid fa-code",
   },
   {
     title: "Mobile App Development Services",
     description:
       "We craft intuitive, high-performing apps that combine human-centred design with robust engineering to thrive across every platform.",
     href: "/services/mobile-app-development",
+    icon: "fa-solid fa-mobile-screen",
   },
   {
     title: "Artificial Intelligence & Machine Learning",
     description:
       "We unlock intelligent automation, predictive insights, and trusted AI strategies that improve decision-making while safeguarding your data.",
     href: "/services/artificial-intelligence-machine-learning",
+    icon: "fa-solid fa-brain",
   },
   {
     title: "Generative AI Solutions",
     description:
       "We deploy generative AI to automate workflows, enrich content, and deliver personalised customer interactions at scale.",
     href: "/services/generative-ai",
+    icon: "fa-solid fa-wand-magic-sparkles",
   },
   {
     title: "Custom Shopify Solutions",
     description:
       "We design commerce ecosystems that understand customer behaviour, optimise every interaction, and convert effortlessly.",
     href: "/services/custom-shopify",
+    icon: "fa-solid fa-shopping-cart",
   },
   {
     title: "Full-Cycle Digital Marketing",
     description:
       "We elevate your brand with full-funnel strategy across social, paid, SEO/SEM, email, and branding disciplines.",
     href: "/services/digital-marketing",
+    icon: "fa-solid fa-chart-line",
   },
   {
     title: "DevOps & Kubernetes",
     description:
       "We transform complex infrastructure into intelligent pipelines that accelerate releases and maximise reliability.",
     href: "/services/devops-kubernetes",
+    icon: "fa-solid fa-gears",
   },
   {
     title: "Cloud Solutions",
     description:
       "We architect scalable, secure cloud environments tailored to boost agility, performance, and time-to-market.",
     href: "/services/cloud-solutions",
+    icon: "fa-solid fa-cloud",
   },
   {
     title: "UI/UX Design Services",
     description:
       "We merge strategy and creativity to craft user journeys that captivate audiences and drive measurable outcomes.",
     href: "/services/ui-ux-design",
+    icon: "fa-solid fa-palette",
   },
 ];
 
-const journeySteps = [
+const faqs = [
   {
-    title: "Discovery & Analysis",
-    copy:
-      "We align with your vision, define success metrics, and audit your current ecosystem to design the right roadmap.",
+    question: "What services does Enoves offer?",
+    answer:
+      "Enoves offers a comprehensive suite of digital services including web development, mobile app development, AI/ML solutions, UI/UX design, digital marketing, cloud solutions, DevOps, and more. We tailor our services to meet your specific business needs.",
   },
   {
-    title: "Design & Prototyping",
-    copy:
-      "We shape intuitive interfaces and interactive prototypes, iterating fast with stakeholder feedback to ensure clarity.",
+    question: "How long does a typical project take?",
+    answer:
+      "Project timelines vary based on scope and complexity. Our agile approach allows us to deliver in phases, with initial prototypes often ready within 4-6 weeks. We work closely with you to establish realistic timelines and maintain momentum throughout.",
   },
   {
-    title: "Development & Testing",
-    copy:
-      "We build in agile loops, continually testing performance and quality so every release meets expectations.",
+    question: "What is your engagement model?",
+    answer:
+      "We offer flexible engagement models including Full-Cycle Development, Dedicated Team, Team Extension, and Consultation. Choose the model that best fits your project requirements, budget, and long-term goals.",
   },
   {
-    title: "Launch & Ongoing Support",
-    copy:
-      "We orchestrate smooth launches, then stay engaged with optimisation, maintenance, and growth support.",
+    question: "Do you provide ongoing support after launch?",
+    answer:
+      "Yes, we provide comprehensive post-launch support including maintenance, optimization, and growth initiatives. Our goal is to ensure your solution continues to deliver value and evolves with your business needs.",
+  },
+  {
+    question: "How do you ensure quality in your deliverables?",
+    answer:
+      "Quality is embedded in our process. We follow agile methodologies with continuous testing, code reviews, and stakeholder feedback loops. Our team maintains industry best practices and uses cutting-edge tools to ensure excellence.",
+  },
+  {
+    question: "What is your pricing structure?",
+    answer:
+      "We offer transparent, customized pricing based on your project scope and engagement model. There are no hidden costs. We provide detailed proposals upfront so you know exactly what to expect. Contact us for a personalized quote.",
   },
 ];
 
@@ -137,6 +158,12 @@ const valuePromises = [
 ];
 
 export default function ServicesPage() {
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
   return (
     <main className="services-page">
       <section className="services-banner">
@@ -181,34 +208,16 @@ export default function ServicesPage() {
         </header>
         <div className="services-grid__items">
           {serviceHighlights.map((service) => (
-            <article key={service.title} className="service-card">
+            <Link key={service.title} href={service.href} className="service-card">
+              {service.icon && (
+                <i className={`service-card__icon ${service.icon}`} />
+              )}
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <Link href={service.href} className="service-card__link">
+              <span className="service-card__link">
                 Read more
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="services-journey">
-        <header className="section-heading">
-          <h2>4-Step Journey with Enoves</h2>
-          <p>
-            Structured yet flexible collaboration keeps teams aligned, mitigates risk, and sustains momentum from
-            discovery through growth.
-          </p>
-        </header>
-        <div className="journey-timeline">
-          {journeySteps.map((step, index) => (
-            <div key={step.title} className="journey-step">
-              <span className="journey-step__index">{index + 1}</span>
-              <div>
-                <h3>{step.title}</h3>
-                <p>{step.copy}</p>
-              </div>
-            </div>
+              </span>
+            </Link>
           ))}
         </div>
       </section>
@@ -260,6 +269,36 @@ export default function ServicesPage() {
         <Link href="/contact" className="btn btn--primary">
           Let&apos;s build together
         </Link>
+      </section>
+            <section className="services-faq">
+        <header className="section-heading">
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Find answers to common questions about our services, engagement models, and how we work with clients to
+            deliver exceptional results.
+          </p>
+        </header>
+        <div className="faq-container">
+          {faqs.map((faq, index) => (
+            <div key={index} className="faq-item">
+              <button
+                className={`faq-question ${openFaqIndex === index ? "is-open" : ""}`}
+                onClick={() => toggleFaq(index)}
+                aria-expanded={openFaqIndex === index}
+              >
+                <span className="faq-question__text">{faq.question}</span>
+                <span className="faq-question__icon">
+                  <i className="fa-solid fa-chevron-down" />
+                </span>
+              </button>
+              <div
+                className={`faq-answer ${openFaqIndex === index ? "is-open" : ""}`}
+              >
+                <p>{faq.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
     </main>
   );

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import "./mega-menu.css";
 
-export default function MegaMenu({ columns = [] }) {
+export default function MegaMenu({ columns = [], onClose }) {
   if (!columns.length) return null;
 
   return (
@@ -13,7 +13,11 @@ export default function MegaMenu({ columns = [] }) {
             <ul>
               {column.subHeadings.map((item, itemIndex) => (
                 <li key={itemIndex} className="mega-item">
-                  <Link href={item.href} className="mega-item-link">
+                  <Link
+                    href={item.href}
+                    className="mega-item-link"
+                    onClick={onClose}
+                  >
                     {item.icon && (
                       <i className={`mega-item-icon ${item.icon}`} />
                     )}
