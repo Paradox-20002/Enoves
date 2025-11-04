@@ -175,11 +175,14 @@ export default function ServicesPage() {
 
       <section className="services-hero">
         <div className="services-hero__copy">
-          <p className="services-hero__eyebrow">Revolutionizing the Way You Think Digital</p>
+          <p className="services-hero__eyebrow">
+            Revolutionizing the Way You Think Digital
+          </p>
           <h1>Digital solutions engineered for ambitious brands</h1>
           <p className="services-hero__description">
-            Enoves blends strategy, design, and emerging technology to build experiences that scale. From
-            intelligent platforms and adaptive marketing to cloud-native delivery, we remove constraints so your
+            Enoves blends strategy, design, and emerging technology to build
+            experiences that scale. From intelligent platforms and adaptive
+            marketing to cloud-native delivery, we remove constraints so your
             teams can innovate faster.
           </p>
           <div className="services-hero__actions">
@@ -193,7 +196,13 @@ export default function ServicesPage() {
         </div>
         <div className="services-hero__visual">
           <div className="logo-card">
-            <Image src="/Enoves.svg" alt="Enoves" width={280} height={280} priority />
+            <Image
+              src="/Enoves.svg"
+              alt="Enoves"
+              width={280}
+              height={280}
+              priority
+            />
           </div>
         </div>
       </section>
@@ -202,21 +211,24 @@ export default function ServicesPage() {
         <header className="section-heading">
           <h2>Revolutionizing the Way You Think Digital</h2>
           <p>
-            Discover a full-spectrum portfolio that connects strategy with execution. Every engagement blends
-            measurable impact, modern tooling, and human-centred craft.
+            Discover a full-spectrum portfolio that connects strategy with
+            execution. Every engagement blends measurable impact, modern
+            tooling, and human-centred craft.
           </p>
         </header>
         <div className="services-grid__items">
           {serviceHighlights.map((service) => (
-            <Link key={service.title} href={service.href} className="service-card">
+            <Link
+              key={service.title}
+              href={service.href}
+              className="service-card"
+            >
               {service.icon && (
                 <i className={`service-card__icon ${service.icon}`} />
               )}
               <h3>{service.title}</h3>
               <p>{service.description}</p>
-              <span className="service-card__link">
-                Read more
-              </span>
+              <span className="service-card__link">Read more</span>
             </Link>
           ))}
         </div>
@@ -225,7 +237,10 @@ export default function ServicesPage() {
       <section className="services-engagement">
         <header className="section-heading">
           <h2>4 Ways to Get Started with Us</h2>
-          <p>Choose the engagement model that fits your momentum, budget, and long-term goals.</p>
+          <p>
+            Choose the engagement model that fits your momentum, budget, and
+            long-term goals.
+          </p>
         </header>
         <div className="engagement-grid">
           {engagementModels.map((model) => (
@@ -245,7 +260,8 @@ export default function ServicesPage() {
         <header className="section-heading">
           <h2>Why Enoves</h2>
           <p>
-            We deliver high-impact outcomes anchored in transparency, velocity, and proven digital craftsmanship.
+            We deliver high-impact outcomes anchored in transparency, velocity,
+            and proven digital craftsmanship.
           </p>
         </header>
         <div className="value-grid">
@@ -262,27 +278,30 @@ export default function ServicesPage() {
         <div className="services-cta__content">
           <h2>Transform your next initiative with Enoves</h2>
           <p>
-            Whether you need a dedicated product squad, expertise on demand, or guidance for your next big idea, we
-            are ready to accelerate your journey.
+            Whether you need a dedicated product squad, expertise on demand, or
+            guidance for your next big idea, we are ready to accelerate your
+            journey.
           </p>
         </div>
         <Link href="/contact" className="btn btn--primary">
           Let&apos;s build together
         </Link>
       </section>
-            <section className="services-faq">
+      <section className="services-faq">
         <header className="section-heading">
           <h2>Frequently Asked Questions</h2>
           <p>
-            Find answers to common questions about our services, engagement models, and how we work with clients to
-            deliver exceptional results.
+            Find answers to common questions about our services, engagement
+            models, and how we work with clients to deliver exceptional results.
           </p>
         </header>
         <div className="faq-container">
           {faqs.map((faq, index) => (
             <div key={index} className="faq-item">
               <button
-                className={`faq-question ${openFaqIndex === index ? "is-open" : ""}`}
+                className={`faq-question ${
+                  openFaqIndex === index ? "is-open" : ""
+                }`}
                 onClick={() => toggleFaq(index)}
                 aria-expanded={openFaqIndex === index}
               >
@@ -292,7 +311,9 @@ export default function ServicesPage() {
                 </span>
               </button>
               <div
-                className={`faq-answer ${openFaqIndex === index ? "is-open" : ""}`}
+                className={`faq-answer ${
+                  openFaqIndex === index ? "is-open" : ""
+                }`}
               >
                 <p>{faq.answer}</p>
               </div>

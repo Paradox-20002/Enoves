@@ -219,7 +219,7 @@ export default function AboutPage() {
         </div>
       </section>
       <section
-        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full rounded-2xl hover:border-purple-500/60 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-purple-500/20"
+        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto mt-20 max-w-6xl w-full rounded-[40px] hover:border-purple-500/60 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-purple-500/20"
         style={{ background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" }}
       >
         <h1 className="text-2xl md:text-3xl text-white font-extrabold">

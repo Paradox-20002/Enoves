@@ -137,12 +137,15 @@
 
 .services-grid__items {
   margin-top: 3rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(240px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
+  flex-direction: row;
 }
 
 .service-card {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 240px;
   padding: 1.75rem;
   border-radius: 24px;
   background: linear-gradient(135deg, rgba(89, 86, 233, 0.15) 0%, rgba(20, 20, 34, 0.78) 50%, rgba(105, 97, 255, 0.08) 100%), radial-gradient(circle at top right, rgba(139, 92, 246, 0.1), transparent 70%);
@@ -155,6 +158,18 @@
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+  .service-card {
+    flex: 1 1 calc(50% - 0.75rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .service-card {
+    flex: 1 1 100%;
+  }
 }
 
 .service-card::before {
@@ -308,6 +323,41 @@
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1.5rem;
 }
+:root {
+  --line-thickness: 2px;
+  --glow-color: #695aff;
+  --duration: 4s;
+  /* how long one card’s animation lasts */
+  --cards: 4;
+  /* number of cards */
+}
+
+/* total cycle = duration * number of cards */
+@keyframes borderLineMove {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+    opacity: 1;
+  }
+
+  25% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    /* top */
+  }
+
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* right */
+  }
+
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    /* bottom */
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 
 .engagement-card {
   position: relative;
@@ -318,31 +368,70 @@
   display: flex;
   flex-direction: column;
   gap: 0.85rem;
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
-  overflow: hidden;
+  transition: transform 0.3s ease, background 0.3s ease;
+  overflow: visible;
 }
 
 .engagement-card::before {
   content: "";
   position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  inset: 0;
+  border: var(--line-thickness) solid var(--glow-color);
+  border-radius: 24px;
+  /* keep rounded corners */
   pointer-events: none;
+  box-shadow: 0 0 10px 3px rgba(105, 90, 255, 0.9),
+    0 0 20px 6px rgba(105, 90, 255, 0.5);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  animation: borderLineMove calc(var(--duration) * var(--cards)) linear infinite;
+
+  /* 👇 this fixes pointy corners while preserving animation */
+  -webkit-mask-image: radial-gradient(white, white);
+  -webkit-mask-composite: destination-in;
+  mask-image: radial-gradient(white, white);
+  mask-composite: intersect;
+  overflow: hidden;
 }
 
+/* Each card appears only during its segment of the full cycle */
+.engagement-card:nth-child(1)::before {
+  animation-delay: 0s;
+  animation-play-state: running;
+}
+
+.engagement-card:nth-child(2)::before {
+  animation-delay: calc(var(--duration) * 1);
+}
+
+.engagement-card:nth-child(3)::before {
+  animation-delay: calc(var(--duration) * 2);
+}
+
+.engagement-card:nth-child(4)::before {
+  animation-delay: calc(var(--duration) * 3);
+}
+
+/* Each card visible only during its time window */
+.engagement-card:nth-child(1)::before {
+  animation-delay: 0s;
+}
+
+.engagement-card:nth-child(2)::before {
+  animation-delay: calc(var(--duration) * 1);
+}
+
+.engagement-card:nth-child(3)::before {
+  animation-delay: calc(var(--duration) * 2);
+}
+
+.engagement-card:nth-child(4)::before {
+  animation-delay: calc(var(--duration) * 3);
+}
+
+/* optional hover */
 .engagement-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(104, 97, 255, 0.32);
   background: rgba(17, 17, 27, 0.95);
-}
-
-.engagement-card:hover::before {
-  opacity: 1;
 }
 
 .engagement-card h3 {
@@ -463,5 +552,9 @@
   .btn,
   .service-card__link::after {
     transition: none;
+  }
+
+  .engagement-card::before {
+    animation: none;
   }
 }
