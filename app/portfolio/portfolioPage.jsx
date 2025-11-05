@@ -178,7 +178,10 @@ export default function PortfolioPage() {
           <Link href="/contact">
             <button
               type="button"
-              className="mt-2 inline-flex items-center justify-center rounded-full border border-purple-400/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-purple-200 transition hover:border-purple-300 hover:text-purple-100"
+              className="mt-2 inline-flex items-center justify-center rounded-full font-bold border hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 border-purple-400/40 px-6 py-3 text-xs uppercase tracking-[0.3em] text-purple-200 transition hover:border-purple-300 hover:text-purple-100"
+              style={{
+                background: "linear-gradient(90deg, #6b5cff, #9260ff)",
+              }}
             >
               Contact us
             </button>
@@ -200,7 +203,7 @@ export default function PortfolioPage() {
             <button
               type="button"
               onClick={() => setActiveProject(null)}
-              className="absolute top-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-purple-500/40 bg-white/10 text-white text-2xl hover:bg-white/20 transition z-60"
+              className="absolute top-4 right-4 inline-flex h-10 w-10 items-center justify-center rounded-full border border-purple-500/40 bg-white text-black text-2xl hover:bg-black hover:text-white transition z-60"
               aria-label="Close project preview"
             >
               ×

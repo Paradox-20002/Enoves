@@ -1,51 +1,51 @@
 
 export const projects = [
   {
-    title: "SaaS Growth Dashboard",
+    title: "Quick Austin Limo",
     description:
-      "A conversion-focused analytics dashboard that visualises user journeys and KPIs for marketing teams.",
+      "A modern and user-friendly limo booking website offering instant quotes, online reservations, and elegant UI for luxury travel in Austin.",
     image:
       "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80",
-    url: "https://www.enoves.com", // Placeholder – replace with actual project URL
+    url: "http://Quickaustinlimos.com/",
   },
   {
-    title: "E-commerce Experience",
+    title: "Royal Austin Limos",
     description:
-      "A premium shopping experience with personalised recommendations and shoppable storytelling.",
+      "A premium limo service platform designed for comfort and class, featuring fleet showcases, booking forms, and real-time service updates.",
     image:
       "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=900&q=80",
-    url: "https://www.enoves.com", // Placeholder – replace with actual project URL
+    url: "http://Royallimosco.com/",
   },
   {
-    title: "Product Launch Microsite",
+    title: "Austin Pontoon Boat Rental",
     description:
-      "Launch microsite with motion-first storytelling, live chat, and integrated lead capture forms.",
+      "A vibrant website for pontoon boat rentals in Austin, showcasing boats, pricing, and easy online booking for lakeside adventures.",
     image:
       "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",
-    url: "https://www.enoves.com", // Placeholder – replace with actual project URL
+    url: "https://austinpontoonboatrental.com/",
   },
   {
-    title: "Financial Services Platform",
+    title: "Doone Towing",
     description:
-      "High-trust financial web app featuring onboarding flows, dark mode UI, and data-rich dashboards.",
+      "A professional towing service website with 24/7 assistance, service area maps, and a quick-response contact form for roadside help.",
     image:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=900&q=80",
-    url: "https://www.dribbble.com/shots/FinancePlatform", // Placeholder – replace with actual project URL
+    url: "https://doonetowing.com/",
   },
   {
-    title: "AI Marketing Assistant",
+    title: "Pro Black Limo",
     description:
-      "Multi-channel campaign builder with AI copy suggestions and performance forecasting widgets.",
+      "A luxury black car service platform emphasizing sophistication and convenience, with seamless booking and fleet display features.",
     image:
       "https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80",
-    url: "https://www.salesamplifiers.com", // Placeholder – replace with actual project URL
+    url: "https://problack.limo/",
   },
   {
-    title: "Immersive Event Hub",
+    title: "Luxury Airport Limo",
     description:
-      "Event registration hub with interactive agenda, speaker highlights, and live stream embeds.",
+      "An elegant airport transportation website providing airport transfers with real-time flight tracking and VIP-level booking options.",
     image:
       "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=900&q=80",
-    url: "https://www.behance.net/gallery/EventHub", // Placeholder – replace with actual project URL
+    url: "https://luxuryairportlimo.ca/",
   },
 ];
