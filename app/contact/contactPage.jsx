@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 
 export default function ContactPage() {
+  const API_KEY = "AIzaSyABxeq5TBPRhjztrMFEIRXaSJgzfU-32QQ";
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -45,7 +46,7 @@ export default function ContactPage() {
     {
       icon: "fa-solid fa-map-marker-alt",
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Lahore, Pakistan",
       href: "#",
     },
   ];
@@ -61,10 +62,10 @@ export default function ContactPage() {
     >
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto w-full text-center">
-        <h1 className="text-4xl md:text-6xl text-white font-extrabold mb-6 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-extrabold mb-6 leading-tight">
           Let&apos;s Build Something Great
         </h1>
-        <p className="text-gray-300 text-base md:text-lg max-w-2xl mx-auto mb-8">
+        <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 px-4">
           Have a project in mind? We&apos;d love to hear about it. Get in touch
           with our team and let&apos;s discuss how we can help transform your
           vision into reality.
@@ -187,7 +188,9 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   className="w-full px-8 py-3 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 uppercase tracking-wider hover:shadow-lg hover:shadow-purple-500/30"
-                  style={{ background: "linear-gradient(90deg, #6b5cff, #9260ff)" }}
+                  style={{
+                    background: "linear-gradient(90deg, #6b5cff, #9260ff)",
+                  }}
                 >
                   Send Message
                 </button>
@@ -195,10 +198,10 @@ export default function ContactPage() {
             )}
           </div>
 
-          {/* Map - Right Side */}
-          <div className="rounded-3xl overflow-hidden border border-purple-500/30 h-96 lg:h-auto min-h-96">
+          {/* Map - Right Side (Lahore, Pakistan) */}
+          <div className="rounded-3xl overflow-hidden border border-purple-500/30 h-full">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0194905404046!2d-122.39805!3d37.78825!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4701%3A0xb10ed6d9b5050b69!2s123%20Market%20St%2C%20San%20Francisco%2C%20CA%2094105!5e0!3m2!1sen!2sus!4v1234567890"
+              src="https://www.google.com/maps?q=Enoves%2C%207SF%2C%20AB%20Height%2C%20Defence%20Airport%20Road%20Near%20Honda%20Showroom%20Opp%20Byco%20Petrol%20Pump%2C%20Khuda%20Buksh%20Colony%2C%20Lahore%2C%2054000%2C%20Pakistan&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0 }}

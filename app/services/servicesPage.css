@@ -318,7 +318,7 @@ display: flex;
 }
 
 .faq-answer.is-open {
-  max-height: 1000px;
+  max-height: 100px;
   padding: 0 1.75rem 1.5rem;
 }
 

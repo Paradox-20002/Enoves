@@ -1,169 +1,13 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import "./header.css";
-import LanguageSwitcher from "./LanguageSwitcher";
-import Search from "../search/search";
-import Sidebar from "../sidebar/sidebar";
-import MegaMenu from "../mega-menu/mega-menu";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Contact us", href: "/contact" },
-];
+import DesktopNav from "./DesktopNav";
+import MobileNav from "./MobileNav";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export default function Header() {
-  const megaMenuData = [
-    {
-      title: "Acquisition and Retention",
-      subHeadings: [
-        {
-          subHeading: "Digital Marketing",
-          label: "Drive campaigns with targeted digital marketing programs.",
-          href: "/services/web",
-          icon: "fa-solid fa-code",
-        },
-        {
-          subHeading: "Email Marketing",
-          label: "Automate personalised journeys with email marketing.",
-          href: "/services/mobile",
-          icon: "fa-solid fa-mobile-screen",
-        },
-        {
-          subHeading: "(SEO) Solutions",
-          label: "Boost visibility with data-led SEO solutions.",
-          href: "/services/pwa",
-          icon: "fa-solid fa-rocket",
-        },
-        {
-          subHeading: "Linkedin Outreach",
-          label: "Boost visibility with data-led SEO solutions.",
-          href: "/services/pwa",
-          icon: "fa-solid fa-rocket",
-        },
-      ],
-    },
-    {
-      title: "Design Services",
-      subHeadings: [
-        {
-          subHeading: "UI/UX Design",
-          label: "Deliver intuitive experiences with UX research and design.",
-          href: "/services/uiux",
-          icon: "fa-solid fa-palette",
-        },
-        {
-          subHeading: "Branding",
-          label: "Shape memorable brands with cohesive visual systems.",
-          href: "/services/branding",
-          icon: "fa-solid fa-award",
-        },
-        {
-          subHeading: "Graphics",
-          label: "Produce high-impact graphics and marketing assets.",
-          href: "/services/graphics",
-          icon: "fa-solid fa-pen-nib",
-        },
-        {
-          subHeading: "Graphics",
-          label: "Produce high-impact graphics and marketing assets.",
-          href: "/services/graphics",
-          icon: "fa-solid fa-pen-nib",
-        },
-      ],
-    },
-    {
-      title: "Awareness",
-      subHeadings: [
-        {
-          subHeading: "(SMM) Marketing",
-          label: "Architect and optimise resilient cloud environments.",
-          href: "/services/cloud",
-          icon: "fa-solid fa-cloud",
-        },
-        {
-          subHeading: "Paid Media",
-          label: "Automate delivery pipelines with DevOps practices.",
-          href: "/services/devops",
-          icon: "fa-solid fa-gears",
-        },
-        {
-          subHeading: "Marketing Strategy",
-          label: "Accelerate releases with integrated CI/CD workflows.",
-          href: "/services/cicd",
-          icon: "fa-solid fa-repeat",
-        },
-        {
-          subHeading: "Analytics Outreach",
-          label: "Accelerate releases with integrated CI/CD workflows.",
-          href: "/services/cicd",
-          icon: "fa-solid fa-repeat",
-        },
-      ],
-    },
-    {
-      title: "SaaS Solutions",
-      subHeadings: [
-        {
-          subHeading: "SaaS Product Development",
-          label: "Align technology investments with business priorities.",
-          href: "/services/consulting",
-          icon: "fa-solid fa-lightbulb",
-        },
-        {
-          subHeading: "Pre and Post Support",
-          label: "Define digital roadmaps that unlock new growth.",
-          href: "/services/strategy",
-          icon: "fa-solid fa-chart-line",
-        },
-        {
-          subHeading: "Product Hunt Support",
-          label: "Upskill teams with expert-led enablement programmes.",
-          href: "/services/training",
-          icon: "fa-solid fa-graduation-cap",
-        },
-        {
-          subHeading: "Data Security And Compliance",
-          label: "Upskill teams with expert-led enablement programmes.",
-          href: "/services/training",
-          icon: "fa-solid fa-graduation-cap",
-        },
-      ],
-    },
-    {
-      title: "Web & App Development",
-      subHeadings: [
-        {
-          subHeading: "Web Development",
-          label: "Align technology investments with business priorities.",
-          href: "/services/consulting",
-          icon: "fa-solid fa-lightbulb",
-        },
-        {
-          subHeading: "App Development",
-          label: "Define digital roadmaps that unlock new growth.",
-          href: "/services/strategy",
-          icon: "fa-solid fa-chart-line",
-        },
-        {
-          subHeading: "Custom Software Development",
-          label: "Upskill teams with expert-led enablement programmes.",
-          href: "/services/training",
-          icon: "fa-solid fa-graduation-cap",
-        },
-        {
-          subHeading: "Staff Augmentation",
-          label: "Upskill teams with expert-led enablement programmes.",
-          href: "/services/training",
-          icon: "fa-solid fa-graduation-cap",
-        },
-      ],
-    },
-  ];
-
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isMegaOpen, setIsMegaOpen] = useState(false);
@@ -186,6 +30,11 @@ export default function Header() {
   const closeMobileNav = () => setIsMobileNavOpen(false);
   const closeMegaMenu = () => setIsMegaOpen(false);
   const openMegaMenu = () => setIsMegaOpen(true);
+  
+  const handleServicesClick = () => {
+    setIsMegaOpen(false);
+  };
+
   const caretRotation = (open) => ({
     transform: open ? "rotate(180deg)" : "rotate(0deg)",
     transition: "transform 0.2s ease",
@@ -252,159 +101,21 @@ export default function Header() {
           <span className="sr-only">Toggle navigation</span>
         </button>
 
-        <div className="nav-right1">
-          <ul className="nav-list1" id="site-navigation">
-            <li>
-              <Link href="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-
-            <li
-              className={`nav-item has-mega${isMegaOpen ? " is-open" : ""}`}
-              aria-haspopup="true"
-              onMouseEnter={openMegaMenu}
-              onMouseLeave={closeMegaMenu}
-              onFocusCapture={openMegaMenu}
-              onBlur={closeMegaMenu}
-            >
-              <Link
-                href="/services"
-                className="nav-link nav-link--services"
-                aria-expanded={isMegaOpen}
-                onClick={closeMegaMenu}
-              >
-                <span className="nav-link-text">Services</span>
-                <span className="caret" aria-hidden="true" style={caretRotation(isMegaOpen)}>
-                  ▾
-                </span>
-              </Link>
-
-              <MegaMenu columns={megaMenuData} onClose={closeMegaMenu} />
-            </li>
-
-            <li className="dropdown">
-              <Link href="/portfolio" className="nav-link">
-                Portfolio <span className="dropdown-arrow">▼</span>
-              </Link>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link href="/portfolio/websites">Websites</Link>
-                </li>
-                <li>
-                  <Link href="/portfolio/apps">Applications</Link>
-                </li>
-                <li>
-                  <Link href="/portfolio/designs">Designs</Link>
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              <Link href="/contact" className="nav-link">
-                Contact us
-              </Link>
-            </li>
-            <li className="nav-search">
-              <Search />
-            </li>
-            <li>
-              <Link href="/contact" className="lets-talk-btn">
-                Let's Talk
-              </Link>
-            </li>
-          </ul>
-
-          <div className="nav-utilities">
-            <LanguageSwitcher />
-            <Sidebar />
-          </div>
-        </div>
+        <DesktopNav
+          isMegaOpen={isMegaOpen}
+          onMegaEnter={openMegaMenu}
+          onMegaLeave={closeMegaMenu}
+          onServicesClick={handleServicesClick}
+          caretRotation={caretRotation}
+        />
       </nav>
 
-      {isMobileNavOpen && (
-        <div className="nav-mobile-panel">
-          <div className="nav-mobile-inner">
-            <div className="nav-mobile-meta">
-              <span className="nav-mobile-eyebrow">Menu</span>
-              <button
-                type="button"
-                className="nav-mobile-close"
-                onClick={closeMobileNav}
-              >
-                <span className="sr-only">Close navigation</span>
-                ✕
-              </button>
-            </div>
-
-            <div className="nav-mobile-sections">
-              <div className="nav-mobile-group">
-                <span className="nav-mobile-label">Browse</span>
-                <ul>
-                  {navLinks.map((item) => (
-                    <li key={item.label}>
-                      <Link href={item.href} onClick={closeMobileNav}>
-                        {item.label}
-                      </Link>
-                    </li>
-                  ))}
-                  <li className="nav-mobile-services">
-                    <div className="nav-mobile-services-header">
-                      <Link href="/services" className="nav-mobile-services-link" onClick={closeMobileNav}>
-                        Services
-                      </Link>
-                      <button
-                        type="button"
-                        className="nav-mobile-services-toggle"
-                        onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
-                        aria-expanded={isMobileServicesOpen}
-                      >
-                        <span className="caret" style={caretRotation(isMobileServicesOpen)}>▼</span>
-                      </button>
-                    </div>
-                    {isMobileServicesOpen && (
-                      <div className="nav-mobile-services-panel">
-                        <ul className="nav-mobile-services-list">
-                          {megaMenuData.map((column) => (
-                            <li key={column.title}>
-                              <span className="nav-mobile-column">{column.title}</span>
-                              <ul className="nav-mobile-subservices">
-                                {column.subHeadings.map((service) => (
-                                  <li key={service.subHeading}>
-                                    <Link href={service.href} onClick={closeMobileNav}>
-                                      <i className={`${service.icon} nav-mobile-service-icon`}></i>
-                                      {service.subHeading}
-                                    </Link>
-                                  </li>
-                                ))}
-                              </ul>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </li>
-                </ul>
-              </div>
-
-              <div className="nav-mobile-group">
-                <span className="nav-mobile-label">Connect</span>
-                <div className="nav-mobile-actions">
-                  <Link href="/contact" className="btn btn--primary" onClick={closeMobileNav}>
-                    Let's Talk
-                  </Link>
-                  <div className="nav-mobile-language">
-                    <LanguageSwitcher />
-                  </div>
-                  <div className="nav-mobile-search">
-                    <Search />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <MobileNav
+        isOpen={isMobileNavOpen}
+        onClose={closeMobileNav}
+        isMobileServicesOpen={isMobileServicesOpen}
+        onToggleServices={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+      />
     </header>
   );
 }
