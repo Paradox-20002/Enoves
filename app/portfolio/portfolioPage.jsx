@@ -78,14 +78,10 @@ export default function PortfolioPage() {
 
       <section className="mx-auto mb-16 max-w-6xl px-4">
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-          {highlightStats.map((stat, index) => (
+          {highlightStats.map((stat) => (
             <article
               key={stat.label}
               className="flex flex-col gap-3 rounded-2xl border border-purple-500/20 bg-white/5 p-6 shadow-lg shadow-purple-500/10 transition hover:border-purple-400/40 hover:shadow-purple-500/20"
-              style={{
-                animation: `fadeIn 0.6s ease forwards`,
-                animationDelay: `${index * 0.08}s`,
-              }}
             >
               <span className="text-3xl font-semibold text-white">
                 {stat.value}
