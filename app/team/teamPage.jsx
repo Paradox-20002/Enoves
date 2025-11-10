@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-
-import { leadershipTeam } from "./team";
+import { leadershipTeam, DevTeam, MarketingTeam, SEOteam } from "./team";
 
 export default function TeamPage() {
   return (
@@ -30,14 +29,21 @@ export default function TeamPage() {
       </section>
 
       <section className="mx-auto mt-16 max-w-6xl px-4">
-        <div className="flex flex-wrap justify-between gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {leadershipTeam.map((member, index) => (
             <div
               key={index}
-              className="group relative h-[380px] w-[300px] overflow-hidden rounded-2xl bg-[#5f5f9d] shadow-lg transition-all duration-500 ease-out hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-[1.02] hover:-translate-y-2"
+              tabIndex={0} // Make div focusable for mobile tap
+              className="group relative h-[380px] w-[300px] overflow-hidden rounded-2xl bg-[#5f5f9d] shadow-lg transition-all duration-500 ease-out
+                   hover:shadow-2xl hover:shadow-purple-500/50 hover:scale-[1.02] hover:-translate-y-2
+                   focus:shadow-2xl focus:shadow-purple-500/50 focus:scale-[1.02] focus:-translate-y-2
+                   active:shadow-2xl active:shadow-purple-500/50 active:scale-[1.02] active:-translate-y-2"
             >
               {/* Glowing border effect */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl opacity-0 blur-lg transition-opacity duration-500 group-hover:opacity-75 -z-10" />
+              <div
+                className="absolute -inset-0.5 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl opacity-0 blur-lg transition-opacity duration-500
+                     group-hover:opacity-75 group-focus:opacity-75 group-active:opacity-75 -z-10 justify-around"
+              />
 
               <div className="absolute inset-0 overflow-hidden">
                 <Image
@@ -45,30 +51,50 @@ export default function TeamPage() {
                   alt={member.name}
                   width={300}
                   height={380}
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out
+                       group-hover:scale-110 group-focus:scale-110 group-active:scale-110"
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-70 transition-opacity duration-500
+                       group-hover:opacity-90 group-focus:opacity-90 group-active:opacity-90"
+                />
 
                 {/* Shine effect */}
-                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
-                  <div className="absolute inset-0 translate-x-[-100%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[100%]" />
+                <div
+                  className="absolute inset-0 opacity-0 transition-opacity duration-700
+                          group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100"
+                >
+                  <div
+                    className="absolute inset-0 translate-x-[-100%] skew-x-[-20deg] bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-1000 ease-out
+                            group-hover:translate-x-[100%] group-focus:translate-x-[100%] group-active:translate-x-[100%]"
+                  />
                 </div>
               </div>
 
-              <span className="pointer-events-none absolute right-45 top-20 -translate-y-1/2 -rotate-90 text-5xl font-extrabold uppercase tracking-[0.4em] text-white/20 transition-all duration-700 ease-out group-hover:left-6 group-hover:right-auto group-hover:top-6 group-hover:translate-y-0 group-hover:rotate-0 group-hover:text-2xl group-hover:text-white/90 drop-shadow-lg">
+              <span
+                className="pointer-events-none absolute right-45 top-20 -translate-y-1/2 -rotate-90 text-5xl font-extrabold uppercase tracking-[0.4em] text-white/20 transition-all duration-700 ease-out
+                     group-hover:left-6 group-hover:right-auto group-hover:top-6 group-hover:translate-y-0 group-hover:rotate-0 group-hover:text-2xl group-hover:text-white/90
+                     group-focus:left-6 group-focus:right-auto group-focus:top-6 group-focus:translate-y-0 group-focus:rotate-0 group-focus:text-2xl group-focus:text-white/90
+                     group-active:left-6 group-active:right-auto group-active:top-6 group-active:translate-y-0 group-active:rotate-0 group-active:text-2xl group-active:text-white/90 drop-shadow-lg"
+              >
                 {member.title}
               </span>
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-3 bg-gradient-to-t from-[#181129] via-[#181129]/98 to-[#181129]/95 px-6 pb-6 pt-8 text-white translate-y-full opacity-0 transition-all duration-500 ease-out group-hover:translate-y-0 group-hover:opacity-100 backdrop-blur-sm">
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-col gap-3 bg-gradient-to-t from-[#181129] via-[#181129]/98 to-[#181129]/95 px-6 pb-6 pt-8 text-white translate-y-full opacity-0 transition-all duration-500 ease-out backdrop-blur-sm
+                     group-hover:translate-y-0 group-hover:opacity-100
+                     group-focus:translate-y-0 group-focus:opacity-100
+                     group-active:translate-y-0 group-active:opacity-100"
+              >
                 {/* Top accent line */}
-                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100" />
+                <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-400 to-transparent opacity-0 transition-opacity duration-500 delay-100 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100" />
 
-                <h3 className="text-lg font-semibold transform translate-y-2 transition-all duration-500 delay-100 group-hover:translate-y-0">
+                <h3 className="text-lg font-semibold transform translate-y-2 transition-all duration-500 delay-100 group-hover:translate-y-0 group-focus:translate-y-0 group-active:translate-y-0">
                   {member.name}
                 </h3>
 
-                <div className="flex items-center gap-3 opacity-0 transition-all duration-500 delay-200 group-hover:opacity-100">
+                <div className="flex items-center gap-3 opacity-0 transition-all duration-500 delay-200 group-hover:opacity-100 group-focus:opacity-100 group-active:opacity-100">
                   {member.socials?.map((social, idx) => {
                     const Icon = social.icon;
                     return (
@@ -78,7 +104,10 @@ export default function TeamPage() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label={`${member.name} on ${social.label}`}
-                        className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center rounded-full border border-purple-400/40 bg-purple-900/20 text-purple-200 transform translate-y-2 opacity-0 transition-all duration-500 hover:scale-110 hover:border-purple-300 hover:bg-purple-500/30 hover:text-purple-100 hover:shadow-lg hover:shadow-purple-500/50 group-hover:translate-y-0 group-hover:opacity-100"
+                        className="pointer-events-auto inline-flex h-9 w-9 items-center justify-center rounded-full border border-purple-400/40 bg-purple-900/20 text-purple-200 transform translate-y-2 opacity-0 transition-all duration-500 hover:scale-110 hover:border-purple-300 hover:bg-purple-500/30 hover:text-purple-100 hover:shadow-lg hover:shadow-purple-500/50
+                             group-hover:translate-y-0 group-hover:opacity-100
+                             group-focus:translate-y-0 group-focus:opacity-100
+                             group-active:translate-y-0 group-active:opacity-100"
                         style={{ transitionDelay: `${250 + idx * 75}ms` }}
                       >
                         <Icon className="h-4 w-4" />
@@ -91,70 +120,156 @@ export default function TeamPage() {
           ))}
         </div>
       </section>
-
-      {/* <section className="mx-auto mt-24 max-w-6xl px-4">
-        <div className="flex flex-col gap-8 rounded-3xl border border-purple-500/25 bg-white/5 p-10 shadow-lg shadow-purple-500/10 md:flex-row md:items-start md:justify-between">
-          <header className="md:w-1/3">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-300">
-              How we work
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold text-white md:text-4xl">
-              A culture designed for clarity and experimentation
-            </h2>
-          </header>
-          <div className="grid flex-1 gap-6 sm:grid-cols-2">
-            {cultureHighlights.map((highlight) => (
-              <article
-                key={highlight.title}
-                className="rounded-2xl border border-purple-500/20 bg-[#11111d]/80 p-6"
-              >
-                <h3 className="text-xl font-semibold text-white">
-                  {highlight.title}
-                </h3>
-                <p className="mt-3 text-sm text-gray-300">
-                  {highlight.description}
-                </p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section className="mx-auto mt-20 max-w-6xl px-4 pb-20">
-        <div className="rounded-3xl border border-purple-500/20 bg-white/5 p-10 text-center shadow-lg shadow-purple-500/10">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-300">
-            Join the team
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold text-white md:text-4xl">
-            We're assembling new pods for 2026 initiatives
+      {/* Development Team */}
+      {/* Development Team */}
+      <section className="mx-auto mt-32 max-w-6xl px-4">
+        <div className="relative mb-16 text-center">
+          <span
+            className="pointer-events-none absolute -top-12 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-purple-500/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <h2 className="relative z-10 text-4xl font-semibold text-white mb-3">
+            Development Team
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm text-gray-300">
-            We're always looking for curious builders. Share your reel,
-            portfolio, or growth wins and tell us how you unlock momentum.
+          <p className="relative z-10 text-base text-gray-400">
+            Building the future, one line of code at a time
           </p>
+        </div>
 
-          <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
-            {openRoles.map((role) => (
-              <div
-                key={role.title}
-                className="rounded-2xl border border-purple-500/20 bg-[#11111d]/80 p-5 text-sm text-gray-200"
-              >
-                <p className="text-white">{role.title}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.3em] text-purple-200">
-                  {role.location}
+        <div className="flex flex-wrap justify-around gap-6">
+          {DevTeam.map((member, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-[#1a1a2e]/80 to-[#14141f]/80 backdrop-blur-sm border border-purple-500/10 transition-all duration-500 hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10 hover:-translate-y-2"
+            >
+              <div className="relative h-72 overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={300}
+                  height={288}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-[#0a0a0d]/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                  <div className="absolute inset-0 translate-x-[-100%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[100%]" />
+                </div>
+              </div>
+
+              <div className="relative p-6 space-y-1.5 bg-gradient-to-b from-transparent to-[#0a0a0d]/40 text-center">
+                <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-purple-200">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-purple-300/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {member.title}
                 </p>
               </div>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            className="mt-8 inline-flex items-center justify-center rounded-full border border-purple-400/40 px-6 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-purple-200 transition hover:border-purple-300 hover:text-purple-100"
-          >
-            Submit your profile
-          </button>
+            </div>
+          ))}
         </div>
-      </section> */}
+      </section>
+
+      {/* Marketing Team */}
+      <section className="mx-auto mt-32 max-w-6xl px-4">
+        <div className="relative mb-16 text-center">
+          <span
+            className="pointer-events-none absolute -top-12 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-pink-500/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <h2 className="relative z-10 text-4xl font-semibold text-white mb-3">
+            Marketing Team
+          </h2>
+          <p className="relative z-10 text-base text-gray-400">
+            Telling stories that connect brands with people
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-around gap-6">
+          {MarketingTeam.map((member, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-[#1a1a2e]/80 to-[#14141f]/80 backdrop-blur-sm border border-blue-500/10 transition-all duration-500 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+            >
+              <div className="relative h-72 overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={300}
+                  height={288}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-[#0a0a0d]/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                  <div className="absolute inset-0 translate-x-[-100%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[100%]" />
+                </div>
+              </div>
+
+              <div className="relative p-6 space-y-1.5 bg-gradient-to-b from-transparent to-[#0a0a0d]/40 text-center">
+                <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-blue-200">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-blue-300/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {member.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* SEO Team */}
+      <section className="mx-auto mt-32 max-w-6xl px-4 pb-32">
+        <div className="relative mb-16 text-center">
+          <span
+            className="pointer-events-none absolute -top-12 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-blue-500/15 blur-3xl"
+            aria-hidden="true"
+          />
+          <h2 className="relative z-10 text-4xl font-semibold text-white mb-3">
+            SEO Team
+          </h2>
+          <p className="relative z-10 text-base text-gray-400">
+            Optimizing visibility and driving organic growth
+          </p>
+        </div>
+
+        <div className="flex flex-wrap justify-around gap-6">
+          {SEOteam.map((member, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-xl bg-gradient-to-b from-[#1a1a2e]/80 to-[#14141f]/80 backdrop-blur-sm border border-blue-500/10 transition-all duration-500 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-2"
+            >
+              <div className="relative h-72 overflow-hidden">
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={300}
+                  height={288}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-[#0a0a0d]/60 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+                {/* Shine effect */}
+                <div className="absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100">
+                  <div className="absolute inset-0 translate-x-[-100%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[100%]" />
+                </div>
+              </div>
+
+              <div className="relative p-6 space-y-1.5 bg-gradient-to-b from-transparent to-[#0a0a0d]/40 text-center">
+                <h3 className="text-xl font-semibold text-white transition-colors duration-300 group-hover:text-blue-200">
+                  {member.name}
+                </h3>
+                <p className="text-sm text-blue-300/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  {member.title}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

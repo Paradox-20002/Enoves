@@ -2,7 +2,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export const leadershipTeam = [
   {
-    name: "Neha Patel",
+    name: "Aqeel",
     title: "CEO",
     bio: "Product storyteller focused on pairing market insight with differentiated brand experiences.",
     image:
@@ -14,7 +14,7 @@ export const leadershipTeam = [
     ],
   },
   {
-    name: "Marcus Lee",
+    name: "Noman",
     title: "CFO",
     bio: "Architects product roadmaps and outcomes for SaaS, fintech, and future-forward ventures.",
     image:
@@ -26,7 +26,7 @@ export const leadershipTeam = [
     ],
   },
   {
-    name: "Selena Ortiz",
+    name: "Tashfeen",
     title: "COO",
     bio: "Designs conversion-first journeys enriched with motion, narrative, and accessibility.",
     image:
@@ -39,25 +39,94 @@ export const leadershipTeam = [
   },
 
 ];
-
-export const cultureHighlights = [
+// dev team ----------------------------
+export const DevTeam = [
   {
-    title: "Multi-disciplinary Pods",
-    description:
-      "Cross-functional squads blend product, design, content, and performance to ship quickly and with intent.",
+    name: "Abid",
+    title: "Senior Web Developer",
+    bio: "",
+    image: "/images/noman.png",
   },
   {
-    title: "Curiosity First",
-    description:
-      "Weekly learning jams, playbooks, and retros keep ideas cycling and perspectives diverse.",
+    name: "Noman Ejaz",
+    title: "Senior Web Developer",
+    bio: "",
+    image: "/images/noman.png",
   },
   {
-    title: "Remote-first, Connected",
-    description:
-      "We collaborate across time zones with rituals that keep momentum high and humans centred.",
+    name: "Abubakr",
+    title: "Junior Web Developer",
+    bio: "",
+    image: "/images/download1.jpg",
   },
 ];
+// seo team ----------------------------
+export const SEOteam = [
+  {
+    name: "Arslan",
+    title: "SEO Manager",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Hudail",
+    title: "Junior SEO Analyst",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Taif",
+    title: "Junior SEO Analyst",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Usama",
+    title: "Senior SEO Analyst",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Ahmad",
+    title: "SEO Analyst",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Fahad",
+    title: "SEO Expert",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Daniyal",
+    title: "Junior SEO Analyst",
+    bio: "",
+    image: "/images/noman.png",
+  },
 
+];
+// marketing team ----------------------------
+export const MarketingTeam = [
+  {
+    name: "Abdur Rehman",
+    title: "Cold Calling Agent",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Amina",
+    title: "Junior Cold Calling Agent",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Bilal",
+    title: "Cold Calling Agent",
+    bio: "",
+    image: "/images/noman.png",
+  },
+];
 const openRoles = [
   {
     title: "Senior UX Writer",
