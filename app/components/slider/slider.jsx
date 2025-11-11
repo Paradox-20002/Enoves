@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import "./slider.css";
 
-const Slider = () => {
+const Slider = ({ heading }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
