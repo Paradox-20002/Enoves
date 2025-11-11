@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import "./servicesPage.css";
 import {
   serviceHighlights,
@@ -9,6 +8,7 @@ import {
   engagementModels,
   valuePromises,
 } from "./content";
+import FaqSection from "../components/faq/faq";
 export default function ServicesPage() {
   return (
     <main className="services-page">
@@ -133,50 +133,7 @@ export default function ServicesPage() {
           Let&apos;s build together
         </Link>
       </section>
-      <FaqSection />
+      <FaqSection faqs={faqs} />
     </main>
   );
 }
-const FaqSection = () => {
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-  return (
-    <section className="services-faq">
-      <header className="section-heading">
-        <h2>Frequently Asked Questions</h2>
-        <p>
-          Find answers to common questions about our services, engagement
-          models, and how we work with clients to deliver exceptional results.
-        </p>
-      </header>
-      <div className="faq-container">
-        {faqs.map((faq, index) => (
-          <div key={index} className="faq-item">
-            <button
-              className={`faq-question ${
-                openFaqIndex === index ? "is-open" : ""
-              }`}
-              onClick={() => toggleFaq(index)}
-              aria-expanded={openFaqIndex === index}
-            >
-              <span className="faq-question__text">{faq.question}</span>
-              <span className="faq-question__icon">
-                <i className="fa-solid fa-chevron-down" />
-              </span>
-            </button>
-            <div
-              className={`faq-answer ${
-                openFaqIndex === index ? "is-open" : ""
-              }`}
-            >
-              <p>{faq.answer}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
