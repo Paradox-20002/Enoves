@@ -1,8 +1,11 @@
+"use client";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import "./mega-menu.css";
 
 export default function MegaMenu({ columns = [], onClose }) {
   if (!columns.length) return null;
+  const router = useRouter();
 
   return (
     <div id="mega-menu" className="mega-menu" role="menu" aria-label="Services">
@@ -16,7 +19,13 @@ export default function MegaMenu({ columns = [], onClose }) {
                   <Link
                     href={item.href}
                     className="mega-item-link"
-                    onClick={onClose}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      router.push(item.href);
+                      setTimeout(() => {
+                        if (typeof onClose === "function") onClose();
+                      }, 0);
+                    }}
                   >
                     {item.icon && (
                       <i className={`mega-item-icon ${item.icon}`} />

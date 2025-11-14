@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import MegaMenu from "../mega-menu/mega-menu";
 import Search from "../search/search";
@@ -16,6 +16,7 @@ export default function DesktopNav({
   caretRotation,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const closeTimer = useRef(null);
 
   return (
     <div className="nav-right1">
@@ -29,9 +30,19 @@ export default function DesktopNav({
         <li
           className={`nav-item has-mega${isMegaOpen ? " is-open" : ""}`}
           aria-haspopup="true"
-          onMouseEnter={onMegaEnter}
-          onMouseLeave={onMegaLeave}
-          onBlur={onMegaLeave}
+          onMouseEnter={() => {
+            if (closeTimer.current) {
+              clearTimeout(closeTimer.current);
+              closeTimer.current = null;
+            }
+            onMegaEnter();
+          }}
+          onMouseLeave={() => {
+            if (closeTimer.current) clearTimeout(closeTimer.current);
+            closeTimer.current = setTimeout(() => {
+              onMegaLeave();
+            }, 120);
+          }}
         >
           <Link
             href="/services"
@@ -46,10 +57,15 @@ export default function DesktopNav({
               tabIndex={0}
               aria-controls="mega-menu"
               aria-expanded={isMegaOpen}
-              onClick={onToggleMega}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                onToggleMega();
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
+                  e.stopPropagation();
                   onToggleMega();
                 } else if (e.key === "Escape") {
                   onMegaLeave();
