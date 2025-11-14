@@ -23,12 +23,10 @@
   padding: 2.5rem 0;
 }
 
-.has-mega:hover .mega-menu,
-.has-mega:focus-within .mega-menu {
+.has-mega.is-open .mega-menu {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(3px);
-  /* z-index: 999; */
 }
 
 /* inner layout */

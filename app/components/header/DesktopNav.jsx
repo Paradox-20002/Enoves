@@ -12,6 +12,7 @@ export default function DesktopNav({
   onMegaEnter,
   onMegaLeave,
   onServicesClick,
+  onToggleMega,
   caretRotation,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -30,7 +31,6 @@ export default function DesktopNav({
           aria-haspopup="true"
           onMouseEnter={onMegaEnter}
           onMouseLeave={onMegaLeave}
-          onFocusCapture={onMegaEnter}
           onBlur={onMegaLeave}
         >
           <Link
@@ -42,7 +42,19 @@ export default function DesktopNav({
             <span className="nav-link-text">Services</span>
             <span
               className="caret"
-              aria-hidden="true"
+              role="button"
+              tabIndex={0}
+              aria-controls="mega-menu"
+              aria-expanded={isMegaOpen}
+              onClick={onToggleMega}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onToggleMega();
+                } else if (e.key === "Escape") {
+                  onMegaLeave();
+                }
+              }}
               style={caretRotation(isMegaOpen)}
             >
               ▾

@@ -48,10 +48,10 @@ const FaqSection = ({ faqs }) => {
 
             <div
               className={`max-h-0 overflow-hidden bg-[rgba(89,86,233,0.05)] px-7 transition-[max-height,padding] duration-300 ease-out ${
-                openFaqIndex === index ? "max-h-[120px] pb-6" : "pb-0"
+                openFaqIndex === index ? "max-h-[160px] pb-6" : "pb-0"
               }`}
             >
-              <p className="text-sm leading-relaxed text-[#c6c8f4] md:text-base">
+              <p className="text-sm leading-relaxed text-[#c6c8f4] md:text-base ">
                 {faq.answer}
               </p>
             </div>

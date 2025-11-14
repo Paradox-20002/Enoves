@@ -5,7 +5,7 @@ export default function MegaMenu({ columns = [], onClose }) {
   if (!columns.length) return null;
 
   return (
-    <div className="mega-menu" role="menu" aria-label="Services">
+    <div id="mega-menu" className="mega-menu" role="menu" aria-label="Services">
       <div className="mega-content">
         {columns.map((column, index) => (
           <div key={index} className="mega-column">
@@ -24,7 +24,9 @@ export default function MegaMenu({ columns = [], onClose }) {
                     <span className="mega-item-copy">
                       <span className="mega-item-title">{item.subHeading}</span>
                       {item.label && (
-                        <span className="mega-item-description">{item.label}</span>
+                        <span className="mega-item-description">
+                          {item.label}
+                        </span>
                       )}
                     </span>
                   </Link>

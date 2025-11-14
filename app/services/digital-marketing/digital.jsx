@@ -45,10 +45,10 @@ export default function Digital() {
         <h3 className="text-2xl text-purple-500/50 my-2.5">
           Digital Marketing Services
         </h3>
-        <h1 className="text-6xl mb-5">
+        <h1 className="text-6xl mb-5 pr-120">
           Make every channel accountable to measurable growth
         </h1>
-        <p className="max-w-2xl">
+        <p className="max-w-2xl ">
           Enoves orchestrates full-funnel experiences that compound momentum.
           From strategic intelligence through lifecycle engineering, our
           integrated squads deploy, optimise, and scale campaigns that convert
@@ -61,12 +61,12 @@ export default function Digital() {
           >
             Partner with us
           </Link>
-          <Link
+          {/* <Link
             href="/services"
             className="inline-flex items-center justify-center rounded-full border border-purple-400/60 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-purple-200 transition-all duration-300 hover:border-purple-300 hover:bg-purple-500/20 hover:text-white hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105"
           >
             Explore all services
-          </Link>
+          </Link> */}
         </div>
       </section>
 

@@ -27,10 +27,21 @@ export default function Header() {
     };
   }, [isMobileNavOpen]);
 
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setIsMegaOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const closeMobileNav = () => setIsMobileNavOpen(false);
   const closeMegaMenu = () => setIsMegaOpen(false);
   const openMegaMenu = () => setIsMegaOpen(true);
-  
+  const toggleMegaMenu = () => setIsMegaOpen((prev) => !prev);
+
   const handleServicesClick = () => {
     setIsMegaOpen(false);
   };
@@ -106,6 +117,7 @@ export default function Header() {
           onMegaEnter={openMegaMenu}
           onMegaLeave={closeMegaMenu}
           onServicesClick={handleServicesClick}
+          onToggleMega={toggleMegaMenu}
           caretRotation={caretRotation}
         />
       </nav>
