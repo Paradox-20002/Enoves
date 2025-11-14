@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { digitalContent } from "./digitalContent";
 import FaqSection from "../../components/faq/faq";
 import Image from "next/image";
@@ -32,47 +33,108 @@ export default function Digital() {
     },
   ];
 
+  const exploreServices = [
+    {
+      title: "Email Marketing",
+      href: "/services/email-marketing",
+      description:
+        "Lifecycle campaigns engineered to nurture intent and lift LTV.",
+      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
+    },
+    {
+      title: "SEO Solutions",
+      href: "/services/seo",
+      description:
+        "Organic visibility strategies tuned to how your buyers search.",
+      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
+    },
+    {
+      title: "UI/UX Design",
+      href: "/services/uiux",
+      description:
+        "Experience design that translates brand stories into product love.",
+      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
+    },
+    {
+      title: "Branding",
+      href: "/services/branding",
+      description:
+        "Strategic identity systems that anchor recognition and trust.",
+      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
+    },
+  ];
+
   return (
     <main
-      className="min-h-screen flex flex-col gap-16 py-16 px-4 md:px-8"
+      className="min-h-screen flex flex-col gap-16 pb-16 px-4 md:px-8"
       style={{
         fontFamily: "Arial, Helvetica, sans-serif",
         background:
           "radial-gradient(circle at top right, rgba(126,108,255,0.18), transparent 60%), radial-gradient(circle at bottom left, rgba(51,183,255,0.12), transparent 55%), #0a0a0d",
       }}
     >
-      <section className="text-white mt-10 mx-6">
-        <h3 className="text-2xl text-purple-500/50 my-2.5">
-          Digital Marketing Services
-        </h3>
-        <h1 className="text-6xl mb-5 pr-120">
-          Make every channel accountable to measurable growth
-        </h1>
-        <p className="max-w-2xl ">
-          Enoves orchestrates full-funnel experiences that compound momentum.
-          From strategic intelligence through lifecycle engineering, our
-          integrated squads deploy, optimise, and scale campaigns that convert
-          intent into predictable revenue.
-        </p>
-        <div className="flex flex-wrap items-center gap-4 my-8">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/60"
+      <section className="relative -mx-4 md:-mx-8 px-4 md:px-8 text-white overflow-hidden flex flex-col justify-center gap-8 min-h-screen">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/digital7.jfif"
+            alt="Digital marketing background"
+            fill
+            priority
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#0a0a0d]/70 via-[#120d2b]/55 to-[#0a0a0d]/80" />
+        <div
+          className="absolute inset-0 z-20 blur-3xl opacity-30 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(600px 240px at 20% 10%, rgba(99,102,241,0.25), transparent 60%)",
+          }}
+        />
+        <div className="relative z-30 max-w-4xl pb-16">
+          {/* <motion.h3
+            className="text-2xl text-purple-500/50 my-2.5"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
           >
-            Partner with us
-          </Link>
-          {/* <Link
-            href="/services"
-            className="inline-flex items-center justify-center rounded-full border border-purple-400/60 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-purple-200 transition-all duration-300 hover:border-purple-300 hover:bg-purple-500/20 hover:text-white hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105"
+            Digital Marketing Services
+          </motion.h3> */}
+          <motion.h1
+            className="text-5xl mb-5 pr-120 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            Explore all services
-          </Link> */}
+            Measure growth across all channels
+          </motion.h1>
+          <motion.p
+            className="max-w-2xl text-gray-200 pr-60"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Enoves orchestrates full-funnel experiences that compound momentum.
+            From strategic intelligence through lifecycle engineering, our
+            integrated squads deploy, optimise
+          </motion.p>
+          <div className="flex flex-wrap items-center gap-4 mt-10">
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
+              >
+                Partner with us
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       <div className="relative mx-auto mt-16 max-w-6xl px-6">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
-          {featureSections.map((feature) => (
+          {featureSections.map((feature, index) => (
             <article
               key={feature.title}
               className={`relative z-10 flex flex-col gap-5 text-white ${feature.articleClassName}`}
@@ -83,17 +145,45 @@ export default function Digital() {
               <p className="text-gray-300 text-base md:text-lg leading-relaxed">
                 {feature.description}
               </p>
-              <div className="mt-4 flex flex-col gap-4 text-sm text-gray-400">
-                {feature.highlights.map(({ label, color, delay }) => (
-                  <div key={label} className="flex items-center gap-2">
-                    <div
-                      className={`h-2 w-2 rounded-full ${color} animate-ping`}
-                      style={delay ? { animationDelay: delay } : undefined}
-                    ></div>
-                    <span>{label}</span>
-                  </div>
-                ))}
-              </div>
+              {index === 0 && (
+                <div className="mt-4 flex flex-col gap-4 text-sm text-gray-400">
+                  {feature.highlights.map(({ label, color, delay }) => (
+                    <motion.div
+                      key={label}
+                      className="flex items-center gap-2"
+                      initial={{ opacity: 0, y: 6 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      <div
+                        className={`h-2 w-2 rounded-full ${color} animate-ping`}
+                        style={delay ? { animationDelay: delay } : undefined}
+                      ></div>
+                      <span className="relative inline-flex items-center">
+                        <span className="mr-2">{label}</span>
+                        {/* <span className="inline-block h-1 w-16 bg-gradient-to-r from-purple-400/40 to-transparent rounded-full"></span> */}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              )}
+              {index === 1 && (
+                <div className="mt-6 flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/services/digital-marketing/learn-more"
+                    className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
+                  >
+                    Learn more
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-purple-400/60 hover:bg-white/10"
+                  >
+                    About us
+                  </Link>
+                </div>
+              )}
               <div className="overflow-hidden rounded-3xl shadow-2xl md:hidden">
                 <Image
                   className="h-full w-full object-cover"
@@ -146,15 +236,78 @@ export default function Digital() {
           roadmap, frameworks, and playbooks.
         </p>
         <Link href="/contact">
-          <button
-            className="px-8 py-5 text-[16px] text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105 uppercase tracking-wider hover:shadow-lg hover:shadow-purple-500/30 hover:bg-purple-500/10"
+          <motion.button
+            className="px-8 py-5 text-[16px] text-white font-semibold rounded-full transition-all duration-300 uppercase tracking-wider hover:shadow-lg hover:shadow-purple-500/30 hover:bg-purple-500/10"
             style={{ background: "linear-gradient(90deg, #6b5cff, #9260ff)" }}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
           >
             Book a strategy call
-          </button>
+          </motion.button>
         </Link>
       </section>
       <FaqSection faqs={digitalContent} />
+
+      <section className="relative mx-auto mt-20 max-w-6xl w-full px-6">
+        <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
+        <div className="relative z-10 flex flex-col gap-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+            <div>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-purple-200/80">
+                Discover
+              </span>
+              <h2 className="mt-4 text-white text-2xl md:text-3xl font-bold">
+                Explore more services
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm md:text-base text-gray-300">
+                Extend your growth engine with partner teams across strategy,
+                creative, lifecycle, and brand.
+              </p>
+            </div>
+          </div>
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            {exploreServices.map(
+              ({ title, href, description, accent }, index) => (
+                <motion.div
+                  key={title}
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  whileHover={{ y: -6 }}
+                  className="group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.04] p-[1px]"
+                >
+                  <div
+                    className={`absolute inset-0 scale-125 opacity-0 transition-opacity duration-500 group-hover:opacity-100 bg-gradient-to-br ${accent}`}
+                  />
+                  <Link
+                    href={href}
+                    className="relative flex h-full flex-col justify-between gap-6 rounded-[calc(1.5rem-2px)] bg-[#0f0f19]/90 px-6 py-7 transition-colors duration-300 group-hover:bg-white/10"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-medium uppercase tracking-[0.22em] text-purple-200/70">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <motion.span
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-lg text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                        whileTap={{ scale: 0.94 }}
+                      >
+                        →
+                      </motion.span>
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-xl font-semibold text-white">
+                        {title}
+                      </h3>
+                      <p className="text-sm text-gray-300/90">{description}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              )
+            )}
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

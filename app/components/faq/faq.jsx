@@ -34,7 +34,7 @@ const FaqSection = ({ faqs }) => {
               onClick={() => toggleFaq(index)}
               aria-expanded={openFaqIndex === index}
             >
-              <span className="flex-1 text-left leading-snug">
+              <span className="flex-1 text-left leading-snug text-[13px]">
                 {faq.question}
               </span>
               <span
