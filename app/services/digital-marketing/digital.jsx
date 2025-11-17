@@ -76,7 +76,7 @@ export default function Digital() {
       <section className="relative -mx-4 md:-mx-8 px-4 md:px-8 text-white overflow-hidden flex flex-col justify-center gap-8 min-h-screen">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/digital7.jfif"
+            src="/images/digital7.webp"
             alt="Digital marketing background"
             fill
             priority
