@@ -10,6 +10,16 @@
   --nav-hover: #8b5cf6;
 }
 
+@media (max-width: 390px) {
+  .digital-hero-title {
+    padding: 0 !important;
+    text-align: center !important;
+    font-size: 33px !important;
+    line-height: 45px !important;
+    font-weight: 800 !important;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

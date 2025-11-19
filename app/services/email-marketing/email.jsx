@@ -2,47 +2,51 @@
 import Link from "next/link";
 import { Mail, Search, Palette, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { digitalContent } from "./digitalContent";
 import FaqSection from "../../components/faq/faq";
 import Image from "next/image";
+import { emailFaqs } from "./email-content";
 
-export default function Digital() {
+export default function EmailMarketing() {
   const featureSections = [
     {
-      title: "Creative Execution",
+      title: "Lifecycle Automation Systems",
       description:
-        "Transform strategy into stunning reality. Our creative team crafts compelling narratives and visually striking campaigns that resonate with your audience, drive engagement, and convert prospects into loyal customers across every touchpoint.",
+        "Design event-driven journeys that welcome, activate, and retain customers. We map signals across product, commerce, and CRM data so every message lands with precision.",
       highlights: [
-        { label: "Brand Storytelling", color: "bg-green-400" },
-        { label: "Visual Design", color: "bg-teal-400", delay: "0.3s" },
-        { label: "Content Creation", color: "bg-emerald-400", delay: "0.6s" },
+        { label: "Onboarding Series", color: "bg-pink-400" },
+        {
+          label: "Behavioral Triggers",
+          color: "bg-fuchsia-400",
+          delay: "0.3s",
+        },
+        { label: "Retention Plays", color: "bg-rose-400", delay: "0.6s" },
       ],
-      image: { src: "/images/digital6.webp", alt: "Creative Execution" },
+      image: { src: "/images/digital6.webp", alt: "Lifecycle Automation" },
       articleClassName: "md:max-w-[48%] md:pr-10",
     },
     {
-      title: "Strategic Planning",
+      title: "Creative Experimentation",
       description:
-        "We begin with an in-depth analysis of your business ecosystem, competitive landscape, and target audience behavior. Our data-driven approach ensures every decision is backed by insights, positioning you not just to compete, but to dominate your market.",
+        "Modular components, dynamic personalization, and relentless testing. We craft copy, visuals, and offers that keep audiences engaged across the lifecycle.",
       highlights: [
-        { label: "Market Analysis", color: "bg-blue-400" },
-        { label: "Competitive Intel", color: "bg-purple-400", delay: "0.3s" },
-        { label: "Audience Insights", color: "bg-indigo-400", delay: "0.6s" },
+        { label: "Modular Templates", color: "bg-purple-400" },
+        {
+          label: "Audience Personalization",
+          color: "bg-violet-400",
+          delay: "0.3s",
+        },
+        {
+          label: "Test & Learn Rituals",
+          color: "bg-indigo-400",
+          delay: "0.6s",
+        },
       ],
-      image: { src: "/images/digital5.png", alt: "Strategic Planning" },
+      image: { src: "/images/digital5.png", alt: "Creative Experimentation" },
       articleClassName: "md:ml-auto md:mt-auto md:max-w-[48%] md:pl-10",
     },
   ];
 
   const exploreServices = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email Marketing",
-      href: "/services/email-marketing",
-      description:
-        "Lifecycle campaigns engineered to nurture intent and lift LTV.",
-      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
-    },
     {
       icon: <Search className="w-6 h-6" />,
       title: "SEO Solutions",
@@ -52,19 +56,26 @@ export default function Digital() {
       accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
     },
     {
-      icon: <Palette className="w-6 h-6" />,
-      title: "UI/UX Design",
-      href: "/services/uiux",
-      description:
-        "Experience design that translates brand stories into product love.",
+      icon: <Sparkles className="w-6 h-6" />,
+      title: "Digital Marketing",
+      href: "/services/digital-marketing",
+      description: "Cross-channel campaigns engineered to accelerate momentum.",
       accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
     },
     {
-      icon: <Sparkles className="w-6 h-6" />,
-      title: "Branding",
+      icon: <Mail className="w-6 h-6" />,
+      title: "Marketing Automation",
+      href: "/services/marketing-automation",
+      description:
+        "Integrations and workflows that align CRM, product, and messaging.",
+      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
+    },
+    {
+      icon: <Palette className="w-6 h-6" />,
+      title: "Brand & Creative",
       href: "/services/branding",
       description:
-        "Strategic identity systems that anchor recognition and trust.",
+        "Visual systems and storytelling that reinforce every lifecycle touchpoint.",
       accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
     },
   ];
@@ -79,9 +90,10 @@ export default function Digital() {
       }}
     >
       <section
-        className="relative 
-              h-[40vh]               
-              sm:h-[50vh]            
+        className="
+              relative 
+              h-[60vh]               
+              sm:h-[70vh]            
               md:h-auto              
               lg:h-auto
               -mx-4 md:-mx-8 
@@ -91,14 +103,15 @@ export default function Digital() {
               flex flex-col 
               justify-center 
               gap-8 
-              min-h-[40vh]
+              min-h-[60vh]
               md:min-h-screen 
               rounded-b-[48px] 
-              md:rounded-b-[72px]"
+              md:rounded-b-[72px]
+            "
       >
         <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
           <Image
-            src="/images/digital7.webp"
+            src="/images/email_images/email-marketing.avif"
             alt="Digital marketing background"
             fill
             priority
@@ -124,25 +137,26 @@ export default function Digital() {
             Digital Marketing Services
           </motion.h3> */}
           <motion.h1
-            className="text-5xl mb-2 mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
+            className="text-5xl mb-5 mt-10 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Measure growth across all channels
+            Build lifecycle journeys that compound revenue
           </motion.h1>
 
           <motion.p
-            className="max-w-2xl text-gray-200 pr-0 text-center  lg:text-left lg:pr-60"
+            className="max-w-2xl text-gray-200 p-0 md:pr-60 lg:pr-60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Enoves orchestrates full-funnel experiences that compound momentum.
-            From strategic intelligence through lifecycle engineering, our
-            integrated squads deploy, optimise
+            Enoves architects segmentation, automation, and experimentation so
+            every email accelerates adoption, expansion, and retention. We
+            orchestrate journeys that feel personal, timely, and undeniably
+            valuable for the people you serve.
           </motion.p>
-          <div className="flex flex-row items-center gap-4 mt-10 justify-center lg:justify-start">
+          <div className="flex flex-row items-center gap-4 mt-10">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
@@ -155,7 +169,7 @@ export default function Digital() {
         </div>
       </section>
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto mt-16 max-w-6xl px-6">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
           {featureSections.map((feature, index) => (
             <article
@@ -247,7 +261,7 @@ export default function Digital() {
       </div>
 
       <section
-        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
+        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto mt-20 max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
         style={{ background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" }}
       >
         <h1 className="text-2xl md:text-3xl text-white font-extrabold">
@@ -269,7 +283,7 @@ export default function Digital() {
           </motion.button>
         </Link>
       </section>
-      <section className="relative mx-auto max-w-6xl w-full px-6">
+      <section className="relative mx-auto mt-20 max-w-6xl w-full px-6">
         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
         <div className="relative z-10 flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -329,7 +343,7 @@ export default function Digital() {
           </div>
         </div>
       </section>
-      <FaqSection faqs={digitalContent} />
+      <FaqSection faqs={emailFaqs} />
     </main>
   );
 }

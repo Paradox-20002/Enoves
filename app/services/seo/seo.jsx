@@ -1,74 +1,72 @@
 "use client";
+
 import Link from "next/link";
-import { Mail, Search, Palette, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
-import { digitalContent } from "./digitalContent";
-import FaqSection from "../../components/faq/faq";
 import Image from "next/image";
+import { Mail, Search, Sparkles, TrendingUp } from "lucide-react";
+import FaqSection from "../../components/faq/faq";
+import { seoFaqs } from "./seo-content";
 
-export default function Digital() {
-  const featureSections = [
-    {
-      title: "Creative Execution",
-      description:
-        "Transform strategy into stunning reality. Our creative team crafts compelling narratives and visually striking campaigns that resonate with your audience, drive engagement, and convert prospects into loyal customers across every touchpoint.",
-      highlights: [
-        { label: "Brand Storytelling", color: "bg-green-400" },
-        { label: "Visual Design", color: "bg-teal-400", delay: "0.3s" },
-        { label: "Content Creation", color: "bg-emerald-400", delay: "0.6s" },
-      ],
-      image: { src: "/images/digital6.webp", alt: "Creative Execution" },
-      articleClassName: "md:max-w-[48%] md:pr-10",
-    },
-    {
-      title: "Strategic Planning",
-      description:
-        "We begin with an in-depth analysis of your business ecosystem, competitive landscape, and target audience behavior. Our data-driven approach ensures every decision is backed by insights, positioning you not just to compete, but to dominate your market.",
-      highlights: [
-        { label: "Market Analysis", color: "bg-blue-400" },
-        { label: "Competitive Intel", color: "bg-purple-400", delay: "0.3s" },
-        { label: "Audience Insights", color: "bg-indigo-400", delay: "0.6s" },
-      ],
-      image: { src: "/images/digital5.png", alt: "Strategic Planning" },
-      articleClassName: "md:ml-auto md:mt-auto md:max-w-[48%] md:pl-10",
-    },
-  ];
+const featureSections = [
+  {
+    title: "Technical Foundations",
+    description:
+      "We repair crawl roadblocks, optimise Core Web Vitals, and structure metadata so search engines understand—and reward—your experience.",
+    highlights: [
+      { label: "Crawl Budget Tuning", color: "bg-sky-400" },
+      { label: "Schema Architecture", color: "bg-cyan-400", delay: "0.3s" },
+      { label: "Site Performance", color: "bg-blue-400", delay: "0.6s" },
+    ],
+    image: { src: "/images/digital6.webp", alt: "Technical SEO foundations" },
+    articleClassName: "md:max-w-[48%] md:pr-10",
+  },
+  {
+    title: "Demand-Led Content",
+    description:
+      "Editorial roadmaps shaped by commercial intent. We build briefs, assets, and hub structures that attract and convert qualified demand.",
+    highlights: [
+      { label: "SERP Intelligence", color: "bg-purple-400" },
+      { label: "Conversion Copy", color: "bg-indigo-400", delay: "0.3s" },
+      { label: "Testing Cycles", color: "bg-violet-400", delay: "0.6s" },
+    ],
+    image: { src: "/images/digital5.png", alt: "Demand-led content" },
+    articleClassName: "md:ml-auto md:mt-auto md:max-w-[48%] md:pl-10",
+  },
+];
 
-  const exploreServices = [
-    {
-      icon: <Mail className="w-6 h-6" />,
-      title: "Email Marketing",
-      href: "/services/email-marketing",
-      description:
-        "Lifecycle campaigns engineered to nurture intent and lift LTV.",
-      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
-    },
-    {
-      icon: <Search className="w-6 h-6" />,
-      title: "SEO Solutions",
-      href: "/services/seo",
-      description:
-        "Organic visibility strategies tuned to how your buyers search.",
-      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
-    },
-    {
-      icon: <Palette className="w-6 h-6" />,
-      title: "UI/UX Design",
-      href: "/services/uiux",
-      description:
-        "Experience design that translates brand stories into product love.",
-      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
-    },
-    {
-      icon: <Sparkles className="w-6 h-6" />,
-      title: "Branding",
-      href: "/services/branding",
-      description:
-        "Strategic identity systems that anchor recognition and trust.",
-      accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
-    },
-  ];
+const exploreServices = [
+  {
+    icon: <Mail className="w-6 h-6" />,
+    title: "Email Marketing",
+    href: "/services/email-marketing",
+    description:
+      "Lifecycle systems that compound LTV through intelligent automation.",
+    accent: "from-indigo-400/50 via-purple-500/30 to-transparent",
+  },
+  {
+    icon: <Sparkles className="w-6 h-6" />,
+    title: "Digital Marketing",
+    href: "/services/digital-marketing",
+    description: "Omnichannel teams aligning paid, organic, and creative.",
+    accent: "from-indigo-400/50 via-purple-500/30 to-transparent",
+  },
+  {
+    icon: <TrendingUp className="w-6 h-6" />,
+    title: "Revenue Ops",
+    href: "/services/revops",
+    description: "Dashboards and workflows that keep growth squads in sync.",
+    accent: "from-indigo-400/50 via-purple-500/30 to-transparent",
+  },
+  {
+    icon: <Search className="w-6 h-6" />,
+    title: "Paid Media",
+    href: "/services/paid-media",
+    description: "Performance media programs that complement organic momentum.",
+    accent: "from-indigo-400/50 via-purple-500/30 to-transparent",
+  },
+];
 
+export default function Seo() {
   return (
     <main
       className="min-h-screen flex flex-col gap-16 pb-16 px-4 md:px-8"
@@ -78,28 +76,11 @@ export default function Digital() {
           "radial-gradient(circle at top right, rgba(126,108,255,0.18), transparent 60%), radial-gradient(circle at bottom left, rgba(51,183,255,0.12), transparent 55%), #0a0a0d",
       }}
     >
-      <section
-        className="relative 
-              h-[40vh]               
-              sm:h-[50vh]            
-              md:h-auto              
-              lg:h-auto
-              -mx-4 md:-mx-8 
-              px-4 md:px-8 
-              text-white 
-              overflow-hidden 
-              flex flex-col 
-              justify-center 
-              gap-8 
-              min-h-[40vh]
-              md:min-h-screen 
-              rounded-b-[48px] 
-              md:rounded-b-[72px]"
-      >
+      <section className="relative -mx-4 md:-mx-8 px-4 md:px-8 text-white overflow-hidden flex flex-col justify-center gap-8 min-h-screen rounded-b-[48px] md:rounded-b-[72px]">
         <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
           <Image
             src="/images/digital7.webp"
-            alt="Digital marketing background"
+            alt="SEO growth backdrop"
             fill
             priority
             className="object-cover"
@@ -111,58 +92,51 @@ export default function Digital() {
           className="absolute inset-0 z-20 rounded-b-[48px] md:rounded-b-[72px] blur-3xl opacity-30 pointer-events-none"
           style={{
             background:
-              "radial-gradient(600px 240px at 20% 10%, rgba(99,102,241,0.25), transparent 60%)",
+              "radial-gradient(600px 240px at 80% 12%, rgba(59,130,246,0.28), transparent 60%)",
           }}
         />
         <div className="relative z-30 max-w-4xl pb-16">
-          {/* <motion.h3
-            className="text-2xl text-purple-500/50 my-2.5"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            Digital Marketing Services
-          </motion.h3> */}
           <motion.h1
-            className="text-5xl mb-2 mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
+            className="text-5xl mb-5 mt-[-100px] bg-gradient-to-r from-white via-sky-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Measure growth across all channels
+            Capture intent. Compound authority.
           </motion.h1>
 
           <motion.p
-            className="max-w-2xl text-gray-200 pr-0 text-center  lg:text-left lg:pr-60"
+            className="max-w-2xl text-gray-200 pr-60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Enoves orchestrates full-funnel experiences that compound momentum.
-            From strategic intelligence through lifecycle engineering, our
-            integrated squads deploy, optimise
+            Enoves unites technical SEO, editorial craft, and revenue analytics
+            to turn organic search into a predictable growth channel. We
+            assemble squads that diagnose, build, and iterate at the cadence of
+            your ambition.
           </motion.p>
-          <div className="flex flex-row items-center gap-4 mt-10 justify-center lg:justify-start">
+          <div className="flex flex-row items-center gap-4 mt-10">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
+                className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/60"
               >
-                Partner with us
+                Plan my SEO roadmap
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto mt-16 max-w-6xl px-6">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
           {featureSections.map((feature, index) => (
             <article
               key={feature.title}
               className={`relative z-10 flex flex-col gap-5 text-white ${feature.articleClassName}`}
             >
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sky-400 to-purple-400 bg-clip-text text-transparent">
                 {feature.title}
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed">
@@ -185,7 +159,6 @@ export default function Digital() {
                       ></div>
                       <span className="relative inline-flex items-center">
                         <span className="mr-2">{label}</span>
-                        {/* <span className="inline-block h-1 w-16 bg-gradient-to-r from-purple-400/40 to-transparent rounded-full"></span> */}
                       </span>
                     </motion.div>
                   ))}
@@ -195,15 +168,15 @@ export default function Digital() {
                 <div className="mt-6 flex flex-row items-center gap-3 flex-nowrap">
                   <Link
                     href="/services/digital-marketing/learn-more"
-                    className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
+                    className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-sky-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/60"
                   >
                     Learn more
                   </Link>
                   <Link
-                    href="/about"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-3 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-purple-400/60 hover:bg-white/10"
+                    href="/case-studies"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-3 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-indigo-400/60 hover:bg-white/10"
                   >
-                    About us
+                    See client wins
                   </Link>
                 </div>
               )}
@@ -247,21 +220,20 @@ export default function Digital() {
       </div>
 
       <section
-        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
-        style={{ background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" }}
+        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto mt-20 max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
+        style={{ background: "linear-gradient(90deg, #4f46e54d, #38bdf81f)" }}
       >
         <h1 className="text-2xl md:text-3xl text-white font-extrabold">
-          Let's build momentum across every touchpoint
+          Align stakeholders around organic momentum
         </h1>
         <p className="text-gray-300 text-base md:text-lg mb-12 max-w-2xl mt-4">
-          Book a working session with our senior strategists to uncover where
-          the next breakthroughs sit within your funnel. We will bring the
-          roadmap, frameworks, and playbooks.
+          Strategy sprints unpack the roadmap, quantify upside, and assign
+          ownership across product, marketing, and RevOps.
         </p>
         <Link href="/contact">
           <motion.button
-            className="px-8 py-5 text-[16px] text-white font-semibold rounded-full transition-all duration-300 uppercase tracking-wider hover:shadow-lg hover:shadow-purple-500/30 hover:bg-purple-500/10"
-            style={{ background: "linear-gradient(90deg, #6b5cff, #9260ff)" }}
+            className="px-8 py-5 text-[16px] text-white font-semibold rounded-full transition-all duration-300 uppercase tracking-wider hover:shadow-lg hover:shadow-sky-500/30 hover:bg-sky-500/10"
+            style={{ background: "linear-gradient(90deg, #4f46e5, #38bdf8)" }}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -269,20 +241,21 @@ export default function Digital() {
           </motion.button>
         </Link>
       </section>
-      <section className="relative mx-auto max-w-6xl w-full px-6">
-        <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
+
+      <section className="relative mx-auto mt-20 max-w-6xl w-full px-6">
+        <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-sky-500/5 to-transparent blur-3xl opacity-60" />
         <div className="relative z-10 flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-purple-200/80">
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-sky-200/80">
                 Discover
               </span>
               <h2 className="mt-4 text-white text-2xl md:text-3xl font-bold">
                 Explore more services
               </h2>
               <p className="mt-2 max-w-2xl text-sm md:text-base text-gray-300">
-                Extend your growth engine with partner teams across strategy,
-                creative, lifecycle, and brand.
+                Plug SEO into surrounding squads to compound impact across the
+                funnel.
               </p>
             </div>
           </div>
@@ -303,10 +276,10 @@ export default function Digital() {
                   />
                   <Link
                     href={href}
-                    className="relative flex h-full flex-col justify-between gap-6 rounded-[calc(1.5rem-2px)] bg-[#0f0f19]/90 px-6 py-7 transition-colors duration-300 group-hover:bg-white/10"
+                    className="relative flex h-full flex-col justify-between gap-6 rounded-[calc(1.5rem-2px)] bg-[#0f111d]/90 px-6 py-7 transition-colors duration-300 group-hover:bg-white/10"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium uppercase tracking-[0.22em] text-purple-200/70">
+                      <span className="text-sm font-medium uppercase tracking-[0.22em] text-sky-200/70">
                         {icon}
                       </span>
                       <motion.span
@@ -329,7 +302,8 @@ export default function Digital() {
           </div>
         </div>
       </section>
-      <FaqSection faqs={digitalContent} />
+
+      <FaqSection faqs={seoFaqs} />
     </main>
   );
 }
