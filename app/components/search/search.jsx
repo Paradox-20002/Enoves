@@ -263,7 +263,7 @@ export default function Search() {
       </button>
 
       {isAssistantOpen && (
-        <div className="absolute right-0 z-50 mt-3 w-96 max-w-[90vw] rounded-3xl border border-slate-800 bg-slate-900/95 text-slate-100 shadow-2xl backdrop-blur">
+        <div className="fixed inset-x-4 bottom-6 z-50 max-h-[80vh] overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/95 text-slate-100 shadow-2xl backdrop-blur md:absolute md:inset-x-auto md:bottom-auto md:right-0 md:top-full md:mt-3 md:max-h-none md:w-96">
           <header className="flex items-center justify-between gap-4 border-b border-slate-800 px-5 py-4">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500/30 via-indigo-500/30 to-blue-500/30 text-purple-300">
@@ -286,7 +286,7 @@ export default function Search() {
           <div
             ref={messagesRef}
             onScroll={handleMessagesScroll}
-            className="h-80 overflow-y-auto space-y-3 px-5 py-4 text-sm text-slate-300 border-b border-slate-800"
+            className="max-h-[50vh] overflow-y-auto space-y-3 px-5 py-4 text-sm text-slate-300 border-b border-slate-800 md:h-80"
           >
             {messages.length ? (
               <div className="flex flex-col gap-3">

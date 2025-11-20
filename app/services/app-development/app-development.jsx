@@ -100,9 +100,9 @@ export default function AppDevelopment() {
               rounded-b-[48px] 
               md:rounded-b-[72px]"
       >
-        <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
+        <div className="absolute w-screen h-screen inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
           <Image
-            src="/images/appdev_images/appdev3.png"
+            src="/images/appdev_images/appdev5.jpg"
             alt="Mobile team collaborating on app launch"
             fill
             priority
