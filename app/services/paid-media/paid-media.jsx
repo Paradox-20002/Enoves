@@ -102,7 +102,7 @@ export default function PaidMedia() {
       >
         <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
           <Image
-            src="/images/paid-media_images/paid2.jpg"
+            src="/images/paid-media_images/paid4.jpg"
             alt="Paid media analysts working"
             fill
             priority

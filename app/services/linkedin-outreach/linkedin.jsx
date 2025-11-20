@@ -137,7 +137,7 @@ export default function LinkedInOutreach() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Measure impact across your campaigns
+            Boost visibility across your outreach
           </motion.h1>
 
           <motion.p
@@ -146,8 +146,8 @@ export default function LinkedInOutreach() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Enoves crafts data-driven email journeys that build momentum across
-            your funnel. From smart segmentation through lifecycle automation,
+            Enoves crafts targeted LinkedIn journeys that build momentum across
+            your funnel. From smart prospecting through connection automation,
             our integrated squads design, optimise
           </motion.p>
           <div className="flex flex-row items-center gap-4 mt-10 justify-center lg:justify-start">

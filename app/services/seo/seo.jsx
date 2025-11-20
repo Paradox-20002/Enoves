@@ -132,7 +132,7 @@ export default function Seo() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Measure impact across your campaigns
+            Measure ranking growth across your SEO
           </motion.h1>
 
           <motion.p
@@ -141,9 +141,9 @@ export default function Seo() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Enoves crafts data-driven email journeys that build momentum across
-            your funnel. From smart segmentation through lifecycle automation,
-            our integrated squads design, optimise
+            Enoves builds data-focused SEO paths that drive traction across your
+            pipeline. From keyword strategy through LinkedIn outreach, our
+            dedicated teams research, refine
           </motion.p>
           <div className="flex flex-row items-center gap-4 mt-10 justify-center lg:justify-start">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
