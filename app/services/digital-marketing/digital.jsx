@@ -9,25 +9,26 @@ import Image from "next/image";
 export default function Digital() {
   const featureSections = [
     {
-      title: "Creative Execution",
+      title: "Campaign Execution",
       description:
-        "Transform strategy into stunning reality. Our creative team crafts compelling narratives and visually striking campaigns that resonate with your audience, drive engagement, and convert prospects into loyal customers across every touchpoint.",
+        "Transform strategy into targeted results. Our email team builds engaging narratives and high-impact campaigns that resonate with your audience, drive engagement, and convert subscribers into loyal customers across every touchpoint.",
       highlights: [
-        { label: "Brand Storytelling", color: "bg-green-400" },
-        { label: "Visual Design", color: "bg-teal-400", delay: "0.3s" },
-        { label: "Content Creation", color: "bg-emerald-400", delay: "0.6s" },
+        { label: "Subscriber Targeting", color: "bg-green-400" },
+        { label: "Email Design", color: "bg-teal-400", delay: "0.3s" },
+        { label: "Flow Creation", color: "bg-emerald-400", delay: "0.6s" },
       ],
       image: { src: "/images/digital6.webp", alt: "Creative Execution" },
       articleClassName: "md:max-w-[48%] md:pr-10",
     },
+
     {
-      title: "Strategic Planning",
+      title: "Lifecycle Strategy",
       description:
-        "We begin with an in-depth analysis of your business ecosystem, competitive landscape, and target audience behavior. Our data-driven approach ensures every decision is backed by insights, positioning you not just to compete, but to dominate your market.",
+        "We begin with an in-depth analysis of your subscriber segments, sending patterns, and lifecycle behaviour. Our data-driven approach ensures every decision is backed by insights, positioning you not just to perform, but to dominate your channel.",
       highlights: [
-        { label: "Market Analysis", color: "bg-blue-400" },
-        { label: "Competitive Intel", color: "bg-purple-400", delay: "0.3s" },
-        { label: "Audience Insights", color: "bg-indigo-400", delay: "0.6s" },
+        { label: "List Analysis", color: "bg-blue-400" },
+        { label: "Flow Mapping", color: "bg-purple-400", delay: "0.3s" },
+        { label: "Behaviour Insights", color: "bg-indigo-400", delay: "0.6s" },
       ],
       image: { src: "/images/digital5.png", alt: "Strategic Planning" },
       articleClassName: "md:ml-auto md:mt-auto md:max-w-[48%] md:pl-10",
@@ -37,10 +38,10 @@ export default function Digital() {
   const exploreServices = [
     {
       icon: <Mail className="w-6 h-6" />,
-      title: "Email Marketing",
-      href: "/services/email-marketing",
+      title: "Digital Marketing",
+      href: "/services/digital-marketing",
       description:
-        "Lifecycle campaigns engineered to nurture intent and lift LTV.",
+        "Lifecycle email flows built to nurture intent and grow LTV.",
       accent: "from-purple-400/60 via-fuchsia-500/30 to-transparent",
     },
     {
@@ -80,21 +81,19 @@ export default function Digital() {
     >
       <section
         className="relative 
-              h-[40vh]               
-              sm:h-[50vh]            
-              md:h-auto              
-              lg:h-auto
-              -mx-4 md:-mx-8 
-              px-4 md:px-8 
-              text-white 
-              overflow-hidden 
-              flex flex-col 
-              justify-center 
-              gap-8 
-              min-h-[40vh]
-              md:min-h-screen 
-              rounded-b-[48px] 
-              md:rounded-b-[72px]"
+        h-[40vh]                /* mobile */
+        sm:h-[50vh]             /* small tablets */
+        md:h-[60vh]             /* laptops */
+        lg:h-[70vh]             /* desktops */
+        -mx-4 md:-mx-8 
+        px-4 md:px-8 
+        text-white 
+        overflow-hidden 
+        flex flex-col 
+        justify-center 
+        gap-8 
+        rounded-b-[48px] 
+        md:rounded-b-[72px]"
       >
         <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
           <Image
@@ -103,10 +102,12 @@ export default function Digital() {
             fill
             priority
             className="object-cover"
-            sizes="100vw"
+            sizes="100vh"
           />
         </div>
+
         <div className="absolute inset-0 z-10 rounded-b-[48px] md:rounded-b-[72px] bg-gradient-to-br from-[#0a0a0d]/70 via-[#120d2b]/55 to-[#0a0a0d]/80" />
+
         <div
           className="absolute inset-0 z-20 rounded-b-[48px] md:rounded-b-[72px] blur-3xl opacity-30 pointer-events-none"
           style={{
@@ -114,17 +115,10 @@ export default function Digital() {
               "radial-gradient(600px 240px at 20% 10%, rgba(99,102,241,0.25), transparent 60%)",
           }}
         />
+
         <div className="relative z-30 max-w-4xl pb-16">
-          {/* <motion.h3
-            className="text-2xl text-purple-500/50 my-2.5"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            Digital Marketing Services
-          </motion.h3> */}
           <motion.h1
-            className="text-5xl mb-2 mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
+            className="text-4xl mb-2 mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -133,7 +127,7 @@ export default function Digital() {
           </motion.h1>
 
           <motion.p
-            className="max-w-2xl text-gray-200 pr-0 text-center  lg:text-left lg:pr-60"
+            className="max-w-2xl text-gray-200 pr-0 text-center lg:text-left lg:pr-60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
@@ -142,13 +136,14 @@ export default function Digital() {
             From strategic intelligence through lifecycle engineering, our
             integrated squads deploy, optimise
           </motion.p>
+
           <div className="flex flex-row items-center gap-4 mt-10 justify-center lg:justify-start">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
               >
-                Partner with us
+                Contact us
               </Link>
             </motion.div>
           </div>

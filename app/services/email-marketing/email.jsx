@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { Mail, Search, Palette, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { emailFaqs } from "./email-content";
 import FaqSection from "../../components/faq/faq";
 import Image from "next/image";
-import { emailFaqs } from "./email-content";
 
 export default function EmailMarketing() {
   const featureSections = [
@@ -21,7 +21,10 @@ export default function EmailMarketing() {
         },
         { label: "Retention Plays", color: "bg-rose-400", delay: "0.6s" },
       ],
-      image: { src: "/images/digital6.webp", alt: "Lifecycle Automation" },
+      image: {
+        src: "/images/email_images/email1.jpg",
+        alt: "Lifecycle Automation",
+      },
       articleClassName: "md:max-w-[48%] md:pr-10",
     },
     {
@@ -41,7 +44,10 @@ export default function EmailMarketing() {
           delay: "0.6s",
         },
       ],
-      image: { src: "/images/digital5.png", alt: "Creative Experimentation" },
+      image: {
+        src: "/images/email_images/email3.jpg",
+        alt: "Creative Experimentation",
+      },
       articleClassName: "md:ml-auto md:mt-auto md:max-w-[48%] md:pl-10",
     },
   ];
@@ -90,12 +96,11 @@ export default function EmailMarketing() {
       }}
     >
       <section
-        className="
-              relative 
-              h-[60vh]               
-              sm:h-[70vh]            
-              md:h-auto              
-              lg:h-auto
+        className="relative 
+              h-[45vh]               
+              sm:h-[50vh]            
+              md:h-[60vh]              
+              lg:h-[70vh]
               -mx-4 md:-mx-8 
               px-4 md:px-8 
               text-white 
@@ -103,15 +108,12 @@ export default function EmailMarketing() {
               flex flex-col 
               justify-center 
               gap-8 
-              min-h-[60vh]
-              md:min-h-screen 
               rounded-b-[48px] 
-              md:rounded-b-[72px]
-            "
+              md:rounded-b-[72px]"
       >
         <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
           <Image
-            src="/images/email_images/email-marketing.avif"
+            src="/images/email_images/email-marketing.webp"
             alt="Digital marketing background"
             fill
             priority
@@ -137,39 +139,38 @@ export default function EmailMarketing() {
             Digital Marketing Services
           </motion.h3> */}
           <motion.h1
-            className="text-5xl mb-5 mt-10 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
+            className="text-4xl mb-2 mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pr-[413px]"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Build lifecycle journeys that compound revenue
+            Measure impact across your campaigns
           </motion.h1>
 
           <motion.p
-            className="max-w-2xl text-gray-200 p-0 md:pr-60 lg:pr-60"
+            className="max-w-2xl text-gray-200 pr-0 text-center  lg:text-left lg:pr-60"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Enoves architects segmentation, automation, and experimentation so
-            every email accelerates adoption, expansion, and retention. We
-            orchestrate journeys that feel personal, timely, and undeniably
-            valuable for the people you serve.
+            Enoves crafts data-driven email journeys that build momentum across
+            your funnel. From smart segmentation through lifecycle automation,
+            our integrated squads design, optimise
           </motion.p>
-          <div className="flex flex-row items-center gap-4 mt-10">
+          <div className="flex flex-row items-center gap-4 mt-10 justify-center lg:justify-start">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-4 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
               >
-                Partner with us
+                Contact us
               </Link>
             </motion.div>
           </div>
         </div>
       </section>
 
-      <div className="relative mx-auto mt-16 max-w-6xl px-6">
+      <div className="relative mx-auto max-w-6xl px-6">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
           {featureSections.map((feature, index) => (
             <article
@@ -261,7 +262,7 @@ export default function EmailMarketing() {
       </div>
 
       <section
-        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto mt-20 max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
+        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
         style={{ background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" }}
       >
         <h1 className="text-2xl md:text-3xl text-white font-extrabold">
@@ -283,7 +284,7 @@ export default function EmailMarketing() {
           </motion.button>
         </Link>
       </section>
-      <section className="relative mx-auto mt-20 max-w-6xl w-full px-6">
+      <section className="relative mx-auto max-w-6xl w-full px-6">
         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
         <div className="relative z-10 flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
