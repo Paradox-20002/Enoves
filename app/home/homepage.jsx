@@ -5,7 +5,7 @@ import ServicesSection from "../components/home/ServicesSection";
 import PortfolioSection from "../components/home/PortfolioSection";
 import CTASection from "../components/home/CTASection";
 import NewsletterWidget from "../components/newsletter/NewsletterWidget";
-import SectionScrollFX from "../components/home/SectionScrollFX";
+// import SectionScrollFX from "../components/home/SectionScrollFX";
 
 export default function HomePagee() {
   return (
@@ -16,7 +16,7 @@ export default function HomePagee() {
       <PortfolioSection />
       <CTASection />
       <Carousel img1="next" img2="globe" img3="file" img4="window" />
-      <SectionScrollFX />
+      {/* <SectionScrollFX /> */}
       <NewsletterWidget />
     </>
   );
