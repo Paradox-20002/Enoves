@@ -15,7 +15,7 @@ export default function ServicesPage() {
       <section className="services-banner">
         <p>Have a cool project for us?</p>
         <Link href="/contact" className="services-banner__cta">
-          Let&apos;s Talk
+          Let's Talk
         </Link>
       </section>
 

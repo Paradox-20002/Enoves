@@ -1,32 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const LANGS = [
-  { code: "en", label: "English", flag: "🇺🇸" },
-  { code: "es", label: "Español", flag: "🇪🇸" },
-  { code: "fr", label: "Français", flag: "🇫🇷" },
-  { code: "de", label: "Deutsch", flag: "🇩🇪" },
-  { code: "it", label: "Italiano", flag: "🇮🇹" },
-  { code: "pt", label: "Português", flag: "🇵🇹" },
-  { code: "ru", label: "Русский", flag: "🇷🇺" },
-  { code: "ja", label: "日本語", flag: "🇯🇵" },
-  { code: "zh", label: "中文", flag: "🇨🇳" },
-  { code: "ar", label: "العربية", flag: "🇸🇦" },
-];
+import {
+  LANGUAGE_OPTIONS,
+  useTranslation,
+} from "../../translation/TranslationProvider";
 
 export default function LanguageSwitcher () {
+  const { language, setLanguage, ready } = useTranslation();
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState("en");
   const ref = useRef(null);
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("site-language");
-      if (stored) setLang(stored);
-      else if (navigator.language) setLang(navigator.language.slice(0, 2));
-    } catch (e) { }
-  }, []);
 
   useEffect(() => {
     function onDoc (e) {
@@ -36,43 +19,45 @@ export default function LanguageSwitcher () {
     return () => document.removeEventListener("click", onDoc);
   }, []);
 
-  function select (code) {
-    setLang(code);
-    try {
-      localStorage.setItem("site-language", code);
-    } catch (e) { }
-    setOpen(false);
-    // dispatch event so other parts of app can react
-    window.dispatchEvent(new CustomEvent("languagechange", { detail: code }));
-  }
+  const current =
+    LANGUAGE_OPTIONS.find((l) => l.code === language) || LANGUAGE_OPTIONS[0];
 
-  const current = LANGS.find((l) => l.code === lang) || LANGS[0];
+  const toggleMenu = () => setOpen((s) => !s);
+
+  const select = (code) => {
+    setLanguage(code);
+    setOpen(false);
+  };
 
   return (
-    <div className="lang-switcher" ref={ ref }>
+    <div className={`lang-switcher ${!ready ? "lang-switcher--loading" : ""}`} ref={ ref }>
       <button
         type="button"
         className="lang-btn"
         aria-haspopup="menu"
         aria-expanded={ open }
-        onClick={ () => setOpen((s) => !s) }
+        aria-busy={ !ready }
+        title={ ready ? "Select a language" : "Preparing translations…" }
+        onClick={ toggleMenu }
       >
         <span className="flag">{ current.flag }</span>
-        <span className="sr-only">Language</span>
+        <span className="label">{ current.label }</span>
         <span className="caret">▾</span>
       </button>
 
       { open && (
         <ul className="lang-menu" role="menu">
-          { LANGS.map((l) => (
+          { LANGUAGE_OPTIONS.map((l) => (
             <li key={ l.code } role="menuitem">
               <button
                 type="button"
-                className={ `lang-item ${l.code === lang ? "active" : ""}` }
+                className={ `lang-item ${l.code === language ? "active" : ""}` }
                 onClick={ () => select(l.code) }
+                disabled={ l.code === language }
               >
                 <span className="flag">{ l.flag }</span>
                 <span className="label">{ l.label }</span>
+                { l.code === language && <span className="current-tag">Active</span> }
               </button>
             </li>
           )) }
