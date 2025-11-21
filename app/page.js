@@ -1,9 +1,8 @@
-import Slider from './components/slider/slider.jsx';
-
+import HomePagee from './home/homepage';
 export default function HomePage () {
   return (
     <>
-      <Slider />
+      <HomePagee />
     </>
   );
 }

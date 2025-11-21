@@ -20,6 +20,7 @@ export const metadata = {
 import Header from "./components/header/header";
 import Footer from "./components/footer/footer";
 import TranslationPrompt from "./components/translation/TranslationPrompt";
+import MouseFollower from "./components/effects/MouseFollower";
 
 export default function RootLayout ({ children }) {
   return (
@@ -28,6 +29,7 @@ export default function RootLayout ({ children }) {
         className={ `${geistSans.variable} ${geistMono.variable} antialiased` }
       >
         <TranslationProvider>
+          <MouseFollower />
           <TranslationPrompt />
           <Header />
           { children }

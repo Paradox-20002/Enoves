@@ -10,11 +10,13 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
     "framer-motion": "^11.18.2",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.553.0",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "three": "^0.170.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

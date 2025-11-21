@@ -127,3 +127,20 @@ body {
     flex-wrap: wrap;
   }
 }
+@keyframes smooth-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-smooth-scroll {
+  animation: smooth-scroll 10s linear infinite;
+}
+
+.hover\:pause:hover {
+  animation-play-state: paused;
+}

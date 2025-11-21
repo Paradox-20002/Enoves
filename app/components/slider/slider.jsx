@@ -1,5 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import "./slider.css";
 
 const Slider = ({ heading }) => {
@@ -8,27 +10,33 @@ const Slider = ({ heading }) => {
   const slides = [
     {
       image: "/images/download1.jpg",
-      title: "Welcome to Our World",
+      label: "Digital Excellence",
+      title: "We Build Brands That Scale",
       description:
-        "Discover amazing possibilities with our innovative solutions",
+        "From strategy to execution, we craft immersive digital experiences that drive growth and captivate audiences.",
+      cta: { text: "Start Your Project", href: "/contact" },
     },
     {
       image: "/images/download2.jpg",
-      title: "Excellence in Design",
-      description: "Creating stunning experiences that captivate and inspire",
+      label: "Innovation First",
+      title: "Motion-Native Storytelling",
+      description: "Cinematic design meets cutting-edge technology. Every pixel engineered for performance and impact.",
+      cta: { text: "View Our Work", href: "/portfolio" },
     },
     {
       image: "/images/download3.jpg",
-      title: "Building the Future",
+      label: "Growth Engineering",
+      title: "AI-Powered Solutions",
       description:
-        "Leading the way with cutting-edge technology and creativity",
+        "Automation, analytics, and AI copilots that transform how you engage customers and scale revenue.",
+      cta: { text: "Explore Services", href: "/services" },
     },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
       nextSlide();
-    }, 5000); // Auto-advance every 5 seconds
+    }, 6000); // Auto-advance every 6 seconds
 
     return () => clearInterval(timer);
   }, [currentSlide]);
@@ -47,36 +55,55 @@ const Slider = ({ heading }) => {
 
   return (
     <div className="slider">
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`slide ${index === currentSlide ? "active" : ""}`}
-        >
-          <img src={slide.image} alt={slide.title} />
-          <div className="content">
-            <h2>{slide.title}</h2>
-            <p>{slide.description}</p>
-          </div>
-        </div>
-      ))}
+      <AnimatePresence mode="wait">
+        {slides.map((slide, index) =>
+          index === currentSlide ? (
+            <motion.div
+              key={index}
+              className="slide active"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7, ease: "easeInOut" }}
+            >
+              <img src={slide.image} alt={slide.title} />
+              <div className="slide-overlay" />
+              <motion.div
+                className="content"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3, duration: 0.8 }}
+              >
+                <p className="content-label">{slide.label}</p>
+                <h2>{slide.title}</h2>
+                <p className="content-description">{slide.description}</p>
+                <Link href={slide.cta.href} className="cta-button">
+                  {slide.cta.text} →
+                </Link>
+              </motion.div>
+            </motion.div>
+          ) : null
+        )}
+      </AnimatePresence>
 
-      <div className="arrow prev" onClick={prevSlide}>
+      <button className="arrow prev" onClick={prevSlide} aria-label="Previous slide">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
           <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
         </svg>
-      </div>
-      <div className="arrow next" onClick={nextSlide}>
+      </button>
+      <button className="arrow next" onClick={nextSlide} aria-label="Next slide">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
           <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
         </svg>
-      </div>
+      </button>
 
       <div className="navigation">
         {slides.map((_, index) => (
-          <div
+          <button
             key={index}
             className={`dot ${index === currentSlide ? "active" : ""}`}
             onClick={() => goToSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
           />
         ))}
       </div>

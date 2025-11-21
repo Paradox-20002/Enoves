@@ -1,5 +1,3 @@
-"use client";
-import { useState } from "react";
 import Link from "next/link";
 import "./footer.css";
 import {
@@ -12,18 +10,7 @@ import {
 } from "react-icons/fa";
 
 export default function Footer() {
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
   const year = new Date().getFullYear();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (!email) return;
-    // TODO: wire up to your mailing list API
-    setSubmitted(true);
-    setEmail("");
-    setTimeout(() => setSubmitted(false), 3500);
-  }
 
   return (
     <footer className="site-footer">
@@ -152,39 +139,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div className="footer-col col-4">
-          <h4>Newsletter</h4>
-          <p className="newsletter-note">
-            Subscribe to our newsletter for updates and insights.
-          </p>
-
-          <form
-            className="newsletter-form"
-            onSubmit={handleSubmit}
-            aria-label="Subscribe to newsletter"
-          >
-            <label htmlFor="newsletter-email" className="sr-only">
-              Email address
-            </label>
-            <input
-              id="newsletter-email"
-              type="email"
-              className="newsletter-input"
-              placeholder="you@company.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="newsletter-btn">
-              Subscribe
-            </button>
-            {submitted && (
-              <p className="form-success" role="status">
-                Thanks for subscribing!
-              </p>
-            )}
-          </form>
-        </div>
       </div>
 
       {/* Footer bottom row */}
