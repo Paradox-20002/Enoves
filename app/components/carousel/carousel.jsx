@@ -1,28 +1,38 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import AuroraScene from "../Aurora"; // Adjust the import path
 
 const TRACK_DURATION = 32; // seconds
 const CARD_WIDTH = 180;
 const CARD_HEIGHT = 80;
 
 export default function Carousel( { img1, img2, img3, img4, className = "" } ) {
+  const containerRef = useRef( null );
+
   const provided = [ img1, img2, img3, img4 ].filter( Boolean );
-  const logos = (
-    provided.length ? provided : [ "enoves", "linkedin", "saas", "seo" ]
-  ).map( ( logo ) => logo.replace( /^\//, "" ).replace( /\.svg$/, "" ) );
+  const logos = ( provided.length ? provided : [ "enoves", "linkedin", "saas", "seo" ] ).map(
+    ( logo ) => logo.replace( /^\//, "" ).replace( /\.svg$/, "" )
+  );
 
   const duplicatedLogos = [ ...logos, ...logos ];
 
   return (
     <section
-      className={ `relative w-full overflow-hidden px-20 py-16 ${ className }` }
+      ref={ containerRef }
+      className={ `relative isolate w-full overflow-hidden px-20 py-16 ${ className }` }
       aria-label="Partner logos carousel"
-      style={ {
-        background: "linear-gradient(180deg, #05070E 0%, #0B0F1A 50%, #05070E 100%)",
-      } }
+      style={ { background: "linear-gradient(180deg, #05070E 0%, #0B0F1A 50%, #05070E 100%)" } }
     >
+      {/* Aurora animation background */ }
+      <AuroraScene
+        containerRef={ containerRef }
+        foldSectionRef={ { current: null } }
+        heavySectionRef={ { current: null } }
+      />
+
       {/* LEFT FADE */ }
       <div
         className="pointer-events-none absolute inset-y-0 left-0 sm:w-24 lg:w-100 md:w-50 z-20"
@@ -37,7 +47,7 @@ export default function Carousel( { img1, img2, img3, img4, className = "" } ) {
       />
 
       <motion.div
-        className="flex min-w-max gap-8 will-change-transform"
+        className="relative z-10 flex min-w-max gap-8 will-change-transform"
         animate={ { x: [ "0%", "-50%" ] } }
         transition={ {
           x: {

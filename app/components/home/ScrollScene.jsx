@@ -1,277 +1,484 @@
-"use client";
+import { useRef, useEffect, useState } from 'react';
+import * as THREE from 'three';
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import * as THREE from "three";
-import Link from "next/link";
+// 1. DATA CONFIGURATION
+// --- CDN URLs for each tech stack logo ---
+const CENTRAL_LOGO_URL = '/images/noman.png'; // Keeping the center logo local as it worked.
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+const techStacks = [
+  // Reverting to CDN URLs, assuming these links are valid and accessible.
+  { name: 'React', color: '#61DAFB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Next.js', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
+  { name: 'Node.js', color: '#339933', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'TypeScript', color: '#3178C6', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
+  { name: 'JavaScript', color: '#F7DF1E', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'Python', color: '#3776AB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'Django', color: '#092E20', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg' },
+  { name: 'Flask', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
+  { name: 'MongoDB', color: '#47A248', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'PostgreSQL', color: '#4169E1', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { name: 'Redis', color: '#DC382D', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
+  { name: 'AWS', color: '#FF9900', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+  { name: 'Vercel', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg' },
+  { name: 'Docker', color: '#2496ED', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
+  { name: 'Kubernetes', color: '#326CE5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg' },
+  { name: 'WordPress', color: '#21759B', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg' },
+  { name: 'Shopify', color: '#96BF48', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg' },
+  { name: 'HubSpot', color: '#FF7A59', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hubspot/hubspot-original.svg' },
+  { name: 'Salesforce', color: '#00A1E0', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg' }
+];
 
-export default function ScrollScene() {
-  const canvasRef = useRef(null);
-  const containerRef = useRef(null);
-  const foldSectionRef = useRef(null);
-  const heavySectionRef = useRef(null);
 
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (!canvasRef.current || !containerRef.current) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      canvasRef.current.style.display = "none";
-      return;
+export default function TechStackOrbit() {
+  const containerRef = useRef( null );
+  const sceneRef = useRef( null );
+  const mouseRef = useRef( { x: 0, y: 0 } );
+  const dragRef = useRef( {
+    isDragging: false,
+    startX: 0,
+    currentX: 0,
+    velocity: 0,
+    lastX: 0,
+    lastTime: 0
+  } );
+  const [ isLoaded, setIsLoaded ] = useState( false );
+
+  useEffect( () => {
+    if ( !containerRef.current ) return;
+
+    // --- RESPONSIVE SETTINGS ---
+    const isMobile = window.innerWidth < 768;
+    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
+    let orbitRadius = 18;
+    let cameraZ = 35;
+    let cameraY = 5;
+
+    if ( isMobile ) {
+      orbitRadius = 12;
+      cameraZ = 25;
+      cameraY = 3;
+    } else if ( isTablet ) {
+      orbitRadius = 15;
+      cameraZ = 30;
+      cameraY = 4;
     }
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: canvasRef.current,
+    // --- SCENE SETUP ---
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2( 0x05070E, 0.015 );
+    sceneRef.current = scene;
+
+    const camera = new THREE.PerspectiveCamera(
+      50,
+      containerRef.current.clientWidth / containerRef.current.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.z = cameraZ;
+    camera.position.y = cameraY;
+
+    const renderer = new THREE.WebGLRenderer( {
       antialias: true,
       alpha: true,
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+      powerPreference: 'high-performance'
+    } );
+    renderer.setSize( containerRef.current.clientWidth, containerRef.current.clientHeight );
+    renderer.setPixelRatio( Math.min( window.devicePixelRatio, 2 ) );
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+    containerRef.current.appendChild( renderer.domElement );
 
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.Fog(0x04060d, 10, 32);
+    // --- LIGHTING ---
+    const ambientLight = new THREE.AmbientLight( 0x4a5f8f, 0.4 );
+    scene.add( ambientLight );
 
-    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
-    camera.position.set(0, 1.6, 5);
+    const keyLight = new THREE.DirectionalLight( 0x8b9eff, 1.5 );
+    keyLight.position.set( 10, 15, 10 );
+    scene.add( keyLight );
 
-    const ambient = new THREE.AmbientLight(0xffffff, 0.6);
-    const keyLight = new THREE.DirectionalLight(0x7c3aed, 1.2);
-    keyLight.position.set(3, 5, 6);
-    const fillLight = new THREE.DirectionalLight(0x38bdf8, 0.8);
-    fillLight.position.set(-3, 2, -4);
-    scene.add(ambient, keyLight, fillLight);
+    const rimLight = new THREE.DirectionalLight( 0xff00ff, 0.6 );
+    rimLight.position.set( -8, 5, -10 );
+    scene.add( rimLight );
 
-    const auroraGroup = new THREE.Group();
-    scene.add(auroraGroup);
+    const fillLight = new THREE.PointLight( 0x00e5ff, 0.8, 50 );
+    fillLight.position.set( 0, -5, 15 );
+    scene.add( fillLight );
 
-    const waveGeometry = new THREE.PlaneGeometry(9, 4, 160, 60);
-    const waveMaterial = new THREE.MeshStandardMaterial({
-      color: 0x0b0f1a,
-      emissive: 0x0f172a,
-      metalness: 0.4,
-      roughness: 0.4,
+    // --- TEXTURE LOADER MANAGER ---
+    const loadingManager = new THREE.LoadingManager();
+    loadingManager.onLoad = () => {
+      setIsLoaded( true );
+    };
+    loadingManager.onError = ( url ) => {
+      console.error( `Failed to load texture: ${ url }. This is likely a CORS issue with the CDN.` );
+    };
+
+    const textureLoader = new THREE.TextureLoader( loadingManager );
+
+    // --- CENTRAL LOGO (LOCAL) ---
+    const logoGroup = new THREE.Group();
+    scene.add( logoGroup );
+
+    // Load Central Logo - Local files need crossOrigin set to '' or null
+    textureLoader.setCrossOrigin( '' );
+    textureLoader.load( CENTRAL_LOGO_URL, ( texture ) => {
+      texture.colorSpace = THREE.SRGBColorSpace;
+
+      const logoSize = isMobile ? 3 : 5;
+      const logoGeometry = new THREE.PlaneGeometry( logoSize, logoSize );
+      const logoMaterial = new THREE.MeshBasicMaterial( {
+        map: texture,
+        transparent: true,
+        side: THREE.DoubleSide,
+        depthWrite: false,
+      } );
+      const logoMesh = new THREE.Mesh( logoGeometry, logoMaterial );
+      logoGroup.add( logoMesh );
+      logoGroup.userData.mesh = logoMesh;
+    } );
+
+    // Central Glow (Behind the logo)
+    const glowSize = isMobile ? 3.5 : 6;
+    const glowGeometry = new THREE.SphereGeometry( glowSize, 32, 32 );
+    const glowMaterial = new THREE.MeshBasicMaterial( {
+      color: 0x4f46e5,
       transparent: true,
-      opacity: 0.85,
-      side: THREE.DoubleSide,
-    });
-    const waveMesh = new THREE.Mesh(waveGeometry, waveMaterial);
-    waveMesh.rotation.x = -Math.PI / 2.8;
-    waveMesh.position.set(0, -0.25, 0);
-    auroraGroup.add(waveMesh);
-    const basePositions = waveGeometry.attributes.position.array.slice();
-
-    const auroraGeometry = new THREE.BufferGeometry();
-    const auroraCount = 850;
-    const auroraPositions = new Float32Array(auroraCount * 3);
-    const auroraSpeeds = new Float32Array(auroraCount);
-    for (let i = 0; i < auroraCount; i += 1) {
-      const i3 = i * 3;
-      auroraPositions[i3] = (Math.random() - 0.5) * 10;
-      auroraPositions[i3 + 1] = Math.random() * 1.8 + 0.2;
-      auroraPositions[i3 + 2] = (Math.random() - 0.5) * 5;
-      auroraSpeeds[i] = Math.random() * 0.6 + 0.35;
-    }
-    auroraGeometry.setAttribute("position", new THREE.BufferAttribute(auroraPositions, 3));
-    const auroraMaterial = new THREE.PointsMaterial({
-      color: 0x67e8f9,
-      size: 0.035,
-      transparent: true,
-      opacity: 0.65,
+      opacity: 0.15,
+      side: THREE.BackSide,
       depthWrite: false,
-    });
-    const auroraPoints = new THREE.Points(auroraGeometry, auroraMaterial);
-    auroraGroup.add(auroraPoints);
+    } );
+    const glow = new THREE.Mesh( glowGeometry, glowMaterial );
+    scene.add( glow );
 
-    const trailGeometry = new THREE.BufferGeometry();
-    const trailCount = 160;
-    const trailPositions = new Float32Array(trailCount * 3);
-    const trailSpeed = new Float32Array(trailCount);
-    for (let i = 0; i < trailCount; i += 1) {
-      const idx = i * 3;
-      trailPositions[idx] = (Math.random() - 0.5) * 8;
-      trailPositions[idx + 1] = Math.random() * 1.2;
-      trailPositions[idx + 2] = (Math.random() - 0.5) * 4;
-      trailSpeed[i] = Math.random() * 0.6 + 0.3;
+    // --- ORBITAL RING ---
+    const ringCurve = new THREE.EllipseCurve(
+      0, 0,
+      orbitRadius, orbitRadius,
+      0, 2 * Math.PI,
+      false,
+      0
+    );
+    const ringPoints = ringCurve.getPoints( 100 );
+    const ringGeometry = new THREE.BufferGeometry().setFromPoints(
+      ringPoints.map( p => new THREE.Vector3( p.x, 0, p.y ) )
+    );
+    const ringMaterial = new THREE.LineBasicMaterial( {
+      color: 0x6366f1,
+      transparent: true,
+      opacity: 0.2,
+      linewidth: 2
+    } );
+    const ring = new THREE.Line( ringGeometry, ringMaterial );
+    ring.rotation.x = Math.PI / 6;
+    scene.add( ring );
+
+    // --- TECH STACK CAPSULES (CDN) ---
+    const capsules = [];
+    const angleStep = ( Math.PI * 2 ) / techStacks.length;
+    const capsuleScale = isMobile ? 0.6 : 1;
+
+    // Set crossOrigin to 'anonymous' for CDN links
+    textureLoader.setCrossOrigin( 'anonymous' );
+
+    techStacks.forEach( ( tech, i ) => {
+      // Calculate position
+      const angle = i * angleStep;
+      const x = Math.cos( angle ) * orbitRadius;
+      const z = Math.sin( angle ) * orbitRadius;
+
+      const capsuleGroup = new THREE.Group();
+
+      // 1. Glass Shell
+      const shellGeometry = new THREE.CapsuleGeometry( 1.2 * capsuleScale, 1.5 * capsuleScale, 16, 32 );
+      const shellMaterial = new THREE.MeshPhysicalMaterial( {
+        color: 0xffffff,
+        metalness: 0.1,
+        roughness: 0.1,
+        transparent: true,
+        opacity: 0.15,
+        transmission: 0.9,
+        thickness: 0.5,
+        clearcoat: 1.0,
+        clearcoatRoughness: 0.05,
+        ior: 1.5,
+        depthWrite: false,
+      } );
+      const shell = new THREE.Mesh( shellGeometry, shellMaterial );
+      shell.renderOrder = 1;
+      capsuleGroup.add( shell );
+
+      // 2. Inner Color Glow
+      const innerGlowGeometry = new THREE.SphereGeometry( 0.8 * capsuleScale, 16, 16 );
+      const innerGlowMaterial = new THREE.MeshBasicMaterial( {
+        color: new THREE.Color( tech.color ),
+        transparent: true,
+        opacity: 0.4
+      } );
+      const innerGlow = new THREE.Mesh( innerGlowGeometry, innerGlowMaterial );
+      capsuleGroup.add( innerGlow );
+
+      // 3. Icon Texture - Loaded from CDN
+      textureLoader.load( tech.logo, ( texture ) => {
+        texture.colorSpace = THREE.SRGBColorSpace;
+
+        const iconGeometry = new THREE.PlaneGeometry( 1.4 * capsuleScale, 1.4 * capsuleScale );
+        const iconMaterial = new THREE.MeshBasicMaterial( {
+          map: texture,
+          transparent: true,
+          side: THREE.DoubleSide,
+          alphaTest: 0.1,
+          opacity: 1,
+          depthTest: false
+        } );
+        const iconMesh = new THREE.Mesh( iconGeometry, iconMaterial );
+
+        iconMesh.renderOrder = 2;
+
+        capsuleGroup.add( iconMesh );
+        capsuleGroup.userData.iconMesh = iconMesh;
+      } );
+
+      // Position the whole group
+      capsuleGroup.position.set( x, 0, z );
+      capsuleGroup.rotation.x = Math.PI / 6;
+      capsuleGroup.userData = { angle, tech };
+
+      scene.add( capsuleGroup );
+      capsules.push( capsuleGroup );
+    } );
+
+    // --- PARTICLE SYSTEM ---
+    const particleCount = isMobile ? 400 : 800;
+    const particleGeometry = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array( particleCount * 3 );
+    const particleVelocities = [];
+
+    for ( let i = 0; i < particleCount; i++ ) {
+      particlePositions[ i * 3 ] = ( Math.random() - 0.5 ) * 80;
+      particlePositions[ i * 3 + 1 ] = ( Math.random() - 0.5 ) * 80;
+      particlePositions[ i * 3 + 2 ] = ( Math.random() - 0.5 ) * 80;
+
+      particleVelocities.push( {
+        x: ( Math.random() - 0.5 ) * 0.02,
+        y: ( Math.random() - 0.5 ) * 0.02,
+        z: ( Math.random() - 0.5 ) * 0.02
+      } );
     }
-    trailGeometry.setAttribute("position", new THREE.BufferAttribute(trailPositions, 3));
-    const trailMaterial = new THREE.PointsMaterial({
+    particleGeometry.setAttribute( 'position', new THREE.BufferAttribute( particlePositions, 3 ) );
+    const particleMaterial = new THREE.PointsMaterial( {
       color: 0x8b5cf6,
-      size: 0.05,
+      size: 0.15,
       transparent: true,
-      opacity: 0.4,
-      depthWrite: false,
-    });
-    const trails = new THREE.Points(trailGeometry, trailMaterial);
-    auroraGroup.add(trails);
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending,
+      sizeAttenuation: true
+    } );
+    const particles = new THREE.Points( particleGeometry, particleMaterial );
+    scene.add( particles );
 
-    const resize = () => {
-      if (!containerRef.current) return;
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      renderer.setSize(width, height, false);
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
+    // --- INPUT HANDLING ---
+    const handleMouseMove = ( e ) => {
+      if ( !containerRef.current ) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      mouseRef.current.x = ( ( e.clientX - rect.left ) / rect.width ) * 2 - 1;
+      mouseRef.current.y = -( ( e.clientY - rect.top ) / rect.height ) * 2 + 1;
     };
-    resize();
-    window.addEventListener("resize", resize);
 
-    const scrollState = { aurora: 0 };
-    let animationFrame;
-    const renderScene = () => {
-      animationFrame = requestAnimationFrame(renderScene);
-      const time = performance.now() * 0.00045;
-
-      const positions = waveGeometry.attributes.position.array;
-      for (let i = 0; i < positions.length; i += 3) {
-        const base = basePositions[i + 2];
-        const x = positions[i];
-        const z = positions[i + 1];
-        positions[i + 2] =
-          base +
-          Math.sin(x * 0.9 + time * 4 + scrollState.aurora * 3) * 0.25 +
-          Math.cos(z * 1.4 + time * 2) * 0.14;
-      }
-      waveGeometry.attributes.position.needsUpdate = true;
-      waveGeometry.computeVertexNormals();
-
-      const auroraAttr = auroraGeometry.attributes.position;
-      for (let i = 0; i < auroraCount; i += 1) {
-        const idx = i * 3;
-        auroraAttr.array[idx] += Math.sin(time + i) * 0.002 * auroraSpeeds[i];
-        auroraAttr.array[idx + 1] += Math.cos(time * 1.4 + i) * 0.0015 * auroraSpeeds[i];
-        if (auroraAttr.array[idx] > 5) auroraAttr.array[idx] = -5;
-        if (auroraAttr.array[idx] < -5) auroraAttr.array[idx] = 5;
-      }
-      auroraAttr.needsUpdate = true;
-
-      const trailAttr = trailGeometry.attributes.position;
-      for (let i = 0; i < trailCount; i += 1) {
-        const idx = i * 3;
-        trailAttr.array[idx + 1] += 0.002 * trailSpeed[i] + scrollState.aurora * 0.004;
-        if (trailAttr.array[idx + 1] > 2) trailAttr.array[idx + 1] = 0;
-      }
-      trailAttr.needsUpdate = true;
-
-      trails.rotation.y += 0.0007 + scrollState.aurora * 0.0015;
-      auroraGroup.rotation.y = -0.3 + scrollState.aurora * 0.5;
-
-      renderer.render(scene, camera);
+    const handlePointerDown = ( e ) => {
+      dragRef.current.isDragging = true;
+      const clientX = e.touches ? e.touches[ 0 ].clientX : e.clientX;
+      dragRef.current.startX = clientX;
+      dragRef.current.currentX = clientX;
+      dragRef.current.lastX = clientX;
+      dragRef.current.lastTime = Date.now();
+      containerRef.current.style.cursor = 'grabbing';
     };
-    renderScene();
 
-    const auroraTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: heavySectionRef.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    auroraTimeline
-      .fromTo(
-        auroraGroup.position,
-        { z: -2 },
-        { z: 1, ease: "power1.inOut" },
-        0,
-      )
-      .fromTo(
-        auroraGroup.scale,
-        { x: 0.9, y: 0.9, z: 0.9 },
-        { x: 1.1, y: 1.1, z: 1.1, ease: "power1.out" },
-        0,
-      )
-      .to(scrollState, { aurora: 1, duration: 1, ease: "none" }, 0);
-
-    const cleanup = () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animationFrame);
-      renderer.dispose();
-      waveGeometry.dispose();
-      waveMaterial.dispose();
-      auroraGeometry.dispose();
-      auroraMaterial.dispose();
-      trailGeometry.dispose();
-      trailMaterial.dispose();
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger?.vars?.trigger === foldSectionRef.current || trigger?.vars?.trigger === heavySectionRef.current) {
-          trigger.kill();
+    const handlePointerMoveGlobal = ( e ) => {
+      if ( dragRef.current.isDragging ) {
+        const clientX = e.touches ? e.touches[ 0 ].clientX : e.clientX;
+        const deltaX = clientX - dragRef.current.currentX;
+        const deltaTime = Date.now() - dragRef.current.lastTime;
+        if ( deltaTime > 0 ) {
+          dragRef.current.velocity = ( deltaX / deltaTime ) * 10;
         }
-      });
-    };
-
-    const handleVisibility = () => {
-      if (document.hidden) {
-        cancelAnimationFrame(animationFrame);
-      } else {
-        renderScene();
+        dragRef.current.currentX = clientX;
+        dragRef.current.lastX = clientX;
+        dragRef.current.lastTime = Date.now();
       }
     };
-    document.addEventListener("visibilitychange", handleVisibility);
+
+    const handlePointerUp = () => {
+      dragRef.current.isDragging = false;
+      if ( containerRef.current ) containerRef.current.style.cursor = 'grab';
+    };
+
+    window.addEventListener( 'mousemove', handleMouseMove );
+    containerRef.current.addEventListener( 'mousedown', handlePointerDown );
+    containerRef.current.addEventListener( 'touchstart', handlePointerDown, { passive: true } );
+    window.addEventListener( 'mousemove', handlePointerMoveGlobal );
+    window.addEventListener( 'touchmove', handlePointerMoveGlobal, { passive: true } );
+    window.addEventListener( 'mouseup', handlePointerUp );
+    window.addEventListener( 'touchend', handlePointerUp );
+
+    // --- ANIMATION LOOP ---
+    let time = 0;
+    let rotationAngle = 0;
+    const baseOrbitSpeed = 0.002;
+
+    const animate = () => {
+      time += 0.01;
+
+      // Rotation Logic
+      if ( !dragRef.current.isDragging && Math.abs( dragRef.current.velocity ) < 0.001 ) {
+        rotationAngle += baseOrbitSpeed;
+      } else {
+        if ( !dragRef.current.isDragging ) {
+          dragRef.current.velocity *= 0.95; // Friction
+        }
+        rotationAngle += dragRef.current.velocity * 0.01;
+      }
+
+      // 1. Central Logo Animation (Pulse + Billboard)
+      logoGroup.quaternion.copy( camera.quaternion );
+
+      const pulseScale = 1 + Math.sin( time * 2 ) * 0.05;
+      logoGroup.scale.setScalar( pulseScale );
+
+      // Pulse the glow behind it
+      glow.scale.setScalar( 1 + Math.sin( time * 2 + 0.5 ) * 0.1 );
+
+      // 2. Rotate Ring
+      ring.rotation.y = rotationAngle;
+
+      // 3. Orbit Capsules
+      capsules.forEach( ( capsule, i ) => {
+        const currentAngle = capsule.userData.angle + rotationAngle;
+        const x = Math.cos( currentAngle ) * orbitRadius;
+        const z = Math.sin( currentAngle ) * orbitRadius;
+        const y = Math.sin( currentAngle * 2 + i ) * 0.5;
+
+        capsule.position.set( x, y, z );
+
+        // Make icons inside capsules always face camera
+        if ( capsule.userData.iconMesh ) {
+          capsule.userData.iconMesh.quaternion.copy( camera.quaternion );
+        }
+
+        // Inner glow pulse
+        if ( capsule.children[ 1 ] ) {
+          capsule.children[ 1 ].scale.setScalar( 1 + Math.sin( time * 3 + i ) * 0.1 );
+        }
+      } );
+
+      // 4. Particles
+      const positions = particles.geometry.attributes.position.array;
+      for ( let i = 0; i < particleCount; i++ ) {
+        positions[ i * 3 ] += particleVelocities[ i ].x;
+        positions[ i * 3 + 1 ] += particleVelocities[ i ].y;
+        positions[ i * 3 + 2 ] += particleVelocities[ i ].z;
+
+        // Wrap around
+        if ( Math.abs( positions[ i * 3 ] ) > 40 ) particleVelocities[ i ].x *= -1;
+        if ( Math.abs( positions[ i * 3 + 1 ] ) > 40 ) particleVelocities[ i ].y *= -1;
+        if ( Math.abs( positions[ i * 3 + 2 ] ) > 40 ) particleVelocities[ i ].z *= -1;
+      }
+      particles.geometry.attributes.position.needsUpdate = true;
+
+      // 5. Camera Parallax
+      const parallaxStrength = isMobile ? 1 : 3;
+      camera.position.x = THREE.MathUtils.lerp( camera.position.x, mouseRef.current.x * parallaxStrength, 0.05 );
+      camera.position.y = THREE.MathUtils.lerp( camera.position.y, cameraY - mouseRef.current.y * 2, 0.05 );
+      camera.lookAt( 0, 0, 0 );
+
+      renderer.render( scene, camera );
+      requestAnimationFrame( animate );
+    };
+
+    animate();
+
+    // --- RESIZE ---
+    const handleResize = () => {
+      if ( !containerRef.current ) return;
+      camera.aspect = containerRef.current.clientWidth / containerRef.current.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize( containerRef.current.clientWidth, containerRef.current.clientHeight );
+    };
+    window.addEventListener( 'resize', handleResize );
 
     return () => {
-      document.removeEventListener("visibilitychange", handleVisibility);
-      cleanup();
+      window.removeEventListener( 'mousemove', handleMouseMove );
+      window.removeEventListener( 'mousemove', handlePointerMoveGlobal );
+      window.removeEventListener( 'touchmove', handlePointerMoveGlobal );
+      window.removeEventListener( 'mouseup', handlePointerUp );
+      window.removeEventListener( 'touchend', handlePointerUp );
+      window.removeEventListener( 'resize', handleResize );
+
+      renderer.dispose();
+      if ( containerRef.current?.contains( renderer.domElement ) ) {
+        containerRef.current.removeChild( renderer.domElement );
+      }
     };
-  }, []);
+  }, [] );
 
   return (
-    <div ref={containerRef} className="relative isolate w-full bg-[#05070E]">
-      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0 -z-10 h-full w-full" />
-      <section
-        ref={foldSectionRef}
-        data-home-section="fold"
-        className="relative flex min-h-[80vh] flex-col items-start justify-center gap-6 px-6 py-24 text-white sm:px-10 lg:px-24"
-      >
-        <div className="max-w-2xl rounded-3xl border border-white/10 bg-[#05070E]/80 p-8 text-white shadow-2xl backdrop-blur">
-          <p className="text-xs uppercase tracking-[0.5em] text-indigo-200">Immersive Experience</p>
-          <h2 className="mt-4 text-4xl font-semibold md:text-5xl">
-            A strategy that reveals itself through every interaction.
-          </h2>
-          <p className="mt-4 text-base text-slate-100/80">
-            We choreograph each launch like a tactile, cinematic experience—motion, typography, and technology flowing seamlessly together.
+    <section className="relative w-full overflow-hidden bg-[#05070E] py-24">
+      {/* Content Overlay */ }
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pointer-events-none">
+        <div className="text-center mb-12">
+          <p className="text-sm uppercase tracking-[0.45em] text-indigo-300 mb-4">
+            Technology
           </p>
-          <Link
-            href="/services"
-            className="mt-6 inline-flex rounded-full border border-white/30 px-5 py-3 text-sm font-semibold text-white transition hover:border-white hover:-translate-y-0.5"
-          >
-            Discover the approach →
-          </Link>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            Built with industry-leading
+            <br />
+            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+              technologies
+            </span>
+          </h2>
+          <p className="text-lg text-slate-300/80 max-w-2xl mx-auto">
+            Our engineering teams leverage a modern, scalable stack to deliver
+            Fortune-100-quality digital experiences
+          </p>
         </div>
-      </section>
+      </div>
 
-      <section
-        ref={heavySectionRef}
-        data-home-section="aurora"
-        className="relative flex min-h-[90vh] flex-col justify-center gap-8 px-6 py-24 text-white sm:px-10 lg:px-24"
-      >
-        <div className="max-w-2xl rounded-3xl border border-white/10 bg-[#05070E]/85 p-8 text-white shadow-2xl backdrop-blur">
-          <p className="text-xs uppercase tracking-[0.5em] text-indigo-200">Immersive scroll</p>
-          <h2 className="mt-4 text-4xl font-semibold md:text-5xl">
-            Motion-native storytelling for the visionaries.
-          </h2>
-          <p className="mt-4 text-base text-slate-100/80">
-            Aurora ribbons, volumetric light, and particle trails react to your scroll velocity. Lighting stays loyal to Enoves' palette while the scene opens a cinematic tunnel toward our work.
-          </p>
-          <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Link
-              href="/portfolio"
-              className="inline-flex rounded-full border border-white/40 px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
-            >
-              See it in action
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex rounded-full bg-gradient-to-r from-[#7c3aed] via-[#9333ea] to-[#0ea5e9] px-5 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
-            >
-              Build with us →
-            </Link>
+      {/* 3D Canvas */ }
+      <div
+        ref={ containerRef }
+        className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[800px] cursor-grab active:cursor-grabbing touch-none"
+        style={ {
+          background: 'radial-gradient(ellipse at center, rgba(79, 70, 229, 0.1) 0%, rgba(5, 7, 14, 0) 70%)'
+        } }
+      />
+
+      {/* Bottom CTA */ }
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center mt-12">
+        <p className="text-sm text-slate-400 mb-6">
+          Need a custom stack? We architect secure, compliant platforms for enterprise-grade workloads
+        </p>
+        <div className="flex items-center justify-center gap-4 flex-wrap">
+          <button className="pointer-events-auto px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-300">
+            Our Capabilities
+          </button>
+          <button className="pointer-events-auto px-6 py-3 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all duration-300">
+            Join the Team
+          </button>
+        </div>
+      </div>
+
+      {/* Loading indicator */ }
+      { !isLoaded && (
+        <div className="absolute inset-0 flex items-center justify-center bg-[#05070E] z-50">
+          <div className="flex flex-col items-center gap-4">
+            <div className="w-12 h-12 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
+            <div className="text-indigo-400 text-lg animate-pulse">
+              Initializing orbital systems...
+            </div>
           </div>
         </div>
-      </section>
-    </div>
+      ) }
+    </section>
   );
 }
-

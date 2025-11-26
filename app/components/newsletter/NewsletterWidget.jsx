@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import AuroraScene from "../Aurora";
 
 export default function NewsletterWidget() {
   const [ name, setName ] = useState( "" );
   const [ email, setEmail ] = useState( "" );
   const [ submitted, setSubmitted ] = useState( false );
+  const containerRef = useRef( null );
 
   function handleSubmit( e ) {
     e.preventDefault();
@@ -19,22 +21,31 @@ export default function NewsletterWidget() {
 
   return (
     <motion.section
+      ref={ containerRef }
       className="
-        absolute
-        w-[30vw]
-        max-lg:w-3/5
-        max-md:w-full
+        relative
+        w-full             /* mobile default */
+        sm:w-full          /* tablet */
+        md:w-[70vw]        /* medium screens */
+        lg:absolute
+        lg:w-[30vw]        /* large screens */
+        xl:w-[28vw]        /* optional */
         right-0
         ml-auto
-        -mt-55
-        max-md:mt-0
+        -translate-y-56
+        max-md:translate-y-0
         z-20
-        overflow-hidden
-        rounded-3xl
-      "
+        rounded-3xl    "
     >
+      {/* Aurora animation background */ }
+      <AuroraScene
+        containerRef={ containerRef }
+        foldSectionRef={ { current: null } }
+        heavySectionRef={ { current: null } }
+      />
+
       {/* Dark background gradient (restored) */ }
-      <div className="absolute  inset-0 bg-gradient-to-b from-[#05070E] via-[#0B0F1A] to-[#05070E]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#05070E] via-[#0B0F1A] to-[#05070E]" />
 
       {/* Decorative blurred circles */ }
       <div className="absolute top-0 left-1/4 w-60 h-60 bg-purple-500/10 rounded-full blur-3xl" />

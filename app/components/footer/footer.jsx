@@ -12,13 +12,18 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-gradient-to-b from-[#0b1220] to-[#0a0f1a] text-white flex flex-col items-center">
+    <footer className="w-full bg-gradient-to-b from-[#0b1220] to-[#0a0f1a] text-white flex flex-col items-center justify-center">
 
       {/* INNER GRID */ }
-      <div className="w-full max-w-[1200px] mx-auto py-12 flex flex-wrap justify-between gap-10">
-
+      <div className="
+        w-full max-w-[1200px] mx-auto py-12 flex flex-wrap justify-between gap-10
+        max-md:justify-center max-md:text-center max-md:items-center
+      ">
         {/* COLUMN 1 */ }
-        <div className="flex flex-col gap-4 flex-1 min-w-[260px] max-w-[340px]">
+        <div className="
+          flex flex-col gap-4 flex-1 min-w-[260px] max-w-[340px]
+          max-md:items-center max-md:text-center
+        ">
           <Link href="/" aria-label="Enoves home">
             <svg
               className="w-40"
@@ -49,20 +54,24 @@ export default function Footer() {
             </svg>
           </Link>
 
-          <h3 className="text-xl font-bold pr-20">
+          <h3 className="text-xl font-bold pr-20 max-md:pr-0">
             We are a global digital brand tech agency
           </h3>
 
-          <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <FaPhone className="text-lg" />
+          <div className="flex flex-col gap-2 max-md:items-center">
+            <div className="flex items-center gap-2 max-md:justify-center">
+              <span>
+                <i className="fa-solid fa-phone"></i>
+              </span>
               <a href="https://wa.me/923216013698" className="text-white">
                 +92 321 6013698
               </a>
             </div>
 
-            <div className="flex items-center gap-2">
-              <FaEnvelope className="text-lg" />
+            <div className="flex items-center gap-2 max-md:justify-center">
+              <span>
+                <i className="fa-solid fa-envelope"></i>
+              </span>
               <a href="mailto:hello@enoves.com" className="text-white">
                 hello@enoves.com
               </a>
@@ -71,7 +80,7 @@ export default function Footer() {
         </div>
 
         {/* COLUMN 2 */ }
-        <div className="flex flex-col gap-4 min-w-60">
+        <div className="flex flex-col gap-4 min-w-60 max-md:items-center max-md:text-center">
           <h4 className="text-xl font-bold">Company</h4>
           <ul className="flex flex-col gap-3 text-slate-300">
             <li><Link href="/about" className="hover:text-indigo-500">About us</Link></li>
@@ -83,7 +92,7 @@ export default function Footer() {
         </div>
 
         {/* COLUMN 3 */ }
-        <div className="flex flex-col gap-4 flex-1 min-w-[240px]">
+        <div className="flex flex-col gap-4 flex-1 min-w-[240px] max-md:items-center max-md:text-center">
           <h4 className="text-xl font-bold">Industries</h4>
           <ul className="flex flex-col gap-3 text-slate-300">
             <li><Link href="/" className="hover:text-indigo-500">Finance and Fintech</Link></li>
@@ -97,12 +106,15 @@ export default function Footer() {
       </div>
 
       {/* FOOTER BOTTOM */ }
-      <div className="w-full max-w-[1200px] border-t border-slate-700 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+      <div className="
+        w-full max-w-[1200px] border-t border-slate-700 px-6 py-4 flex flex-wrap justify-between items-center gap-4
+        max-md:justify-center max-md:text-center
+      ">
         <p className="text-slate-400 text-sm">
           © { year } Enoves. All rights reserved.
         </p>
 
-        <div className="flex gap-4 text-xl">
+        <div className="flex gap-4 text-xl max-md:justify-center">
           <a href="https://twitter.com" target="_blank" className="hover:opacity-70"><FaTwitter /></a>
           <a href="https://facebook.com" target="_blank" className="hover:opacity-70"><FaFacebook /></a>
           <a href="https://instagram.com" target="_blank" className="hover:opacity-70"><FaInstagram /></a>

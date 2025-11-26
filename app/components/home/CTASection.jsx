@@ -7,14 +7,15 @@ export default function CTASection() {
   return (
     <section
       data-home-section="cta"
-      className="relative bg-[#03050b] px-6 py-24 sm:px-10 lg:px-12"
+      className="relative bg-transparent px-6 py-24 sm:px-10 lg:px-12"
     >
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
+
+      <div className="mx-auto relative z-10 max-w-5xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.35 }}
-          transition={{ duration: 0.7 }}
+          initial={ { opacity: 0, y: 30 } }
+          whileInView={ { opacity: 1, y: 0 } }
+          viewport={ { once: true, amount: 0.35 } }
+          transition={ { duration: 0.7 } }
           className="space-y-6 text-center text-white"
         >
           <p className="text-sm uppercase tracking-[0.5em] text-white/80">
@@ -45,4 +46,3 @@ export default function CTASection() {
     </section>
   );
 }
-
