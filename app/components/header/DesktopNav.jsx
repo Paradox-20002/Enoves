@@ -7,16 +7,16 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import Sidebar from "../sidebar/sidebar";
 import { megaMenuData } from "./megaMenuData";
 
-export default function DesktopNav({
+export default function DesktopNav( {
   isMegaOpen,
   onMegaEnter,
   onMegaLeave,
   onServicesClick,
   onToggleMega,
   caretRotation,
-}) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const closeTimer = useRef(null);
+} ) {
+  const [ isDropdownOpen, setIsDropdownOpen ] = useState( false );
+  const closeTimer = useRef( null );
 
   return (
     <div className="nav-right1">
@@ -28,68 +28,68 @@ export default function DesktopNav({
         </li>
 
         <li
-          className={`nav-item has-mega${isMegaOpen ? " is-open" : ""}`}
+          className={ `nav-item has-mega${ isMegaOpen ? " is-open" : "" }` }
           aria-haspopup="true"
-          onMouseEnter={() => {
-            if (closeTimer.current) {
-              clearTimeout(closeTimer.current);
+          onMouseEnter={ () => {
+            if ( closeTimer.current ) {
+              clearTimeout( closeTimer.current );
               closeTimer.current = null;
             }
             onMegaEnter();
-          }}
-          onMouseLeave={() => {
-            if (closeTimer.current) clearTimeout(closeTimer.current);
-            closeTimer.current = setTimeout(() => {
+          } }
+          onMouseLeave={ () => {
+            if ( closeTimer.current ) clearTimeout( closeTimer.current );
+            closeTimer.current = setTimeout( () => {
               onMegaLeave();
-            }, 120);
-          }}
+            }, 120 );
+          } }
         >
           <Link
             href="/services"
             className="nav-link nav-link--services"
-            aria-expanded={isMegaOpen}
-            onClick={onServicesClick}
+            aria-expanded={ isMegaOpen }
+            onClick={ onServicesClick }
           >
             <span className="nav-link-text">Services</span>
             <span
               className="caret"
               role="button"
-              tabIndex={0}
+              tabIndex={ 0 }
               aria-controls="mega-menu"
-              aria-expanded={isMegaOpen}
-              onClick={(e) => {
+              aria-expanded={ isMegaOpen }
+              onClick={ ( e ) => {
                 e.preventDefault();
                 e.stopPropagation();
                 onToggleMega();
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
+              } }
+              onKeyDown={ ( e ) => {
+                if ( e.key === "Enter" || e.key === " " ) {
                   e.preventDefault();
                   e.stopPropagation();
                   onToggleMega();
-                } else if (e.key === "Escape") {
+                } else if ( e.key === "Escape" ) {
                   onMegaLeave();
                 }
-              }}
-              style={caretRotation(isMegaOpen)}
+              } }
+              style={ caretRotation( isMegaOpen ) }
             >
               ▾
             </span>
           </Link>
 
-          <MegaMenu columns={megaMenuData} onClose={onMegaLeave} />
+          <MegaMenu columns={ megaMenuData } onClose={ onMegaLeave } />
         </li>
 
-        {/* ✅ Fixed dropdown */}
+        {/* ✅ Fixed dropdown */ }
         <li
-          className={`dropdown ${isDropdownOpen ? "open" : ""}`}
-          onMouseEnter={() => setIsDropdownOpen(true)}
-          onMouseLeave={() => setIsDropdownOpen(false)}
+          className={ `dropdown ${ isDropdownOpen ? "open" : "" }` }
+          onMouseEnter={ () => setIsDropdownOpen( true ) }
+          onMouseLeave={ () => setIsDropdownOpen( false ) }
         >
           <Link
             href="/portfolio"
             className="nav-link"
-            onClick={() => setIsDropdownOpen(false)} // close when navigating
+            onClick={ () => setIsDropdownOpen( false ) } // close when navigating
           >
             Portfolio
             {/* <span

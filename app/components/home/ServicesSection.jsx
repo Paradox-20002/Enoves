@@ -22,6 +22,12 @@ const services = [
       "AI copilots, automation, and campaign ops that sync marketing, revenue, and customer success into one pipeline.",
     icon: "🧠",
   },
+  {
+    title: "Growth Engineering",
+    description:
+      "AI copilots, automation, and campaign ops that sync marketing, revenue, and customer success into one pipeline.",
+    icon: "🧠",
+  },
 ];
 
 export default function ServicesSection() {

@@ -4,9 +4,8 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
-  FaPhone,
-  FaEnvelope,
 } from "react-icons/fa";
+import NewsletterWidget from "../newsletter/NewsletterWidget";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -14,19 +13,22 @@ export default function Footer() {
   return (
     <footer className="w-full bg-gradient-to-b from-[#0b1220] to-[#0a0f1a] text-white flex flex-col items-center justify-center">
 
-      {/* INNER GRID */ }
-      <div className="
-        w-full max-w-[1200px] mx-auto py-12 flex flex-wrap justify-between gap-10
-        max-md:justify-center max-md:text-center max-md:items-center
-      ">
+      {/* INNER GRID WRAPPER */ }
+      <div
+        className="
+          w-full max-w-[1200px] mx-auto py-14 px-6
+          grid grid-cols-4 gap-10
+          lg:grid-cols-4
+          md:grid-cols-2
+          max-sm:grid-cols-1
+        "
+      >
+
         {/* COLUMN 1 */ }
-        <div className="
-          flex flex-col gap-4 flex-1 min-w-[260px] max-w-[340px]
-          max-md:items-center max-md:text-center
-        ">
+        <div className="flex flex-col gap-4 md:items-start max-sm:items-center max-sm:text-center">
           <Link href="/" aria-label="Enoves home">
             <svg
-              className="w-40"
+              className="w-40 mx-auto md:mx-0"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 356 65.2"
               role="img"
@@ -54,25 +56,21 @@ export default function Footer() {
             </svg>
           </Link>
 
-          <h3 className="text-xl font-bold pr-20 max-md:pr-0">
+          <h3 className="text-sm max-w-[260px] text-slate-300 md:text-left max-sm:text-center">
             We are a global digital brand tech agency
           </h3>
 
-          <div className="flex flex-col gap-2 max-md:items-center">
-            <div className="flex items-center gap-2 max-md:justify-center">
-              <span>
-                <i className="fa-solid fa-phone"></i>
-              </span>
-              <a href="https://wa.me/923216013698" className="text-white">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2 md:justify-start max-sm:justify-center">
+              <i className="fa-solid fa-phone"></i>
+              <a href="https://wa.me/923216013698" className="text-white hover:text-indigo-500">
                 +92 321 6013698
               </a>
             </div>
 
-            <div className="flex items-center gap-2 max-md:justify-center">
-              <span>
-                <i className="fa-solid fa-envelope"></i>
-              </span>
-              <a href="mailto:hello@enoves.com" className="text-white">
+            <div className="flex items-center gap-2 md:justify-start max-sm:justify-center">
+              <i className="fa-solid fa-envelope"></i>
+              <a href="mailto:hello@enoves.com" className="text-white hover:text-indigo-500">
                 hello@enoves.com
               </a>
             </div>
@@ -80,47 +78,119 @@ export default function Footer() {
         </div>
 
         {/* COLUMN 2 */ }
-        <div className="flex flex-col gap-4 min-w-60 max-md:items-center max-md:text-center">
+        <div className="flex flex-col gap-4 md:items-start max-sm:items-center max-sm:text-center">
           <h4 className="text-xl font-bold">Company</h4>
           <ul className="flex flex-col gap-3 text-slate-300">
-            <li><Link href="/about" className="hover:text-indigo-500">About us</Link></li>
-            <li><Link href="/team" className="hover:text-indigo-500">Our team</Link></li>
-            <li><Link href="/portfolio" className="hover:text-indigo-500">Our portfolio</Link></li>
-            <li><Link href="/careers" className="hover:text-indigo-500">Careers</Link></li>
-            <li><Link href="/contact" className="hover:text-indigo-500">Contact us</Link></li>
+            <li>
+              <Link href="/about" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>About us</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/team" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Our team</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/portfolio" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Our portfolio</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/careers" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Careers</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Contact us</span>
+              </Link>
+            </li>
           </ul>
         </div>
 
         {/* COLUMN 3 */ }
-        <div className="flex flex-col gap-4 flex-1 min-w-[240px] max-md:items-center max-md:text-center">
+        <div className="flex flex-col gap-4 md:items-start max-sm:items-center max-sm:text-center">
           <h4 className="text-xl font-bold">Industries</h4>
           <ul className="flex flex-col gap-3 text-slate-300">
-            <li><Link href="/" className="hover:text-indigo-500">Finance and Fintech</Link></li>
-            <li><Link href="/" className="hover:text-indigo-500">Healthcare and Life</Link></li>
-            <li><Link href="/" className="hover:text-indigo-500">Retail and E-commerce</Link></li>
-            <li><Link href="/" className="hover:text-indigo-500">Government and Public</Link></li>
-            <li><Link href="/" className="hover:text-indigo-500">Travel and Hospitality</Link></li>
+            <li>
+              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Finance and Fintech</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Healthcare and Life</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Retail and E-commerce</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Government and Public</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                <span>Travel and Hospitality</span>
+              </Link>
+            </li>
           </ul>
         </div>
 
+        {/* COLUMN 4 - Newsletter */ }
+        <div
+          className="
+            flex-1 
+            min-w-[260px]
+            
+            md:max-lg:w-[260px] 
+            md:max-lg:min-w-[260px]
+
+            relative
+            md:right-[30px]
+            flex flex-col 
+            max-md:w-full max-md:items-center
+
+          "
+        >
+          <NewsletterWidget />
+        </div>
       </div>
 
       {/* FOOTER BOTTOM */ }
-      <div className="
-        w-full max-w-[1200px] border-t border-slate-700 px-6 py-4 flex flex-wrap justify-between items-center gap-4
-        max-md:justify-center max-md:text-center
-      ">
+      <div
+        className="
+          w-full max-w-[1200px] border-t border-slate-700 px-6 py-4 
+          flex flex-wrap justify-between items-center gap-4
+          max-sm:flex-col max-sm:text-center
+        "
+      >
         <p className="text-slate-400 text-sm">
           © { year } Enoves. All rights reserved.
         </p>
 
-        <div className="flex gap-4 text-xl max-md:justify-center">
+        <div className="flex gap-4 text-xl">
           <a href="https://twitter.com" target="_blank" className="hover:opacity-70"><FaTwitter /></a>
           <a href="https://facebook.com" target="_blank" className="hover:opacity-70"><FaFacebook /></a>
           <a href="https://instagram.com" target="_blank" className="hover:opacity-70"><FaInstagram /></a>
           <a href="https://linkedin.com" target="_blank" className="hover:opacity-70"><FaLinkedin /></a>
         </div>
       </div>
+
     </footer>
   );
 }

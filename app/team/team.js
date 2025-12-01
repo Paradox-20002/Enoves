@@ -13,31 +13,6 @@ export const leadershipTeam = [
       { label: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
     ],
   },
-  {
-    name: "Noman",
-    title: "CFO",
-    bio: "Architects product roadmaps and outcomes for SaaS, fintech, and future-forward ventures.",
-    image:
-      "/images/noman.png",
-    socials: [
-      { label: "Facebook", href: "https://facebook.com", icon: FaFacebookF },
-      { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
-      { label: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
-    ],
-  },
-  {
-    name: "Tashfeen",
-    title: "COO",
-    bio: "Designs conversion-first journeys enriched with motion, narrative, and accessibility.",
-    image:
-      "/images/noman.png",
-    socials: [
-      { label: "Facebook", href: "https://facebook.com", icon: FaFacebookF },
-      { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
-      { label: "LinkedIn", href: "https://linkedin.com", icon: FaLinkedinIn },
-    ],
-  },
-
 ];
 // dev team ----------------------------
 export const DevTeam = [
@@ -54,90 +29,76 @@ export const DevTeam = [
     image: "/images/noman.png",
   },
   {
-    name: "Abubakr",
-    title: "Junior Web Developer",
-    bio: "",
-    image: "/images/download1.jpg",
-  },
-];
-// seo team ----------------------------
-export const SEOteam = [
-  {
-    name: "Arslan",
-    title: "SEO Manager",
-    bio: "",
-    image: "/images/noman.png",
-  },
-  {
-    name: "Hudail",
-    title: "Junior SEO Analyst",
-    bio: "",
-    image: "/images/noman.png",
-  },
-  {
-    name: "Taif",
-    title: "Junior SEO Analyst",
+    name: "M Arsalan Abid",
+    title: "Marketing Manager",
     bio: "",
     image: "/images/noman.png",
   },
   {
     name: "Usama",
-    title: "Senior SEO Analyst",
+    title: "Marketing Executive",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Fahad Yaseen",
+    title: "Marketing Executive",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Ali",
+    title: "Marketing Executive",
     bio: "",
     image: "/images/noman.png",
   },
   {
     name: "Ahmad",
-    title: "SEO Analyst",
-    bio: "",
-    image: "/images/noman.png",
-  },
-  {
-    name: "Fahad",
-    title: "SEO Expert",
+    title: "Associate Marketing Executive",
     bio: "",
     image: "/images/noman.png",
   },
   {
     name: "Daniyal",
-    title: "Junior SEO Analyst",
-    bio: "",
-    image: "/images/noman.png",
-  },
-
-];
-// marketing team ----------------------------
-export const MarketingTeam = [
-  {
-    name: "Abdur Rehman",
-    title: "Cold Calling Agent",
+    title: "Associate Marketing Executive",
     bio: "",
     image: "/images/noman.png",
   },
   {
-    name: "Amina",
-    title: "Junior Cold Calling Agent",
+    name: "Tahif",
+    title: "Marketing Trainee",
     bio: "",
     image: "/images/noman.png",
   },
   {
     name: "Bilal",
-    title: "Cold Calling Agent",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Ubaid",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Umer",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Abubakr",
+    title: "Associate Web Developer",
+    bio: "",
+    image: "/images/noman.png",
+  },
+  {
+    name: "Noman",
+    title: "Trainee Web Developer",
     bio: "",
     image: "/images/noman.png",
   },
 ];
-const openRoles = [
-  {
-    title: "Senior UX Writer",
-    location: "Remote (North America)",
-  },
-  {
-    title: "Growth Engineer",
-    location: "Remote (Global)",
-  },
-  {
-    title: "Lifecycle Strategist",
-    location: "Hybrid (Toronto)",
-  },
-];
+// seo team ----------------------------

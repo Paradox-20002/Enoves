@@ -12,7 +12,7 @@ const CARD_HEIGHT = 80;
 export default function Carousel( { img1, img2, img3, img4, className = "" } ) {
   const containerRef = useRef( null );
 
-  const provided = [ img1, img2, img3, img4 ].filter( Boolean );
+  const provided = [ img1, img2, img3, img4, img1, img2, img3, img4 ].filter( Boolean );
   const logos = ( provided.length ? provided : [ "enoves", "linkedin", "saas", "seo" ] ).map(
     ( logo ) => logo.replace( /^\//, "" ).replace( /\.svg$/, "" )
   );
@@ -21,27 +21,27 @@ export default function Carousel( { img1, img2, img3, img4, className = "" } ) {
 
   return (
     <section
-      ref={ containerRef }
-      className={ `relative isolate w-full overflow-hidden px-20 py-16 ${ className }` }
+      // ref={ containerRef }
+      className={ `relative isolate w-full overflow-hidden px-20 py-16 lg:pb-30 ${ className }` }
       aria-label="Partner logos carousel"
       style={ { background: "linear-gradient(180deg, #05070E 0%, #0B0F1A 50%, #05070E 100%)" } }
     >
       {/* Aurora animation background */ }
-      <AuroraScene
+      {/* <AuroraScene
         containerRef={ containerRef }
         foldSectionRef={ { current: null } }
         heavySectionRef={ { current: null } }
-      />
+      /> */}
 
       {/* LEFT FADE */ }
       <div
-        className="pointer-events-none absolute inset-y-0 left-0 sm:w-24 lg:w-100 md:w-50 z-20"
+        className="pointer-events-none absolute inset-y-0 left-0 sm:w-24 lg:w-70 md:w-50 z-20"
         aria-hidden="true"
         style={ { background: "linear-gradient(90deg, #05070E 50%, rgba(5,7,14,0) 90%)" } }
       />
       {/* RIGHT FADE */ }
       <div
-        className="pointer-events-none absolute inset-y-0 right-0 sm:w-24 lg:w-200 md:w-100 z-20"
+        className="pointer-events-none absolute inset-y-0 right-0 sm:w-24 lg:w-50 md:w-100 z-20"
         aria-hidden="true"
         style={ { background: "linear-gradient(270deg, #05070E 80%, rgba(5,7,14,0) 90%)" } }
       />

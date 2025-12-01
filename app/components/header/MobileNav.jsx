@@ -3,13 +3,13 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import Search from "../search/search";
 import { megaMenuData } from "./megaMenuData";
 
-export default function MobileNav({
+export default function MobileNav( {
   isOpen,
   onClose,
   isMobileServicesOpen,
   onToggleServices,
-}) {
-  if (!isOpen) return null;
+} ) {
+  if ( !isOpen ) return null;
 
   return (
     <div className="nav-mobile-panel">
@@ -19,7 +19,7 @@ export default function MobileNav({
           <button
             type="button"
             className="nav-mobile-close"
-            onClick={onClose}
+            onClick={ onClose }
           >
             <span className="sr-only">Close navigation</span>✕
           </button>
@@ -30,17 +30,17 @@ export default function MobileNav({
             <span className="nav-mobile-label">Browse</span>
             <ul>
               <li>
-                <Link href="/" onClick={onClose}>
+                <Link href="/" onClick={ onClose }>
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/portfolio" onClick={onClose}>
+                <Link href="/portfolio" onClick={ onClose }>
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="/contact" onClick={onClose}>
+                <Link href="/contact" onClick={ onClose }>
                   Contact us
                 </Link>
               </li>
@@ -49,57 +49,57 @@ export default function MobileNav({
                   <Link
                     href="/services"
                     className="nav-mobile-services-link"
-                    onClick={onClose}
+                    onClick={ onClose }
                   >
                     Services
                   </Link>
                   <button
                     type="button"
                     className="nav-mobile-services-toggle"
-                    onClick={onToggleServices}
-                    aria-expanded={isMobileServicesOpen}
+                    onClick={ onToggleServices }
+                    aria-expanded={ isMobileServicesOpen }
                   >
                     <span
                       className="caret"
-                      style={{
+                      style={ {
                         transform: isMobileServicesOpen
                           ? "rotate(180deg)"
                           : "rotate(0deg)",
                         transition: "transform 0.2s ease",
-                      }}
+                      } }
                     >
                       ▼
                     </span>
                   </button>
                 </div>
-                {isMobileServicesOpen && (
+                { isMobileServicesOpen && (
                   <div className="nav-mobile-services-panel">
                     <ul className="nav-mobile-services-list">
-                      {megaMenuData.map((column) => (
-                        <li key={column.title}>
+                      { megaMenuData.map( ( column ) => (
+                        <li key={ column.title }>
                           <span className="nav-mobile-column">
-                            {column.title}
+                            { column.title }
                           </span>
                           <ul className="nav-mobile-subservices">
-                            {column.subHeadings.map((service) => (
-                              <li key={service.subHeading}>
+                            { column.subHeadings.map( ( service ) => (
+                              <li key={ service.subHeading }>
                                 <Link
-                                  href={service.href}
-                                  onClick={onClose}
+                                  href={ service.href }
+                                  onClick={ onClose }
                                 >
                                   <i
-                                    className={`${service.icon} nav-mobile-service-icon`}
+                                    className={ `${ service.icon } nav-mobile-service-icon` }
                                   ></i>
-                                  {service.subHeading}
+                                  { service.subHeading }
                                 </Link>
                               </li>
-                            ))}
+                            ) ) }
                           </ul>
                         </li>
-                      ))}
+                      ) ) }
                     </ul>
                   </div>
-                )}
+                ) }
               </li>
             </ul>
           </div>
@@ -110,7 +110,7 @@ export default function MobileNav({
               <Link
                 href="/contact"
                 className="btn btn--primary"
-                onClick={onClose}
+                onClick={ onClose }
               >
                 Let's Talk
               </Link>

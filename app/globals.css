@@ -37,6 +37,7 @@ body {
 #google_translate_container,
 .goog-te-banner-frame.skiptranslate,
 .goog-te-menu-frame.skiptranslate,
+
 body > .skiptranslate {
   display: none !important;
 }

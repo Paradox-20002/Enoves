@@ -14,33 +14,33 @@ import "./sidebar.css";
 import { useState, useEffect } from "react";
 
 export default function Sidebar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [email, setEmail] = useState("");
+  const [ isOpen, setIsOpen ] = useState( false );
+  const [ email, setEmail ] = useState( "" );
 
-  const handleChange = (e) => {
-    setEmail(e.target.value);
+  const handleChange = ( e ) => {
+    setEmail( e.target.value );
   };
-  const toggleSidebar = () => setIsOpen((prev) => !prev);
-  useEffect(() => {
-    const handleClick = (e) => {
-      if (!e.target.closest(".sidebar-menu")) {
-        setIsOpen(false);
+  const toggleSidebar = () => setIsOpen( ( prev ) => !prev );
+  useEffect( () => {
+    const handleClick = ( e ) => {
+      if ( !e.target.closest( ".sidebar-menu" ) ) {
+        setIsOpen( false );
       }
     };
-    if (isOpen) document.addEventListener("click", handleClick);
+    if ( isOpen ) document.addEventListener( "click", handleClick );
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener( "click", handleClick );
     };
-  }, [isOpen]);
+  }, [ isOpen ] );
   return (
     <>
       <div className="sidebar">
-        <button className="sidebar-toggle-btn" onClick={toggleSidebar}>
+        <button className="sidebar-toggle-btn" onClick={ toggleSidebar }>
           <FaBars />
         </button>
-        {isOpen && (
+        { isOpen && (
           <div className="sidebar-menu">
-            <button className="sidebar-close-btn" onClick={toggleSidebar}>
+            <button className="sidebar-close-btn" onClick={ toggleSidebar }>
               <FaTimes />
             </button>
             <h2 className="sidebar-heading">
@@ -65,22 +65,27 @@ export default function Sidebar() {
               </div>
               <div className="sidebar-mail-text">
                 <h6>Call 24/7</h6>
-                <h3>{"+92 321 601369"} </h3>
+                <h3>{ "+92 321 601369" } </h3>
               </div>
             </div>
             <h4 className="sidebar-subscribe">Subscribe to get free updates</h4>
-            <div className="form-submit">
+            <form className="relative mt-2" action={ "https://getform.io/f/amdjppjb" } method="POST" >
               <input
-                className="form-input"
+                name="email"
                 type="email"
                 placeholder="youremail@gmail.com"
-                onChange={handleChange}
+                value={ email }
+                onChange={ handleChange }
+                className="w-full px-4 py-3 pr-12 rounded border border-white/10 bg-white/5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                required
               />
-
-              <div className="form-icon">
+              <button
+                type="submit"
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-white text-lg hover:text-indigo-400"
+              >
                 <FaPaperPlane />
-              </div>
-            </div>
+              </button>
+            </form>
             <div className="sidebar-icons">
               <a
                 href="https://twitter.com"
@@ -112,7 +117,7 @@ export default function Sidebar() {
               </a>
             </div>
           </div>
-        )}
+        ) }
       </div>
     </>
   );

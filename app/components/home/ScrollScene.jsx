@@ -1,68 +1,127 @@
 import { useRef, useEffect, useState } from 'react';
 import * as THREE from 'three';
+// 1. IMPORT THE NEW CUSTOM HOOK (Import changed to default, assuming usetypingeffect.js uses 'export default')
+import { useTypingEffect } from './usetypingeffect';
 
-// 1. DATA CONFIGURATION
-// --- CDN URLs for each tech stack logo ---
-const CENTRAL_LOGO_URL = '/images/noman.png'; // Keeping the center logo local as it worked.
-
-const techStacks = [
-  // Reverting to CDN URLs, assuming these links are valid and accessible.
+// 1. DATA CONFIGURATION (No changes here, keeping for completeness)
+const techStacksOriginal = [
   { name: 'React', color: '#61DAFB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
   { name: 'Next.js', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
   { name: 'Node.js', color: '#339933', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
   { name: 'TypeScript', color: '#3178C6', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
   { name: 'JavaScript', color: '#F7DF1E', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
   { name: 'Python', color: '#3776AB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-  { name: 'Django', color: '#092E20', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-original.svg' },
-  { name: 'Flask', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
-  { name: 'MongoDB', color: '#47A248', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  { name: 'PostgreSQL', color: '#4169E1', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
-  { name: 'Redis', color: '#DC382D', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-  { name: 'AWS', color: '#FF9900', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
-  { name: 'Vercel', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg' },
-  { name: 'Docker', color: '#2496ED', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg' },
-  { name: 'Kubernetes', color: '#326CE5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg' },
-  { name: 'WordPress', color: '#21759B', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg' },
-  { name: 'Shopify', color: '#96BF48', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/shopify/shopify-original.svg' },
-  { name: 'HubSpot', color: '#FF7A59', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hubspot/hubspot-original.svg' },
-  { name: 'Salesforce', color: '#00A1E0', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/salesforce/salesforce-original.svg' }
+  { name: 'Django', color: '#092E20', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/django/django-original.svg' },
+  { name: 'Flask', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/flask/flask-original.svg' },
+  { name: 'MongoDB', color: '#47A248', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+  { name: 'PostgreSQL', color: '#4169E1', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { name: 'Redis', color: '#DC382D', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/redis/redis-original.svg' },
+  { name: 'AWS', color: '#FF9900', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg' },
+  { name: 'Vercel', color: '#FFFFFF', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/vercel/vercel-original.svg' },
+  { name: 'Docker', color: '#2496ED', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/docker/docker-original.svg' },
+  { name: 'Kubernetes', color: '#326CE5', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg' },
+  { name: 'WordPress', color: '#21759B', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/wordpress/wordpress-original.svg' },
+  { name: 'Shopify', color: '#96BF48', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/shopify/shopify-original.svg' },
+  { name: 'HubSpot', color: '#FF7A59', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/hubspot/hubspot-original.svg' },
+  { name: 'Salesforce', color: '#00A1E0', logo: 'https://cdn.jsdelivr.com/gh/devicons/devicon/icons/salesforce/salesforce-original.svg' },
+
+  // --- 10 NEW TECH STACKS ---
+  { name: 'Angular', color: '#DD0031', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg' },
+  { name: 'Vue.js', color: '#4FC08D', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg' },
+  { name: 'Svelte', color: '#FF3E00', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg' },
+  { name: 'PHP', color: '#777BB4', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg' },
+  { name: 'Laravel', color: '#FF2D20', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain.svg' },
+  { name: 'Ruby', color: '#CC342D', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg' },
+  { name: 'Rails', color: '#CC0000', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rails/rails-original-wordmark.svg' },
+  { name: 'Golang', color: '#00ADD8', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg' },
+  { name: 'C#', color: '#239120', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg' },
+  { name: 'Java', color: '#007396', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg' }
+];
+
+
+// Duplicate for a denser sphere effect
+const techStacks = [
+  ...techStacksOriginal,
+  ...techStacksOriginal,
+  ...techStacksOriginal.slice( 0, 10 )
+];
+
+// Content for the new left section (Commitments)
+const commitments = [
+  {
+    title: "Code Purity",
+    description: "Commitment to clean, documented, and resilient codebases that reduce technical debt.",
+    icon: '✨'
+  },
+  {
+    title: "Infrastructure First",
+    description: "Architecting cloud-native solutions with security, scalability, and compliance built-in, not bolted on.",
+    icon: '🛡️'
+  },
+  {
+    title: "Sustainable Velocity",
+    description: "Delivering rapid iteration cycles without compromising long-term maintainability or team health.",
+    icon: '🚀'
+  },
 ];
 
 
 export default function TechStackOrbit() {
   const containerRef = useRef( null );
   const sceneRef = useRef( null );
-  const mouseRef = useRef( { x: 0, y: 0 } );
+  const sphereGroupRef = useRef( new THREE.Group() );
   const dragRef = useRef( {
     isDragging: false,
     startX: 0,
+    startY: 0,
     currentX: 0,
-    velocity: 0,
-    lastX: 0,
+    currentY: 0,
+    velocityX: 0,
+    velocityY: 0,
     lastTime: 0
   } );
   const [ isLoaded, setIsLoaded ] = useState( false );
 
+  // --- TYPING ANIMATION HOOK CALLS ---
+  const categoryText = 'Technology';
+  // FIXED: Removed extra 'B'
+  const mainTitleText = 'Built with industry-leading technologies';
+  // FIXED: Removed extra 'O'
+  const descriptionText = 'Our engineering teams leverage a modern, scalable stack to deliver Fortune-100-quality digital experiences';
+
+  const category = useTypingEffect( categoryText, 50, 0 );
+  const title = useTypingEffect( mainTitleText, 60, categoryText.length * 50 + 200 );
+  const description = useTypingEffect( descriptionText, 40, categoryText.length * 50 + mainTitleText.length * 60 + 500 );
+
+  const isCategoryDone = !category.isTyping;
+  const isTitleDone = !title.isTyping;
+  const typedTitle = title.displayedText.replace( 'technologies', '' );
+
+  const Cursor = ( { isTyping } ) => (
+    <span
+      className={ `inline-block w-[2px] h-full ml-1 bg-white align-bottom transition-opacity duration-500 
+      ${ isTyping ? 'opacity-100 animate-blink' : 'opacity-0' }` }
+      style={ { verticalAlign: 'text-top' } }
+    >
+      &nbsp;
+    </span>
+  );
+  // ------------------------------------
+
+
   useEffect( () => {
     if ( !containerRef.current ) return;
 
-    // --- RESPONSIVE SETTINGS ---
+    // --- SCENE CONSTANTS ---
+    const SPHERE_RADIUS = 5;
+    const LOGO_SIZE = 1.6;
+    const CAMERA_Z = 25;
+
+    // Responsive adjustments
     const isMobile = window.innerWidth < 768;
-    const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
-
-    let orbitRadius = 18;
-    let cameraZ = 35;
-    let cameraY = 5;
-
-    if ( isMobile ) {
-      orbitRadius = 12;
-      cameraZ = 25;
-      cameraY = 3;
-    } else if ( isTablet ) {
-      orbitRadius = 15;
-      cameraZ = 30;
-      cameraY = 4;
-    }
+    const finalSphereRadius = isMobile ? 5 : SPHERE_RADIUS;
+    const finalLogoSize = isMobile ? 1.0 : LOGO_SIZE;
+    const logoOffset = 0.05;
 
     // --- SCENE SETUP ---
     const scene = new THREE.Scene();
@@ -75,222 +134,124 @@ export default function TechStackOrbit() {
       0.1,
       1000
     );
-    camera.position.z = cameraZ;
-    camera.position.y = cameraY;
+    camera.position.z = CAMERA_Z;
 
     const renderer = new THREE.WebGLRenderer( {
       antialias: true,
       alpha: true,
-      powerPreference: 'high-performance'
+      powerPreference: 'low-power'
     } );
     renderer.setSize( containerRef.current.clientWidth, containerRef.current.clientHeight );
     renderer.setPixelRatio( Math.min( window.devicePixelRatio, 2 ) );
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
     containerRef.current.appendChild( renderer.domElement );
 
     // --- LIGHTING ---
-    const ambientLight = new THREE.AmbientLight( 0x4a5f8f, 0.4 );
+    const ambientLight = new THREE.AmbientLight( 0xcccccc, 0.6 );
     scene.add( ambientLight );
 
-    const keyLight = new THREE.DirectionalLight( 0x8b9eff, 1.5 );
-    keyLight.position.set( 10, 15, 10 );
-    scene.add( keyLight );
+    const directionalLight = new THREE.DirectionalLight( 0xffffff, 1.2 );
+    directionalLight.position.set( 5, 10, 8 );
+    scene.add( directionalLight );
 
-    const rimLight = new THREE.DirectionalLight( 0xff00ff, 0.6 );
-    rimLight.position.set( -8, 5, -10 );
-    scene.add( rimLight );
+    const backLight = new THREE.DirectionalLight( 0xadd8e6, 0.5 );
+    backLight.position.set( -5, -5, -10 );
+    scene.add( backLight );
 
-    const fillLight = new THREE.PointLight( 0x00e5ff, 0.8, 50 );
-    fillLight.position.set( 0, -5, 15 );
-    scene.add( fillLight );
+    // Add the main group to the scene
+    const sphereGroup = sphereGroupRef.current;
+    scene.add( sphereGroup );
 
     // --- TEXTURE LOADER MANAGER ---
     const loadingManager = new THREE.LoadingManager();
     loadingManager.onLoad = () => {
       setIsLoaded( true );
     };
-    loadingManager.onError = ( url ) => {
-      console.error( `Failed to load texture: ${ url }. This is likely a CORS issue with the CDN.` );
-    };
-
     const textureLoader = new THREE.TextureLoader( loadingManager );
-
-    // --- CENTRAL LOGO (LOCAL) ---
-    const logoGroup = new THREE.Group();
-    scene.add( logoGroup );
-
-    // Load Central Logo - Local files need crossOrigin set to '' or null
-    textureLoader.setCrossOrigin( '' );
-    textureLoader.load( CENTRAL_LOGO_URL, ( texture ) => {
-      texture.colorSpace = THREE.SRGBColorSpace;
-
-      const logoSize = isMobile ? 3 : 5;
-      const logoGeometry = new THREE.PlaneGeometry( logoSize, logoSize );
-      const logoMaterial = new THREE.MeshBasicMaterial( {
-        map: texture,
-        transparent: true,
-        side: THREE.DoubleSide,
-        depthWrite: false,
-      } );
-      const logoMesh = new THREE.Mesh( logoGeometry, logoMaterial );
-      logoGroup.add( logoMesh );
-      logoGroup.userData.mesh = logoMesh;
-    } );
-
-    // Central Glow (Behind the logo)
-    const glowSize = isMobile ? 3.5 : 6;
-    const glowGeometry = new THREE.SphereGeometry( glowSize, 32, 32 );
-    const glowMaterial = new THREE.MeshBasicMaterial( {
-      color: 0x4f46e5,
-      transparent: true,
-      opacity: 0.15,
-      side: THREE.BackSide,
-      depthWrite: false,
-    } );
-    const glow = new THREE.Mesh( glowGeometry, glowMaterial );
-    scene.add( glow );
-
-    // --- ORBITAL RING ---
-    const ringCurve = new THREE.EllipseCurve(
-      0, 0,
-      orbitRadius, orbitRadius,
-      0, 2 * Math.PI,
-      false,
-      0
-    );
-    const ringPoints = ringCurve.getPoints( 100 );
-    const ringGeometry = new THREE.BufferGeometry().setFromPoints(
-      ringPoints.map( p => new THREE.Vector3( p.x, 0, p.y ) )
-    );
-    const ringMaterial = new THREE.LineBasicMaterial( {
-      color: 0x6366f1,
-      transparent: true,
-      opacity: 0.2,
-      linewidth: 2
-    } );
-    const ring = new THREE.Line( ringGeometry, ringMaterial );
-    ring.rotation.x = Math.PI / 6;
-    scene.add( ring );
-
-    // --- TECH STACK CAPSULES (CDN) ---
-    const capsules = [];
-    const angleStep = ( Math.PI * 2 ) / techStacks.length;
-    const capsuleScale = isMobile ? 0.6 : 1;
-
-    // Set crossOrigin to 'anonymous' for CDN links
     textureLoader.setCrossOrigin( 'anonymous' );
 
+
+    // --- SOLID BASE SPHERE (TRANSPARENT) ---
+    const solidSphereGeometry = new THREE.SphereGeometry( finalSphereRadius, 32, 32 );
+    const solidSphereMaterial = new THREE.MeshStandardMaterial( {
+      color: 0x1e293b,
+      roughness: 0.6,
+      metalness: 0.3,
+      side: THREE.FrontSide,
+      transparent: true,
+      opacity: 0,
+      depthWrite: false
+    } );
+    const solidSphere = new THREE.Mesh( solidSphereGeometry, solidSphereMaterial );
+    sphereGroup.add( solidSphere );
+
+
+    // --- TECH STACK SPHERE CONSTRUCTION ---
+
+    const iconGeometry = new THREE.PlaneGeometry( finalLogoSize, finalLogoSize );
+
+    const numLogos = techStacks.length;
+    const goldenRatio = ( 1 + Math.sqrt( 5 ) ) / 2;
+    const angleIncrement = Math.PI * 2 * goldenRatio;
+
     techStacks.forEach( ( tech, i ) => {
-      // Calculate position
-      const angle = i * angleStep;
-      const x = Math.cos( angle ) * orbitRadius;
-      const z = Math.sin( angle ) * orbitRadius;
+      const logoGroup = new THREE.Group();
 
-      const capsuleGroup = new THREE.Group();
+      const t = i / numLogos;
+      const inclination = Math.acos( 1 - 2 * t );
+      const azimuth = angleIncrement * i;
 
-      // 1. Glass Shell
-      const shellGeometry = new THREE.CapsuleGeometry( 1.2 * capsuleScale, 1.5 * capsuleScale, 16, 32 );
-      const shellMaterial = new THREE.MeshPhysicalMaterial( {
-        color: 0xffffff,
-        metalness: 0.1,
-        roughness: 0.1,
-        transparent: true,
-        opacity: 0.15,
-        transmission: 0.9,
-        thickness: 0.5,
-        clearcoat: 1.0,
-        clearcoatRoughness: 0.05,
-        ior: 1.5,
-        depthWrite: false,
-      } );
-      const shell = new THREE.Mesh( shellGeometry, shellMaterial );
-      shell.renderOrder = 1;
-      capsuleGroup.add( shell );
+      // Calculate position slightly outside the solid sphere's radius
+      const x = ( finalSphereRadius + logoOffset ) * Math.sin( inclination ) * Math.cos( azimuth );
+      const y = ( finalSphereRadius + logoOffset ) * Math.sin( inclination ) * Math.sin( azimuth );
+      const z = ( finalSphereRadius + logoOffset ) * Math.cos( inclination );
 
-      // 2. Inner Color Glow
-      const innerGlowGeometry = new THREE.SphereGeometry( 0.8 * capsuleScale, 16, 16 );
-      const innerGlowMaterial = new THREE.MeshBasicMaterial( {
-        color: new THREE.Color( tech.color ),
-        transparent: true,
-        opacity: 0.4
-      } );
-      const innerGlow = new THREE.Mesh( innerGlowGeometry, innerGlowMaterial );
-      capsuleGroup.add( innerGlow );
+      logoGroup.position.set( x, y, z );
 
-      // 3. Icon Texture - Loaded from CDN
+      // Orient the group to face directly outward from the sphere's center
+      logoGroup.lookAt( new THREE.Vector3( x * 2, y * 2, z * 2 ) );
+
+
       textureLoader.load( tech.logo, ( texture ) => {
         texture.colorSpace = THREE.SRGBColorSpace;
 
-        const iconGeometry = new THREE.PlaneGeometry( 1.4 * capsuleScale, 1.4 * capsuleScale );
         const iconMaterial = new THREE.MeshBasicMaterial( {
           map: texture,
           transparent: true,
           side: THREE.DoubleSide,
           alphaTest: 0.1,
-          opacity: 1,
-          depthTest: false
         } );
         const iconMesh = new THREE.Mesh( iconGeometry, iconMaterial );
 
-        iconMesh.renderOrder = 2;
+        logoGroup.add( iconMesh );
 
-        capsuleGroup.add( iconMesh );
-        capsuleGroup.userData.iconMesh = iconMesh;
+        // Optional: Add a subtle glow behind each logo
+        const dotGeometry = new THREE.CircleGeometry( finalLogoSize * 0.5, 6 );
+        const dotMaterial = new THREE.MeshBasicMaterial( {
+          color: new THREE.Color( tech.color ),
+          transparent: true,
+          opacity: 0.2,
+          depthWrite: false
+        } );
+        const dotMesh = new THREE.Mesh( dotGeometry, dotMaterial );
+
+        dotMesh.position.z = -0.01;
+        logoGroup.add( dotMesh );
       } );
 
-      // Position the whole group
-      capsuleGroup.position.set( x, 0, z );
-      capsuleGroup.rotation.x = Math.PI / 6;
-      capsuleGroup.userData = { angle, tech };
-
-      scene.add( capsuleGroup );
-      capsules.push( capsuleGroup );
+      sphereGroup.add( logoGroup );
     } );
 
-    // --- PARTICLE SYSTEM ---
-    const particleCount = isMobile ? 400 : 800;
-    const particleGeometry = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array( particleCount * 3 );
-    const particleVelocities = [];
-
-    for ( let i = 0; i < particleCount; i++ ) {
-      particlePositions[ i * 3 ] = ( Math.random() - 0.5 ) * 80;
-      particlePositions[ i * 3 + 1 ] = ( Math.random() - 0.5 ) * 80;
-      particlePositions[ i * 3 + 2 ] = ( Math.random() - 0.5 ) * 80;
-
-      particleVelocities.push( {
-        x: ( Math.random() - 0.5 ) * 0.02,
-        y: ( Math.random() - 0.5 ) * 0.02,
-        z: ( Math.random() - 0.5 ) * 0.02
-      } );
-    }
-    particleGeometry.setAttribute( 'position', new THREE.BufferAttribute( particlePositions, 3 ) );
-    const particleMaterial = new THREE.PointsMaterial( {
-      color: 0x8b5cf6,
-      size: 0.15,
-      transparent: true,
-      opacity: 0.6,
-      blending: THREE.AdditiveBlending,
-      sizeAttenuation: true
-    } );
-    const particles = new THREE.Points( particleGeometry, particleMaterial );
-    scene.add( particles );
 
     // --- INPUT HANDLING ---
-    const handleMouseMove = ( e ) => {
-      if ( !containerRef.current ) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      mouseRef.current.x = ( ( e.clientX - rect.left ) / rect.width ) * 2 - 1;
-      mouseRef.current.y = -( ( e.clientY - rect.top ) / rect.height ) * 2 + 1;
-    };
 
     const handlePointerDown = ( e ) => {
       dragRef.current.isDragging = true;
       const clientX = e.touches ? e.touches[ 0 ].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[ 0 ].clientY : e.clientY;
       dragRef.current.startX = clientX;
+      dragRef.current.startY = clientY;
       dragRef.current.currentX = clientX;
-      dragRef.current.lastX = clientX;
+      dragRef.current.currentY = clientY;
       dragRef.current.lastTime = Date.now();
       containerRef.current.style.cursor = 'grabbing';
     };
@@ -298,13 +259,18 @@ export default function TechStackOrbit() {
     const handlePointerMoveGlobal = ( e ) => {
       if ( dragRef.current.isDragging ) {
         const clientX = e.touches ? e.touches[ 0 ].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[ 0 ].clientY : e.clientY;
+
         const deltaX = clientX - dragRef.current.currentX;
+        const deltaY = clientY - dragRef.current.currentY;
         const deltaTime = Date.now() - dragRef.current.lastTime;
+
         if ( deltaTime > 0 ) {
-          dragRef.current.velocity = ( deltaX / deltaTime ) * 10;
+          dragRef.current.velocityX = ( deltaX / deltaTime ) * 15;
+          dragRef.current.velocityY = ( deltaY / deltaTime ) * 15;
         }
         dragRef.current.currentX = clientX;
-        dragRef.current.lastX = clientX;
+        dragRef.current.currentY = clientY;
         dragRef.current.lastTime = Date.now();
       }
     };
@@ -314,7 +280,6 @@ export default function TechStackOrbit() {
       if ( containerRef.current ) containerRef.current.style.cursor = 'grab';
     };
 
-    window.addEventListener( 'mousemove', handleMouseMove );
     containerRef.current.addEventListener( 'mousedown', handlePointerDown );
     containerRef.current.addEventListener( 'touchstart', handlePointerDown, { passive: true } );
     window.addEventListener( 'mousemove', handlePointerMoveGlobal );
@@ -323,74 +288,24 @@ export default function TechStackOrbit() {
     window.addEventListener( 'touchend', handlePointerUp );
 
     // --- ANIMATION LOOP ---
-    let time = 0;
-    let rotationAngle = 0;
-    const baseOrbitSpeed = 0.002;
+    const autoRotationX = 0.01;
+    const autoRotationY = 0.008;
+    const friction = 0.98;
+    const dragSensitivity = 0.01;
 
     const animate = () => {
-      time += 0.01;
-
-      // Rotation Logic
-      if ( !dragRef.current.isDragging && Math.abs( dragRef.current.velocity ) < 0.001 ) {
-        rotationAngle += baseOrbitSpeed;
-      } else {
-        if ( !dragRef.current.isDragging ) {
-          dragRef.current.velocity *= 0.95; // Friction
-        }
-        rotationAngle += dragRef.current.velocity * 0.01;
+      // Apply friction when not dragging
+      if ( !dragRef.current.isDragging ) {
+        dragRef.current.velocityX *= friction;
+        dragRef.current.velocityY *= friction;
       }
 
-      // 1. Central Logo Animation (Pulse + Billboard)
-      logoGroup.quaternion.copy( camera.quaternion );
+      const dragFactorX = Math.abs( dragRef.current.velocityX * dragSensitivity ) > 0.0001 ? dragRef.current.velocityX * dragSensitivity : 0;
+      const dragFactorY = Math.abs( dragRef.current.velocityY * dragSensitivity ) > 0.0001 ? dragRef.current.velocityY * dragSensitivity : 0;
 
-      const pulseScale = 1 + Math.sin( time * 2 ) * 0.05;
-      logoGroup.scale.setScalar( pulseScale );
-
-      // Pulse the glow behind it
-      glow.scale.setScalar( 1 + Math.sin( time * 2 + 0.5 ) * 0.1 );
-
-      // 2. Rotate Ring
-      ring.rotation.y = rotationAngle;
-
-      // 3. Orbit Capsules
-      capsules.forEach( ( capsule, i ) => {
-        const currentAngle = capsule.userData.angle + rotationAngle;
-        const x = Math.cos( currentAngle ) * orbitRadius;
-        const z = Math.sin( currentAngle ) * orbitRadius;
-        const y = Math.sin( currentAngle * 2 + i ) * 0.5;
-
-        capsule.position.set( x, y, z );
-
-        // Make icons inside capsules always face camera
-        if ( capsule.userData.iconMesh ) {
-          capsule.userData.iconMesh.quaternion.copy( camera.quaternion );
-        }
-
-        // Inner glow pulse
-        if ( capsule.children[ 1 ] ) {
-          capsule.children[ 1 ].scale.setScalar( 1 + Math.sin( time * 3 + i ) * 0.1 );
-        }
-      } );
-
-      // 4. Particles
-      const positions = particles.geometry.attributes.position.array;
-      for ( let i = 0; i < particleCount; i++ ) {
-        positions[ i * 3 ] += particleVelocities[ i ].x;
-        positions[ i * 3 + 1 ] += particleVelocities[ i ].y;
-        positions[ i * 3 + 2 ] += particleVelocities[ i ].z;
-
-        // Wrap around
-        if ( Math.abs( positions[ i * 3 ] ) > 40 ) particleVelocities[ i ].x *= -1;
-        if ( Math.abs( positions[ i * 3 + 1 ] ) > 40 ) particleVelocities[ i ].y *= -1;
-        if ( Math.abs( positions[ i * 3 + 2 ] ) > 40 ) particleVelocities[ i ].z *= -1;
-      }
-      particles.geometry.attributes.position.needsUpdate = true;
-
-      // 5. Camera Parallax
-      const parallaxStrength = isMobile ? 1 : 3;
-      camera.position.x = THREE.MathUtils.lerp( camera.position.x, mouseRef.current.x * parallaxStrength, 0.05 );
-      camera.position.y = THREE.MathUtils.lerp( camera.position.y, cameraY - mouseRef.current.y * 2, 0.05 );
-      camera.lookAt( 0, 0, 0 );
+      // Apply rotation to the entire group
+      sphereGroup.rotation.y += dragFactorX + autoRotationX;
+      sphereGroup.rotation.x += dragFactorY + autoRotationY;
 
       renderer.render( scene, camera );
       requestAnimationFrame( animate );
@@ -408,53 +323,112 @@ export default function TechStackOrbit() {
     window.addEventListener( 'resize', handleResize );
 
     return () => {
-      window.removeEventListener( 'mousemove', handleMouseMove );
+      // Cleanup listeners
       window.removeEventListener( 'mousemove', handlePointerMoveGlobal );
       window.removeEventListener( 'touchmove', handlePointerMoveGlobal );
       window.removeEventListener( 'mouseup', handlePointerUp );
       window.removeEventListener( 'touchend', handlePointerUp );
       window.removeEventListener( 'resize', handleResize );
-
-      renderer.dispose();
-      if ( containerRef.current?.contains( renderer.domElement ) ) {
-        containerRef.current.removeChild( renderer.domElement );
+      if ( containerRef.current ) {
+        containerRef.current.removeEventListener( 'mousedown', handlePointerDown );
+        containerRef.current.removeEventListener( 'touchstart', handlePointerDown );
+        if ( containerRef.current.contains( renderer.domElement ) ) {
+          containerRef.current.removeChild( renderer.domElement );
+        }
       }
+      renderer.dispose();
     };
   }, [] );
 
   return (
     <section className="relative w-full overflow-hidden bg-[#05070E] py-24">
-      {/* Content Overlay */ }
+
+      {/* --------------------------------------------- */ }
+      {/* ANIMATED HEADER (Corrected Text and Cursor Logic) */ }
+      {/* --------------------------------------------- */ }
       <div className="relative z-10 max-w-7xl mx-auto px-6 pointer-events-none">
-        <div className="text-center mb-12">
+        <div className="text-center">
+          {/* CATEGORY TEXT */ }
           <p className="text-sm uppercase tracking-[0.45em] text-indigo-300 mb-4">
-            Technology
+            { category.displayedText }
+            <Cursor isTyping={ category.isTyping } />
           </p>
+
+          {/* MAIN TITLE TEXT */ }
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Built with industry-leading
+            { typedTitle }
+            { isTitleDone ? (
+              // Show gradient span when typing is done
+              <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent opacity-100 transition-opacity duration-1000">
+                technologies
+              </span>
+            ) : (
+              // Placeholder to prevent layout shift
+              <span className="opacity-0">technologies</span>
+            ) }
             <br />
-            <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
-              technologies
-            </span>
+            {/* FIXED: Cursor isTyping logic changed to just title.isTyping */ }
+            <Cursor isTyping={ title.isTyping } />
           </h2>
-          <p className="text-lg text-slate-300/80 max-w-2xl mx-auto">
-            Our engineering teams leverage a modern, scalable stack to deliver
-            Fortune-100-quality digital experiences
+
+          {/* DESCRIPTION TEXT */ }
+          {/* HIDDEN: Opacity transition is now only based on if the title is done, allowing description to type instantly after title finishes */ }
+          <p className={ `text-lg text-slate-300/80 max-w-2xl mx-auto transition-opacity duration-500 ${ isCategoryDone && isTitleDone ? 'opacity-100' : 'opacity-0' }` }>
+            { description.displayedText }
+            <Cursor isTyping={ description.isTyping } />
           </p>
         </div>
       </div>
 
-      {/* 3D Canvas */ }
-      <div
-        ref={ containerRef }
-        className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[800px] cursor-grab active:cursor-grabbing touch-none"
-        style={ {
-          background: 'radial-gradient(ellipse at center, rgba(79, 70, 229, 0.1) 0%, rgba(5, 7, 14, 0) 70%)'
-        } }
-      />
+      {/* ---------------------------------------------------- */ }
+      {/* TWO-COLUMN LAYOUT FOR COMMITMENTS AND 3D CANVAS */ }
+      {/* ---------------------------------------------------- */ }
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-      {/* Bottom CTA */ }
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center mt-12">
+          {/* LEFT SIDE: Focus Purity Commitment List */ }
+          <div className="text-center lg:text-left py-12 lg:py-0 pointer-events-auto">
+            <p className="text-sm uppercase tracking-[0.3em] text-cyan-300 mb-4">
+              The Engineering Philosophy
+            </p>
+            <h3 className="text-4xl font-extrabold text-white mb-10 leading-tight">
+              Commitments to <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent opacity-100 transition-opacity duration-1000">Focus Purity</span>
+            </h3>
+
+            {/* Commitment List */ }
+            <div className="space-y-8 max-w-md mx-auto lg:mx-0">
+              { commitments.map( ( item, index ) => (
+                <div key={ index } className="flex items-start gap-4">
+                  <div className="flex-shrink-0 text-3xl text-indigo-400 mt-1">{ item.icon }</div>
+                  <div>
+                    <h4 className="text-xl font-bold text-white mb-1">{ item.title }</h4>
+                    <p className="text-slate-400">{ item.description }</p>
+                  </div>
+                </div>
+              ) ) }
+            </div>
+
+            {/* CTA Button */ }
+            {/* <button className="mt-10 pointer-events-auto px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-all duration-300 shadow-xl shadow-indigo-900/40">
+              Learn More About Our Process
+            </button> */}
+          </div>
+
+
+          {/* RIGHT SIDE: 3D Sphere Canvas */ }
+          <div
+            ref={ containerRef }
+            className="w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[800px] cursor-grab active:cursor-grabbing touch-none relative"
+            style={ {
+              background: 'radial-gradient(ellipse at center, rgba(79, 70, 229, 0.1) 0%, rgba(5, 7, 14, 0) 70%)'
+            } }
+          />
+
+        </div>
+      </div>
+
+      {/* Bottom CTA (Original) */ }
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
         <p className="text-sm text-slate-400 mb-6">
           Need a custom stack? We architect secure, compliant platforms for enterprise-grade workloads
         </p>
@@ -462,9 +436,9 @@ export default function TechStackOrbit() {
           <button className="pointer-events-auto px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-300">
             Our Capabilities
           </button>
-          <button className="pointer-events-auto px-6 py-3 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all duration-300">
+          {/* <button className="pointer-events-auto px-6 py-3 border border-white/20 text-white font-semibold rounded-full hover:bg-white/5 transition-all duration-300">
             Join the Team
-          </button>
+          </button> */}
         </div>
       </div>
 
@@ -474,7 +448,7 @@ export default function TechStackOrbit() {
           <div className="flex flex-col items-center gap-4">
             <div className="w-12 h-12 border-4 border-indigo-500/30 border-t-indigo-500 rounded-full animate-spin"></div>
             <div className="text-indigo-400 text-lg animate-pulse">
-              Initializing orbital systems...
+              Initializing sphere protocols...
             </div>
           </div>
         </div>

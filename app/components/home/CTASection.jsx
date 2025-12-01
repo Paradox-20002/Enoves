@@ -7,10 +7,10 @@ export default function CTASection() {
   return (
     <section
       data-home-section="cta"
-      className="relative bg-transparent px-6 py-24 sm:px-10 lg:px-12"
+      className="relative bg-transparent px-10 py-24 "
     >
 
-      <div className="mx-auto relative z-10 max-w-5xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
+      <div className="mx-auto relative z-10 max-w-6xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
         <motion.div
           initial={ { opacity: 0, y: 30 } }
           whileInView={ { opacity: 1, y: 0 } }
@@ -34,12 +34,12 @@ export default function CTASection() {
             >
               Book a working session
             </Link>
-            <Link
+            {/* <Link
               href="/services"
               className="inline-flex items-center rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white"
             >
               Download capabilities →
-            </Link>
+            </Link> */}
           </div>
         </motion.div>
       </div>
