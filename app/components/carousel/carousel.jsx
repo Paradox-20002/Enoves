@@ -5,16 +5,16 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import AuroraScene from "../Aurora"; // Adjust the import path
 
-const TRACK_DURATION = 32; // seconds
+const TRACK_DURATION = 100; // seconds
 const CARD_WIDTH = 180;
 const CARD_HEIGHT = 80;
 
-export default function Carousel( { img1, img2, img3, img4, className = "" } ) {
+export default function Carousel( { img1, img2, img3, img4, img5, img6, className = "" } ) {
   const containerRef = useRef( null );
 
-  const provided = [ img1, img2, img3, img4, img1, img2, img3, img4 ].filter( Boolean );
+  const provided = [ img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6, img1, img2, img3, img4, img5, img6 ].filter( Boolean );
   const logos = ( provided.length ? provided : [ "enoves", "linkedin", "saas", "seo" ] ).map(
-    ( logo ) => logo.replace( /^\//, "" ).replace( /\.svg$/, "" )
+    ( logo ) => logo.replace( /^\//, "" ).replace( /\.webp$/, "" )
   );
 
   const duplicatedLogos = [ ...logos, ...logos ];
@@ -73,12 +73,12 @@ export default function Carousel( { img1, img2, img3, img4, className = "" } ) {
             style={ { transformStyle: "preserve-3d" } }
           >
             <Image
-              src={ `/${ logo }.svg` }
+              src={ `/client-images/${ logo }.webp` }
               alt={ `${ logo } logo` }
               width={ CARD_WIDTH }
               height={ CARD_HEIGHT }
               className="h-[70px] w-full object-contain"
-              priority={ index < 4 }
+              priority={ index < 6 }
             />
           </motion.div>
         ) ) }

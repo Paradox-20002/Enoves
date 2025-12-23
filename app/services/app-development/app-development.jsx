@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { appDevelopmentFaqs } from "./app-development-content";
 import FaqSection from "../../components/faq/faq";
 import Image from "next/image";
+import CTASection from "../../components/home/CTASection";
 
 export default function AppDevelopment() {
   const featureSections = [
@@ -190,13 +191,13 @@ export default function AppDevelopment() {
                 <div className="mt-6 flex flex-row items-center gap-3 flex-nowrap">
                   <Link
                     href="/services/digital-marketing/learn-more"
-                    className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
+                    className="inline-flex items-center justify-center rounded-full border border-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-fuchsia-500 px-6 py-3 text-[9px] lg:text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/60"
                   >
                     Learn more
                   </Link>
                   <Link
                     href="/about"
-                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-3 py-3 text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-purple-400/60 hover:bg-white/10"
+                    className="inline-flex items-center justify-center rounded-full border border-white/20 px-9 py-3 text-[9px] lg:text-sm font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-purple-400/60 hover:bg-white/10"
                   >
                     About us
                   </Link>
@@ -240,8 +241,11 @@ export default function AppDevelopment() {
           ) }
         </div>
       </div>
+      <section>
+        <CTASection/>
+      </section>
 
-      <section
+      {/* <section
         className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
         style={ { background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" } }
       >
@@ -263,7 +267,7 @@ export default function AppDevelopment() {
             Book a strategy call
           </motion.button>
         </Link>
-      </section>
+      </section> */}
       <section className="relative mx-auto max-w-6xl w-full px-6">
         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
         <div className="relative z-10 flex flex-col gap-6">

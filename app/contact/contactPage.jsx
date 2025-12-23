@@ -86,12 +86,12 @@ export default function ContactPage() {
 
       {/* Contact Methods */ }
       <section className="max-w-6xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid  grid-cols-1 md:grid-cols-3 gap-6">
           { contactMethods.map( ( method, index ) => (
             <a
               key={ index }
               href={ method.href }
-              className="group p-6 rounded-2xl border border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 bg-purple-800/5"
+              className="group place-items-center p-6 rounded-2xl border border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 bg-purple-800/5"
             >
               <div className="text-4xl mb-4 text-[#695aff]">
                 <i className={ method.icon }></i>

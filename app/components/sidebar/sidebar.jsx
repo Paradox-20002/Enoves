@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import "./sidebar.css";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Sidebar() {
   const [ isOpen, setIsOpen ] = useState( false );
@@ -40,16 +41,32 @@ export default function Sidebar() {
         </button>
         { isOpen && (
           <div className="sidebar-menu">
-            <button className="sidebar-close-btn" onClick={ toggleSidebar }>
+            <div>
+              <button className="sidebar-close-btn" onClick={ toggleSidebar }>
               <FaTimes />
-            </button>
+              </button>
+              <div>
+                <Image src="/favicon.ico" alt="logo" width={ 60 } height={ 60 } />
+              </div>
+            </div>
             <h2 className="sidebar-heading">
               We are global digital brand tech agency
             </h2>
-            <h2 className="sidebar-city">Newyork</h2>
-            <h5 className="sidebar-address">
-              123 Business St, Suite 456, City, State, ZIP Code 3456, Country.
-            </h5>
+            <div className="flex items-center gap-4 p-2 mt-6 rounded-md border cursor-pointer hover:bg-white/5 transition-all" style={{border: '1px solid rgba(255, 255, 255, 0.04)', background: 'rgba(255, 255, 255, 0.01)'}}>
+              {/* Icon */}
+              <span className="flex items-center justify-center text-xl text-white flex-shrink-0" style={{width: '44px'}}>
+                <i className="fa-solid fa-location-dot"></i>
+              </span>
+
+              {/* City and Address */}
+              <div className="flex flex-col flex-1 min-w-0">
+                <h2 className="text-base font-semibold text-white m-0">New York</h2>
+                <h5 className="text-xs text-gray-400 m-0 mt-1" style={{color: '#cbd5e1'}}>
+                  123 Business St, Suite 456, City, State, ZIP Code 3456, Country.
+                </h5>
+              </div>
+            </div>
+
             <div className="sidebar-mail">
               <div className="sidebar-mail-icon">
                 <FaEnvelope />
@@ -61,7 +78,7 @@ export default function Sidebar() {
             </div>
             <div className="sidebar-mail">
               <div className="sidebar-mail-icon">
-                <FaPhone />
+                <span><i className="fa-solid fa-phone"></i></span>
               </div>
               <div className="sidebar-mail-text">
                 <h6>Call 24/7</h6>

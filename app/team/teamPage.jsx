@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { leadershipTeam, DevTeam, MarketingTeam, SEOteam } from "./team";
+import { leadershipTeam, DevTeam, MarketingTeam, SEOteam, MoreLeaders } from "./team";
 // 1. Framer Motion Import
 import { motion } from "framer-motion";
 import TypingEffect from "./typingeffect";
@@ -133,7 +133,7 @@ export default function TeamPage() {
               alt={ ceo.name }
               fill
               style={ { objectFit: "cover" } }
-              className="transition-transform duration-500 hover:scale-105"
+              className="transition-transform h-300 duration-500 hover:scale-105"
             />
             {/* Dark Overlay with CEO Info */ }
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0d]/90 via-transparent to-transparent flex flex-col justify-end p-8">
@@ -171,15 +171,15 @@ export default function TeamPage() {
               animate={ { opacity: 1 } }
               transition={ { delay: 0.2, duration: 0.5 } }
             >
-              CEO Vision
+              {/* CEO Vision */}
             </motion.p>
             <motion.h2
-              className="text-4xl lg:text-5xl font-extrabold text-white mb-8 leading-tight"
+              className="text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-8 leading-tight"
               initial={ { opacity: 0, y: 10 } }
               animate={ { opacity: 1, y: 0 } }
               transition={ { delay: 0.4, duration: 0.6 } }
             >
-              Crafting Digital Excellence
+              Our CEO's Vision
             </motion.h2>
 
             <motion.div
@@ -194,12 +194,61 @@ export default function TeamPage() {
               </div>
 
               <div className="text-right mt-4 text-sm font-semibold text-white">
-                { typing && <TypingEffect text="Muhammad Noman" /> }
+                { typing && <TypingEffect text="Aqeel" /> }
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+      <section className="mx-auto mt-20 max-w-6xl px-4 text-center">
+        <motion.h2
+          className="text-5xl font-extrabold text-white"
+          initial={ { opacity: 0, scale: 0.8 } }
+          whileInView={ { opacity: 1, scale: 1 } }
+          viewport={ { once: true, amount: 0.5 } }
+          transition={ { duration: 0.8 } }
+        >
+          <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            Our Leadership
+          </span>
+        </motion.h2>
+        <p className="mt-4 text-lg text-gray-400">
+          Meet the exceptional leadership driving our momentum across all departments.
+        </p>
+      </section>
+<section className="mt-14">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+    {MoreLeaders.map((team, index) => (
+      <motion.div
+        key={team.name}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="flex flex-col bg-gradient-to-b from-[#2a2a45] to-[#1a1a2e] border border-white/10 rounded-3xl shadow-xl shadow-black/20 overflow-hidden backdrop-blur-xl"
+      >
+        <Image
+          className="rounded-t-3xl object-cover w-100 h-110"
+          src={team.images}
+          alt={team.name}
+          width={100}
+          height={110}
+        />
+
+        <div className="p-6 text-center space-y-1">
+          <p className="text-3xl font-extrabold text-purple-300 tracking-wide drop-shadow-md">
+            {team.title}
+          </p>
+          <h2 className="text-lg font-semibold text-gray-200 uppercase tracking-wide">
+            {team.name}
+          </h2>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</section>
+
+
 
       <section className="mx-auto mt-20 max-w-6xl px-4 text-center">
         <motion.h2
@@ -236,7 +285,7 @@ export default function TeamPage() {
         </div>
 
         <motion.div
-          className="flex flex-wrap justify-center gap-8"
+          className="flex flex-wrap justify-center gap-18"
           variants={ containerVariants }
           initial="hidden"
           whileInView="show"

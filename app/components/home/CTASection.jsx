@@ -30,7 +30,12 @@ export default function CTASection() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="inline-flex items-center rounded-full bg-gradient-to-r from-[#7c3aed] via-[#9333ea] to-[#0ea5e9] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+              className="inline-flex items-center rounded-full bg-gradient-to-r
+              from-[#7c3aed] via-[#9333ea] to-[#0ea5e9]
+              px-6 py-3 text-sm font-semibold text-white
+              transition hover:scale-110
+              hover:shadow-[0_0_20px_rgba(124,58,237,0.6),0_0_35px_rgba(14,165,233,0.4)]
+              "
             >
               Book a working session
             </Link>
@@ -46,3 +51,5 @@ export default function CTASection() {
     </section>
   );
 }
+
+

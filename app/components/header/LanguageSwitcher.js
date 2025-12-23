@@ -46,7 +46,7 @@ export default function LanguageSwitcher () {
       </button>
 
       { open && (
-        <ul className="lang-menu" role="menu">
+        <ul className="lang-menu max-h-64 overflow-y-auto scroll-hide" role="menu">
           { LANGUAGE_OPTIONS.map((l) => (
             <li key={ l.code } role="menuitem">
               <button
@@ -57,7 +57,7 @@ export default function LanguageSwitcher () {
               >
                 <span className="flag">{ l.flag }</span>
                 <span className="label">{ l.label }</span>
-                { l.code === language && <span className="current-tag">Active</span> }
+                {/* { l.code === language && <span className="current-tag">Active</span> } */}
               </button>
             </li>
           )) }

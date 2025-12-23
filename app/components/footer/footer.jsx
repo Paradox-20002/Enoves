@@ -56,8 +56,8 @@ export default function Footer() {
             </svg>
           </Link>
 
-          <h3 className="text-sm max-w-[260px] text-slate-300 md:text-left max-sm:text-center">
-            We are a global digital brand tech agency
+          <h3 className="text-sm max-w-[260px] py-4 text-slate-300 md:text-left max-sm:text-center">
+           We are a global digital brand tech agency creating standout brands and scalable digital products for ambitious businesses.
           </h3>
 
           <div className="flex flex-col gap-2">
@@ -116,36 +116,36 @@ export default function Footer() {
 
         {/* COLUMN 3 */ }
         <div className="flex flex-col gap-4 md:items-start max-sm:items-center max-sm:text-center">
-          <h4 className="text-xl font-bold">Industries</h4>
+          <h4 className="text-xl font-bold">Our Services</h4>
           <ul className="flex flex-col gap-3 text-slate-300">
             <li>
-              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+              <Link href="/services/digital-marketing" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                <span>Finance and Fintech</span>
+                <span>Digital Marketing</span>
               </Link>
             </li>
             <li>
-              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+              <Link href="/services/web-development" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                <span>Healthcare and Life</span>
+                <span>Web Development</span>
               </Link>
             </li>
             <li>
-              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+              <Link href="/services/custom-software-development" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                <span>Retail and E-commerce</span>
+                <span>Custom Software Development</span>
               </Link>
             </li>
             <li>
-              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+              <Link href="/services/product-hunt-support" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                <span>Government and Public</span>
+                <span>Product Design</span>
               </Link>
             </li>
             <li>
-              <Link href="/" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
+              <Link href="/services" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                <span>Travel and Hospitality</span>
+                <span>More Services </span>
               </Link>
             </li>
           </ul>

@@ -1,3 +1,8 @@
+/* .sidebar {
+  position: absolute;
+  right: -70px;
+} */
+
 .sidebar-menu {
   overflow: auto;
   position: absolute;
@@ -14,35 +19,41 @@
   animation: slideIn 0.01s ease;
   z-index: 1000;
   box-sizing: border-box;
-  padding: 1.25rem; /* keeps inner content aligned and provides consistent inner width */
+  padding: 1.25rem;
+  /* keeps inner content aligned and provides consistent inner width */
 }
 
 /* Mail block: text stacked on the left, icon on the right */
-.sidebar-mail{
+.sidebar-mail {
   margin-top: 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* text left, icon right */
+  justify-content: space-between;
+  /* text left, icon right */
   width: 100%;
   box-sizing: border-box;
   gap: 1rem;
-  padding: 0.45rem 0.6rem;
+  padding: 0.75rem 0.6rem;
   border-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.04);
-  background: rgba(255,255,255,0.01);
+  background: rgba(255, 255, 255, 0.01);
   cursor: pointer;
   /* transition: background 2s ease; */
 }
+/* 
 .sidebar-mail:hover {
   background: rgba(255, 255, 255, 0.05);
-}
+} */
 
 .sidebar-mail-text {
   display: flex;
   flex-direction: column;
   line-height: 1.05;
-  flex: 1 1 auto; /* allow text to take available space */
-  min-width: 0; /* prevent overflow */
+  gap: 5px;
+  flex: 1 1 auto;
+  /* allow text to take available space */
+  min-width: 0;
+  /* prevent overflow */
 }
 
 .sidebar-mail-text h6 {
@@ -59,7 +70,8 @@
 }
 
 .sidebar-mail-icon {
-  flex: 0 0 44px; /* fixed width so icons line up on right edge */
+  flex: 0 0 44px;
+  /* fixed width so icons line up on right edge */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -67,57 +79,64 @@
   color: #fff;
 }
 
-.sidebar-toggle-btn{
+.sidebar-toggle-btn {
   padding: 7px;
-  color: #fff;
+  color: #000000;
   font-size: 1.5rem;
   cursor: pointer;
   border-radius: 5%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
-.sidebar-close-btn{
+
+.sidebar-close-btn {
   position: absolute;
-  top: 15px;
+  top: 25px;
   right: 15px;
   padding: 7px;
-  color: #fff;
+  color: #ffffff;
   font-size: 1.5rem;
   cursor: pointer;
   border-radius: 35%;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
-.sidebar-heading{
-  padding-top: 20%;
+
+.sidebar-heading {
+  padding-top: 10%;
   font-size: 1.5rem;
   font-weight: 700;
   margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
-.sidebar-city{
+
+.sidebar-city {
   /* margin-left: 1.5rem; */
   font-size: 1.5rem;
   padding-top: 5%;
 }
-.sidebar-address{
+
+.sidebar-address {
   /* margin-left: rem; */
   margin-top: 0.4rem;
   margin-right: 0.4rem;
   font-size: 1rem;
   margin-bottom: 2rem;
 }
-.form-submit{
+
+.form-submit {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-.sidebar-subscribe{
-    margin-top: 1.8rem;
-    margin-bottom: 1rem;
-    font-size: 1.4rem;
+
+.sidebar-subscribe {
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
 }
-.form-input{
+
+.form-input {
   width: 100%;
   padding: 0.75rem;
   padding-right: 2.3rem;
@@ -128,9 +147,10 @@
   font-size: 1rem;
   box-sizing: border-box;
   margin-bottom: 1rem;
-  
+
 }
-.form-icon{
+
+.form-icon {
   position: absolute;
   right: 10px;
   color: #fff;
@@ -138,7 +158,8 @@
   cursor: pointer;
   top: 25%;
 }
-.sidebar-icons{
+
+.sidebar-icons {
   display: flex;
   gap: 1.9rem;
   margin-top: 2rem;
@@ -146,11 +167,13 @@
   align-items: center;
   font-size: 1.4rem;
 }
-.sidebar-icons a{
+
+.sidebar-icons a {
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
-.sidebar-icons a:hover{
+
+.sidebar-icons a:hover {
   color: #7c72f7;
 }

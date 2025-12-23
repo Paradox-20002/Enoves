@@ -6,6 +6,7 @@ import Search from "../search/search";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Sidebar from "../sidebar/sidebar";
 import { megaMenuData } from "./megaMenuData";
+import { ModeToggle } from "../dark-light-theme/toggle-switch";
 
 export default function DesktopNav( {
   isMegaOpen,
@@ -22,7 +23,7 @@ export default function DesktopNav( {
     <div className="nav-right1">
       <ul className="nav-list1" id="site-navigation">
         <li>
-          <Link href="/" className="nav-link">
+          <Link href="/" className="nav-link ">
             Home
           </Link>
         </li>
@@ -92,37 +93,7 @@ export default function DesktopNav( {
             onClick={ () => setIsDropdownOpen( false ) } // close when navigating
           >
             Portfolio
-            {/* <span
-              className="dropdown-arrow">▼
-
-            </span> */}
           </Link>
-          {/* <ul className="dropdown-menu">
-            <li>
-              <Link
-                href="/portfolio/websites"
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Websites
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/portfolio/apps"
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Applications
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/portfolio/designs"
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Designs
-              </Link>
-            </li>
-          </ul> */}
         </li>
 
         <li>
@@ -130,11 +101,11 @@ export default function DesktopNav( {
             Contact us
           </Link>
         </li>
-        <li className="nav-search">
-          <Search />
-        </li>
+        {/* <li className="nav-search">
+          <ModeToggle />
+        </li> */}
         <li>
-          <Link href="/contact" className="lets-talk-btn">
+          <Link href="https://wa.me/919811222222" className="lets-talk-btn">
             Let's Talk
           </Link>
         </li>

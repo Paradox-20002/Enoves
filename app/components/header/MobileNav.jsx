@@ -117,9 +117,9 @@ export default function MobileNav( {
               <div className="nav-mobile-language">
                 <LanguageSwitcher />
               </div>
-              <div className="nav-mobile-search">
+              {/* <div className="nav-mobile-search">
                 <Search />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

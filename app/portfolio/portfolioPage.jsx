@@ -207,7 +207,7 @@ export default function PortfolioPage() {
           onClick={ () => setActiveProject( null ) }
         >
           <div
-            className="relative h-[80vh] w-full max-w-5xl overflow-hidden rounded-3xl border border-purple-500/30 bg-[#0f0f13] shadow-2xl"
+            className="relative h-[80vh] w-full max-w-7xl overflow-hidden rounded-3xl border border-purple-500/30 bg-[#0f0f13] shadow-2xl"
             onClick={ ( event ) => event.stopPropagation() }
           >
             <button

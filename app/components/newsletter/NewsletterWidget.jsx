@@ -138,7 +138,7 @@ export default function NewsletterWidget() {
               w-full rounded-2xl bg-gradient-to-b from-[#0b1220] to-[#0a0f1a]
               px-6 py-3 text-sm font-semibold text-white
               transition-all
-              hover:-translate-y-1 hover:shadow-lg hover:shadow-[#05070E]
+              hover:scale-105 hover:shadow-lg hover:shadow-white
               active:translate-y-0
               disabled:opacity-50 disabled:cursor-not-allowed
             "

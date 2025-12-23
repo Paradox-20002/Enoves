@@ -1,3 +1,11 @@
+@property --angle {
+  syntax: "<angle>";
+  /* Type of value */
+  initial-value: 0deg;
+  /* Start angle for animation */
+  inherits: false;
+}
+
 .slider {
   width: 100%;
   height: 100vh;
@@ -42,14 +50,14 @@
 .content {
   position: absolute;
   top: 30%;
-  left: 20%;
-  transform: translateX(50%);
+  left: 0%;
+  /* transform: translateX(50%); */
   text-align: center;
   color: white;
   z-index: 2;
   width: 90%;
   max-width: 900px;
-  padding: 0 1.5rem;
+  /* padding: 0 1.5rem; */
 }
 
 .content-label {
@@ -62,7 +70,7 @@
 }
 
 .content h2 {
-  font-size: 3rem;
+  font-size: 64px;
   margin-bottom: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
@@ -83,9 +91,74 @@
   margin-right: auto;
 }
 
+/* Angle property */
+/* @property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+} */
+
+/* Rotating & glowing border layers */
+.cta-button::after,
+.cta-button::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  z-index: -1;
+
+  /* Animated border uses var(--angle) */
+  background: conic-gradient(from var(--angle),
+      #722828,
+      #ff2a00,
+      #252323,
+      #9fe413,
+      #750f77,
+      #e5f00d);
+
+  /* Always animate rotation */
+  animation: spin-border 3s linear infinite;
+}
+
+/* Glow layer (blurred version) */
+.cta-button::before {
+  z-index: -2;
+  filter: blur(6px);
+  opacity: 0.8;
+
+  /* Always animate glow too */
+  animation: blur-effect 2s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin-border {
+  from {
+    --angle: 0deg;
+  }
+
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Glow pulse animation */
+@keyframes blur-effect {
+  0% {
+    filter: blur(6px);
+    opacity: 0.7;
+  }
+
+  100% {
+    filter: blur(18px);
+    opacity: 1;
+  }
+}
+
+/* Button base styles */
 .cta-button {
   display: inline-flex;
-  align-items: center;
+  /* align-items: center; */
+  position: relative;
   gap: 0.5rem;
   padding: 0.875rem 1.75rem;
   font-size: 0.95rem;
@@ -98,10 +171,10 @@
   box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
 }
 
-.cta-button:hover {
+/* .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(124, 58, 237, 0.5);
-}
+} */
 
 .navigation {
   position: absolute;

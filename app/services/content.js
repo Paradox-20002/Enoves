@@ -11,29 +11,28 @@ export const serviceHighlights = [
     title: "Mobile App Development Services",
     description:
       "We craft intuitive, high-performing apps that combine human-centred design with robust engineering to thrive across every platform.",
-    href: "/services/mobile-app-development",
+    href: "/services/app-development",
     icon: "fa-solid fa-mobile-screen",
   },
   {
-    title: "Artificial Intelligence & Machine Learning",
-    description:
-      "We unlock intelligent automation, predictive insights, and trusted AI strategies that improve decision-making while safeguarding your data.",
-    href: "/services/artificial-intelligence-machine-learning",
-    icon: "fa-solid fa-brain",
+    title: "Linkedin Outreach",
+    description: "Expand your visibility and generate quality leads through personalized, data-backed LinkedIn outreach.",
+    href: "/services/linkedin-outreach",
+    icon: "fa-solid fa-rocket",
   },
   {
-    title: "Generative AI Solutions",
+    title: "Email Marketing",
     description:
-      "We deploy generative AI to automate workflows, enrich content, and deliver personalised customer interactions at scale.",
-    href: "/services/generative-ai",
-    icon: "fa-solid fa-wand-magic-sparkles",
+      "We create engaging, high-quality emails to improve your brand's visibility and attract more customers.",
+    href: "/services/email-marketing",
+    icon: "fa-solid fa-envelope",
   },
   {
-    title: "Custom Shopify Solutions",
+    title: "Social Media Marketing",
     description:
-      "We design commerce ecosystems that understand customer behaviour, optimise every interaction, and convert effortlessly.",
-    href: "/services/custom-shopify",
-    icon: "fa-solid fa-shopping-cart",
+      "We craft social strategies that understand audience behavior, elevate engagement, and drive meaningful conversions",
+    href: "/services/social-media-marketing",
+    icon: "fa-solid fa-hashtag",
   },
   {
     title: "Full-Cycle Digital Marketing",
@@ -43,24 +42,24 @@ export const serviceHighlights = [
     icon: "fa-solid fa-chart-line",
   },
   {
-    title: "DevOps & Kubernetes",
+    title: "SEO Solutions",
     description:
-      "We transform complex infrastructure into intelligent pipelines that accelerate releases and maximise reliability.",
-    href: "/services/devops-kubernetes",
-    icon: "fa-solid fa-gears",
+      "We boost visibility with data-powered SEO solutions built to increase rankings and attract the right audience.",
+    href: "/services/seo",
+    icon: "fa-solid fa-rocket",
   },
   {
-    title: "Cloud Solutions",
+    title: "Pre and Post Support",
     description:
-      "We architect scalable, secure cloud environments tailored to boost agility, performance, and time-to-market.",
-    href: "/services/cloud-solutions",
-    icon: "fa-solid fa-cloud",
+      "We deliver seamless pre and post-launch support that helps you convert trial users, improve onboarding, and maximize retention.",
+    href: "/services/pre-post-support",
+    icon: "fa-solid fa-headset",
   },
   {
-    title: "UI/UX Design Services",
+    title: "UI/UX Design",
     description:
       "We merge strategy and creativity to craft user journeys that captivate audiences and drive measurable outcomes.",
-    href: "/services/ui-ux-design",
+    href: "/services/uiux",
     icon: "fa-solid fa-palette",
   },
 ];

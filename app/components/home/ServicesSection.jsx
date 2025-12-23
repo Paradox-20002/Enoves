@@ -17,7 +17,7 @@ const services = [
     icon: "✨",
   },
   {
-    title: "Growth Engineering",
+    title: "Digital Marketing",
     description:
       "AI copilots, automation, and campaign ops that sync marketing, revenue, and customer success into one pipeline.",
     icon: "🧠",
@@ -48,9 +48,9 @@ export default function ServicesSection() {
           </p>
           <Link
             href="/services"
-            className="inline-flex items-center rounded-full bg-gradient-to-r from-[#7c3aed] via-[#9333ea] to-[#0ea5e9] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5"
+            className="group inline-flex items-center rounded-full bg-gradient-to-r from-[#7c3aed] via-[#9333ea] to-[#0ea5e9] px-6 py-3 text-sm font-semibold text-white transition hover:scale-105 hover:shadow-[0_0_20px_rgba(124,58,237,0.6),0_0_35px_rgba(14,165,233,0.4)]"
           >
-            View full services catalog →
+            View full services catalog <span className="ml-2 transition group-hover:translate-x-2">→</span>
           </Link>
         </div>
 
