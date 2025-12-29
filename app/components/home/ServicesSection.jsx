@@ -26,7 +26,7 @@ const services = [
     title: "Growth Engineering",
     description:
       "AI copilots, automation, and campaign ops that sync marketing, revenue, and customer success into one pipeline.",
-    icon: "🧠",
+    icon: "💻",
   },
 ];
 
@@ -34,13 +34,13 @@ export default function ServicesSection() {
   return (
     <section
       data-home-section="services"
-      className="relative overflow-hidden bg-transparent px-6 py-20 sm:px-10 lg:px-12"
+      className="relative overflow-hidden bg-transparent px-6 py-30 sm:px-10 lg:px-12"
     >
 
       <div className="mx-auto relative z-10 grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-        <div className="space-y-6">
-          <p className="text-lg lg:text-2xl font-bold uppercase tracking-[0.4em] text-violet-400">Services</p>
-          <h2 className="text-2xl lg:text-6xl font-bold leading-tight text-white md:text-5xl">
+        <div className="space-y-3">
+          <p className="text-lg lg:text-2xl font-bold uppercase tracking-[0.3em] text-violet-400">Services</p>
+          <h2 className="text-2xl lg:text-4xl font-bold leading-tight text-white md:text-4xl">
             Build Once, Scale Everywhere.
           </h2>
           <p className="text-base text-slate-200/80">

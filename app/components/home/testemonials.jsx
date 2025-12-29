@@ -69,10 +69,10 @@ export default function Testimonials() {
           >
             <Quote className="w-6 h-6 text-white" />
           </motion.div> */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-200">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-200">
             What People Say
           </h2>
-          <p className="text-base text-gray-400 mt-2 max-w-2xl mx-auto">
+          <p className="text-base text-gray-300 mt-2 max-w-2xl mx-auto">
             A beautifully contrasting experience powered by real voices.
           </p>
         </motion.div>

@@ -85,12 +85,12 @@ const Slider = ({ heading }) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}
                 >
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl mb-5 font-bold leading-tight bg-gradient-to-r from-white via-indigo-100 to-indigo-200 bg-clip-text text-transparent">
+                  <h1 className="text-3xl md:text-5xl lg:text-5xl mb-5 font-bold leading-tight bg-gradient-to-r from-white via-indigo-100 to-indigo-200 bg-clip-text text-transparent">
                     {slide.title}{" "}
                     <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                       {slide.spann}
                     </span>
-                  </h2>
+                  </h1>
 
                   <p className="text-base md:text-lg lg:text-xl mb-8 text-white/90 max-w-[650px]">
                     {slide.description}

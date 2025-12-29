@@ -57,7 +57,7 @@ export default function Header() {
       <nav className="nav">
         <Link href="/" className="logo-link" aria-label="Enoves home">
           {/* Inline SVG so color can be controlled precisely with CSS */}
-          <Image src="./Enoves.svg" width={150} height={150}/>
+          <Image src="./Enoves.svg" alt="enoves logo" width={150} height={150}/>
         </Link>
 
         <button

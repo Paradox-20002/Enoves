@@ -329,12 +329,12 @@ export default function TechStackOrbit() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#04060D] py-20 lg:px-24">
+    <section className="relative w-full overflow-hidden bg-[#04060D] py-30 lg:px-24">
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pointer-events-none">
         <div className="text-center">
 
-          <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-gray-100 leading-tight flex flex-wrap items-center justify-center gap-1 mb-4 lg:items-start lg:justify-start">
+          <h2 className="text-2xl md:text-4xl lg:text-4xl font-bold text-gray-100 leading-tight flex flex-wrap items-center justify-center gap-1 mb-4 lg:items-start lg:justify-start">
             {typedTitle}
 
             {isTitleDone ? (
@@ -363,11 +363,11 @@ export default function TechStackOrbit() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
           <div className="text-center py-10 lg:text-left lg:py-0 pointer-events-auto">
-            <p className="text-lg uppercase tracking-[0.3em] text-violet-400 font-bold mb-4">
+            <p className="text-lg uppercase tracking-[0.1em] text-violet-400 font-bold mb-4">
               The Engineering Philosophy
             </p>
 
-            <h3 className="text-4xl font-extrabold text-gray-100 mb-10 leading-tight">
+            <h3 className="text-2xl lg:text-4xl font-bold text-gray-100 mb-10 leading-tight">
               Commitments to{' '}
               <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 Focus Purity
