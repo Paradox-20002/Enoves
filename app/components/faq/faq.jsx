@@ -8,9 +8,9 @@ const FaqSection = ({ faqs }) => {
   };
 
   return (
-    <section className="mt-5 flex flex-col mx-10 lg:mx-35 gap-10 text-white">
+    <section className="mt-5 lg:mb-20 flex flex-col mx-10 lg:mx-35 gap-10 text-white">
       <header className="flex flex-col gap-4 text-left">
-        <h2 className="text-3xl lg:text-5xl font-bold md:text-4xl">
+        <h2 className="text-2xl lg:text-4xl font-bold md:text-4xl">
           Frequently Asked Questions
         </h2>
         <p className="text-base text-white/70">

@@ -401,11 +401,15 @@ export default function TechStackOrbit() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <button className="pointer-events-auto px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all duration-300 hover:scale-105">
-          Our Capabilities
-        </button>
-      </div>
+<div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+  <div className="capabilities-btn inline-block">
+    <button className="pointer-events-auto px-6 py-3 bg-gradient-to-r from-indigo-600 via-purple-600 to-cyan-500 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(139,92,246,0.35)] transition-all duration-300 hover:scale-95">
+      Our Capabilities
+    </button>
+  </div>
+</div>
+
+
 
       {!isLoaded && (
         <div className="absolute inset-0 flex items-center justify-center bg-[#05070E] z-50">
@@ -418,6 +422,77 @@ export default function TechStackOrbit() {
           </div>
         </div>
       )}
+      <style jsx>{`
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+  .capabilities-btn {
+    position: relative;
+    display: inline-flex;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(
+      135deg,
+      #6366f1 0%,
+      #8b5cf6 50%,
+      #22d3ee 100%
+    );
+    border-radius: 9999px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.25);
+  }
+
+  /* DARK STATIC BASE (BACKGROUND) */
+  .capabilities-btn::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 9999px;
+    z-index: -2;
+    background: #0f172a; /* slate-900 */
+    opacity: 0.9;
+  }
+
+  /* LIGHT MOVING ANIMATION */
+  .capabilities-btn::after {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 9999px;
+    z-index: -1;
+    background: conic-gradient(
+      from var(--angle),
+      #ffffff 0deg,
+      #ffffff 25deg,
+      rgba(255, 255, 255, 0.15) 55deg,
+      rgba(255, 255, 255, 0.05) 120deg,
+      rgba(255, 255, 255, 0) 360deg
+    );
+    animation: spin-border 3s linear infinite;
+    mask: linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+                  linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    padding: 3px;
+  }
+
+  @keyframes spin-border {
+    from {
+      --angle: 0deg;
+    }
+    to {
+      --angle: 360deg;
+    }
+  }
+`}</style>
+
+
     </section>
   );
 }

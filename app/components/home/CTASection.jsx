@@ -7,7 +7,7 @@ export default function CTASection() {
   return (
     <section
       data-home-section="cta"
-      className="relative bg-transparent mx-6 lg:px-10 lg:py-24  "
+      className="relative bg-transparent mx-6 lg:px-10 lg:pb-30"
     >
 
       <div className="mx-auto relative z-10 max-w-6xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-6 lg:p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
@@ -21,7 +21,7 @@ export default function CTASection() {
           <p className="text-lg lg:text-2xl uppercase tracking-[0.2em] text-white/80">
             Ready when you are
           </p>
-          <h2 className="text-2xl lg:text-5xl font-bold leading-tight md:text-3xl">
+          <h2 className="text-2xl lg:text-4xl font-bold leading-tight md:text-3xl">
             Ship your next launch with Enoves.
           </h2>
           <p className="text-base text-white/80 md:text-lg">
