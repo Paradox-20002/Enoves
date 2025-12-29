@@ -76,7 +76,7 @@ export default function TechStackOrbit() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const categoryText = 'Technology';
-  const mainTitleText = 'Built with industry-leading technologies';
+  const mainTitleText = 'Built With Industry-Leading';
   const descriptionText =
     'Our engineering teams leverage a modern, scalable technology stack and industry best practices to deliver Fortune-100-quality digital experiences. By combining cutting-edge tools, robust architectures, and meticulous attention to detail, we ensure every solution is high-performing, secure, and built to scale.';
 
@@ -329,12 +329,12 @@ export default function TechStackOrbit() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-10">
+    <section className="relative w-full overflow-hidden bg-[#04060D] py-20 lg:px-24">
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pointer-events-none">
         <div className="text-center">
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-purple-950 leading-tight flex flex-wrap items-center justify-center gap-1 mb-4">
+          <h2 className="text-2xl md:text-5xl lg:text-6xl font-bold text-gray-100 leading-tight flex flex-wrap items-center justify-center gap-1 mb-4 lg:items-start lg:justify-start">
             {typedTitle}
 
             {isTitleDone ? (
@@ -349,7 +349,7 @@ export default function TechStackOrbit() {
           </h2>
 
           <p
-            className={`text-lg text-black max-w-6xl mx-auto transition-opacity duration-500 flex items-center justify-center gap-1 ${
+            className={`text-lg text-justify text-gray-100 max-w-6xl transition-opacity duration-500 flex items-center justify-center gap-1 lg:items-start lg:justify-start ${
               isCategoryDone && isTitleDone ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -362,12 +362,12 @@ export default function TechStackOrbit() {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          <div className="text-center lg:text-left lg:py-0 pointer-events-auto">
-            <p className="text-lg uppercase tracking-[0.3em] text-violet-800 font-bold mb-4">
+          <div className="text-center py-10 lg:text-left lg:py-0 pointer-events-auto">
+            <p className="text-lg uppercase tracking-[0.3em] text-violet-400 font-bold mb-4">
               The Engineering Philosophy
             </p>
 
-            <h3 className="text-4xl font-extrabold text-violet-950 mb-10 leading-tight">
+            <h3 className="text-4xl font-extrabold text-gray-100 mb-10 leading-tight">
               Commitments to{' '}
               <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
                 Focus Purity
@@ -377,13 +377,13 @@ export default function TechStackOrbit() {
             <div className="space-y-8 max-w-md mx-auto lg:mx-0">
               {commitments.map((item, index) => (
                 <div key={index} className="flex items-start gap-4">
-                  <div className="flex-shrink-0 text-3xl text-indigo-400 mt-1">
+                  <div className="flex-shrink-0 text-3xl text-gray-100 mt-1 border-2 border-gray-400 rounded-2xl w-15 h-15 flex items-center justify-center">
                     {item.icon}
                   </div>
 
                   <div>
-                    <h4 className="text-xl font-bold text-violet-950 mb-1">{item.title}</h4>
-                    <p className="text-indigo-900">{item.description}</p>
+                    <h4 className="text-xl font-bold text-violet-400 mb-1">{item.title}</h4>
+                    <p className="text-gray-300">{item.description}</p>
                   </div>
                 </div>
               ))}

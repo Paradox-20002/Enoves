@@ -39,9 +39,9 @@ export default function ServicesSection() {
 
       <div className="mx-auto relative z-10 grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="space-y-6">
-          <p className="text-sm uppercase tracking-[0.4em] text-indigo-200">Services</p>
-          <h2 className="text-4xl font-semibold leading-tight text-white md:text-5xl">
-            Build once, scale everywhere.
+          <p className="text-lg lg:text-2xl font-bold uppercase tracking-[0.4em] text-violet-400">Services</p>
+          <h2 className="text-2xl lg:text-6xl font-bold leading-tight text-white md:text-5xl">
+            Build Once, Scale Everywhere.
           </h2>
           <p className="text-base text-slate-200/80">
             From brand systems to AI-native products, our team ships experiences that feel cinematic, engineered, and fast. Every engagement lands inside a modular growth stack that matches the visual language of Enoves.

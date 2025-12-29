@@ -8,7 +8,7 @@ import ScrollScene from "../components/home/ScrollScene";
 import ServicesSection from "../components/home/ServicesSection";
 import PortfolioSection from "../components/home/PortfolioSection";
 import CTASection from "../components/home/CTASection";
-import NewsletterWidget from "../components/newsletter/NewsletterWidget";
+// import NewsletterWidget from "../components/newsletter/NewsletterWidget";
 import FaqSection from "../components/faq/faq";
 import { HomeFaqs } from "./faqHome";
 import AuroraScene from "../components/Aurora";
