@@ -118,17 +118,6 @@
   box-shadow: 0 30px 60px rgba(19, 15, 64, 0.45);
 }
 
-.section-heading {
-  max-width: 670px;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.section-heading h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0;
-}
 
 .section-heading p {
   color: #c6c8f4;
