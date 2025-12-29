@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import CTASection from "../components/home/CTASection";
 
 export default function AboutPage() {
   const coreValues = [
@@ -74,7 +75,7 @@ export default function AboutPage() {
   ];
   return (
     <main
-      className="min-h-screen flex flex-col gap-12 py-12 px-4 md:px-8"
+      className="min-h-screen flex flex-col gap-12 py-30 px-4 md:px-8"
       style={{
         background:
           "radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d",
@@ -102,12 +103,12 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="max-w-6xl mx-auto w-full">
         <h3
-          className="font-extrabold text-sm md:text-base uppercase tracking-widest mb-4"
+          className="font-bold text-sm md:text-base uppercase tracking-widest mb-4"
           style={{ color: "#695aff" }}
         >
           Who We Are
         </h3>
-        <h1 className="text-3xl md:text-5xl text-white font-extrabold mb-6 leading-tight">
+        <h1 className="text-3xl md:text-5xl text-white font-bold mb-6 leading-tight">
           Enoves: Engineering Digital Excellence
         </h1>
         <p className="text-gray-300 text-base md:text-lg leading-relaxed mb-8 max-w-3xl">
@@ -130,7 +131,7 @@ export default function AboutPage() {
       </section>
 
       <section className="max-w-6xl mx-auto w-full">
-        <h1 className="text-3xl md:text-5xl text-white font-extrabold mt-16 mb-12">
+        <h1 className="text-3xl md:text-5xl text-white font-bold mt-16 mb-12">
           Our Mission & Vision
         </h1>
         <p className="text-gray-300 text-base md:text-lg mb-12 max-w-2xl">
@@ -145,7 +146,7 @@ export default function AboutPage() {
                 className="border-2 border-purple-500/30 hover:border-purple-500/60 transition-all duration-300 rounded-2xl p-6 hover:shadow-lg hover:shadow-purple-500/30 hover:pointer-none hover:translate-y-3"
               >
                 <h2
-                  className="text-2xl font-semibold mb-2"
+                  className="text-2xl md:text-4xl font-bold mb-2"
                   style={{ color: "#695aff" }}
                 >
                   {value.title}
@@ -161,7 +162,7 @@ export default function AboutPage() {
 
       {/* Core Values Section */}
       <section className="max-w-6xl mx-auto w-full">
-        <h2 className="text-3xl md:text-5xl text-white font-extrabold mt-16 mb-12">
+        <h2 className="text-2xl md:text-4xl text-white font-bold mt-16 mb-12">
           Our Core Values
         </h2>
         <p className="text-gray-300 text-base md:text-lg mb-12 max-w-2xl">
@@ -188,37 +189,37 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-      <section className="max-w-6xl mx-auto w-full">
-        <h1 className="text-3xl md:text-5xl text-white font-extrabold mt-16 mb-12">
+      <section className="max-w-6xl mx-auto w-full pb-20">
+        <h2 className="text-2xl md:text-5xl text-white font-bold mt-16 mb-12">
           Why Choose Enoves
-        </h1>
+        </h2>
         <p className="text-gray-300 text-base md:text-lg mb-12 max-w-2xl">
           We combine technical expertise, creative excellence, and strategic
           thinking to deliver transformative results for our clients.
         </p>
         <div className="flex flex-wrap gap-8">
-          {choose_us.map((value, index) => {
-            return (
-              <div
-                key={index}
-                className="flex-1 min-w-[calc(50%-1rem)] lg:min-w-[calc(25%-1.5rem)] hover:border-purple-500/60 transition-all duration-300 rounded-2xl p-6 hover:shadow-lg hover:shadow-purple-500/30 hover:pointer-none hover:scale-105"
-                style={{ background: "rgba(105, 90, 255, 0.15)" }}
-              >
-                <h2
-                  className="text-2xl font-semibold mb-2"
-                  style={{ color: "#695aff" }}
-                >
-                  {value.title}
-                </h2>
-                <p className="text-gray-300 text-base md:text-lg mb-12 max-w-2xl">
-                  {value.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+  {choose_us.map((value, index) => (
+    <div
+      key={index}
+      className="flex flex-col lg:flex lg:flex-1 w-full lg:min-w-[calc(25%-1.5rem)] hover:border-purple-500/60 transition-all duration-300 rounded-2xl p-6 hover:shadow-lg hover:shadow-purple-500/30 hover:pointer-none hover:scale-105"
+      style={{ background: "rgba(105, 90, 255, 0.15)" }}
+    >
+      <h2
+        className="text-2xl font-semibold mb-2"
+        style={{ color: "#695aff" }}
+      >
+        {value.title}
+      </h2>
+      <p className="text-gray-300 text-sm md:text-lg lg:text-base mb-12 max-w-2xl">
+        {value.description}
+      </p>
+    </div>
+  ))}
+</div>
+
       </section>
-      <section
+      <CTASection/>
+      {/* <section
         className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto mt-20 max-w-6xl w-full rounded-[40px] hover:border-purple-500/60 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-purple-500/20"
         style={{ background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" }}
       >
@@ -235,7 +236,7 @@ export default function AboutPage() {
         >
           Start Your Journey
         </button>
-      </section>
+      </section> */}
     </main>
   );
 }

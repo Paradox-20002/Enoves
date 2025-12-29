@@ -87,7 +87,7 @@ export default function PortfolioPage() {
   }, [ activeProject ] );
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-[#0a0a0d] py-20 text-[#f5f5ff]">
+    <main className="relative min-h-screen w-full overflow-hidden bg-[#0a0a0d] py-30 text-[#f5f5ff]">
 
       {/* HERO SECTION */ }
       <section className="relative mx-auto mb-20 flex max-w-6xl flex-col items-center gap-5 px-4 text-center">
@@ -97,7 +97,7 @@ export default function PortfolioPage() {
         <p className="z-10 inline-flex rounded-full border border-purple-400/40 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-purple-200">
           Case Studies
         </p>
-        <h1 className="z-10 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+        <h1 className="z-10 text-2xl font-bold leading-tight lg:text-5xl">
           Experiences Engineered for Momentum
         </h1>
         <p className="z-10 max-w-3xl text-base text-gray-300 sm:text-lg">
@@ -125,11 +125,11 @@ export default function PortfolioPage() {
       </section>
 
       {/* PROJECT GRID */ }
-      <section className="max-w-6xl mx-auto mb-20">
+      <section className="max-w-6xl mx-5 lg:mx-auto my-30">
         <div className="flex flex-col gap-6 text-center md:text-left md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-purple-300 mb-3">Work Gallery</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Featured launches & experiences</h2>
+            <p className="text-lg uppercase tracking-[0.2em] text-purple-300 mb-3">Work Gallery</p>
+            <h2 className="text-2xl lg:text-4xl font-bold text-white">Featured launches & experiences</h2>
           </div>
           <p className="text-gray-300 md:max-w-lg">
             Tap into a selection of product stories, campaign hubs and digital ecosystems that delivered measurable growth.
@@ -180,8 +180,8 @@ export default function PortfolioPage() {
       <section className="mx-auto max-w-5xl px-4">
         <div className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-purple-500/20 bg-white/5 p-10 text-center shadow-lg shadow-purple-500/10 md:flex-row md:text-left">
           <div className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-purple-300">Let's Collaborate</p>
-            <h2 className="text-3xl font-semibold md:text-4xl text-white">Have a launch in mind? Let's explore it together.</h2>
+            <p className="text-lg font-bold uppercase tracking-[0.2em] text-purple-300">Let's Collaborate</p>
+            <h2 className="text-2xl font-semibold lg:text-4xl text-white">Have a launch in mind? Let's explore it together.</h2>
             <p className="text-sm text-gray-300 md:max-w-xl">
               We partner with founders and marketing teams to plan, design, and ship the next wave of customer touchpoints.
             </p>
@@ -189,7 +189,7 @@ export default function PortfolioPage() {
           <Link href="/contact">
             <button
               type="button"
-              className="mt-2 inline-flex items-center justify-center rounded-full w-[200px] font-bold border hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 border-purple-400/40 px-5 py-5 text-[14px] uppercase tracking-[0.3em] text-purple-200 transition hover:border-purple-300 hover:text-purple-100"
+              className="mt-2 inline-flex items-center justify-center rounded-full w-[200px] font-bold border hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 border-purple-400/40 px-5 py-5 text-[16px] uppercase tracking-widest text-purple-200 transition hover:border-purple-300 hover:text-purple-100"
               style={ { background: "linear-gradient(90deg, #6b5cff, #9260ff)" } }
             >
               Contact us

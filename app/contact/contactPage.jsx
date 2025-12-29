@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import CTASection from "../components/home/CTASection";
 
 export default function ContactPage() {
   const [ formData, setFormData ] = useState( {
@@ -69,13 +70,13 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="min-h-screen flex flex-col gap-16 py-16 px-4 md:px-8 bg-[#0a0a0d] relative overflow-hidden">
+    <main className="min-h-screen flex flex-col gap-16 py-30 px-4 md:px-8 bg-[#0a0a0d] relative overflow-hidden">
       {/* Background radial gradient */ }
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(105,97,255,0.12),transparent_55%)] -z-10"></div>
 
       {/* Hero Section */ }
       <section className="max-w-6xl mx-auto w-full text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white font-extrabold mb-6 leading-tight">
+        <h1 className="text-2xl md:text-6xl lg:text-5xl text-white font-bold mb-6 leading-tight">
           Let's Build Something Great
         </h1>
         <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 px-4">
@@ -106,11 +107,11 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map Section */ }
-      <section className="max-w-6xl mx-auto w-full">
+      <section className="max-w-6xl mx-auto w-full py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form - Left Side */ }
           <div className="rounded-3xl p-8 md:p-12 border border-purple-500/30 bg-purple-800/5">
-            <h2 className="text-3xl md:text-4xl text-white font-extrabold mb-2">
+            <h2 className="text-3xl md:text-4xl text-white font-bold mb-2">
               Send us a Message
             </h2>
             <p className="text-gray-300 mb-8">
@@ -218,7 +219,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */ }
-      <section className="max-w-4xl mx-auto w-full rounded-3xl p-8 md:p-12 text-center border border-purple-500/30 bg-gradient-to-r from-purple-800/30 to-purple-600/10">
+      {/* <section className="max-w-4xl mx-auto w-full rounded-3xl p-8 md:p-12 text-center border border-purple-500/30 bg-gradient-to-r from-purple-800/30 to-purple-600/10">
         <h2 className="text-3xl md:text-4xl text-white font-extrabold mb-4">
           Not sure where to start?
         </h2>
@@ -231,7 +232,9 @@ export default function ContactPage() {
             Explore Our Services
           </button>
         </Link>
-      </section>
+      </section> */}
+
+      <CTASection/>
     </main>
   );
 }
