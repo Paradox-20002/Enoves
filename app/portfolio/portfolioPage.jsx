@@ -91,7 +91,7 @@ export default function PortfolioPage() {
     <main className="relative min-h-screen xl:max-w-full lg:max-w-full overflow-hidden bg-[#0a0a0d] py-30 text-[#f5f5ff]">
 
       {/* HERO SECTION */ }
-      <section className="relative mx-auto mb-20 flex max-w-6xl flex-col items-center gap-5 px-4 text-center">
+      <section className="relative mx-auto mb-20 flex max-w-7xl lg:mx-20 flex-col items-center gap-5 px-4 text-center">
         <span className="pointer-events-none absolute -top-20 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-purple-500/20 blur-3xl" />
         <span className="pointer-events-none absolute -bottom-24 right-10 h-48 w-48 rounded-full bg-purple-400/20 blur-3xl" />
 
@@ -107,7 +107,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* HIGHLIGHT STATS */ }
-      <section className="mx-auto mb-16 xl:max-w-7xl 2xl:max-w-[90%] px-4">
+      <section className="max-w-7xl mx-5 lg:mx-20 my-30">
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           { highlightStats.map( ( stat ) => {
             const animatedValue = useCountUp( stat.value );
