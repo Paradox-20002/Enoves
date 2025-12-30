@@ -73,19 +73,19 @@ export default function Digital() {
 
   return (
     <main
-      className="min-h-screen flex flex-col gap-16 pb-16 px-4 md:px-8"
+      className="min-h-screen flex flex-col gap-16 pb-16 px-4 lg:px-2 md:px-8"
       style={ {
-        fontFamily: "Arial, Helvetica, sans-serif",
+        // fontFamily: "Arial, Helvetica, sans-serif",
         background:
           "radial-gradient(circle at top right, rgba(126,108,255,0.18), transparent 60%), radial-gradient(circle at bottom left, rgba(51,183,255,0.12), transparent 55%), #0a0a0d",
       } }
     >
       <section
         className="relative 
-        h-[40vh]                /* mobile */
+        h-[60vh]                /* mobile */
         sm:h-[50vh]             /* small tablets */
         md:h-[60vh]             /* laptops */
-        lg:h-[70vh]             /* desktops */
+        lg:h-[90vh]             /* desktops */
         -mx-4 md:-mx-8 
         px-4 md:px-8 
         text-white 
@@ -117,9 +117,9 @@ export default function Digital() {
           } }
         />
 
-        <div className="relative z-30 max-w-4xl pb-16 ">
+        <div className="relative z-30 max-w-2xl ">
           <motion.h1
-            className="text-4xl mb-2 text-center lg:text-left mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pl-32 lg:pr-[350px]"
+            className="text-4xl mb-2 text-center lg:text-left mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pl-18"
             initial={ { opacity: 0, y: 10 } }
             animate={ { opacity: 1, y: 0 } }
             transition={ { duration: 0.6 } }
@@ -128,7 +128,7 @@ export default function Digital() {
           </motion.h1>
 
           <motion.p
-            className="max-w-2xl lg:pl-32 text-gray-200 pr-0 text-center lg:text-left "
+            className="max-w-2xl px-5 lg:pl-18 text-gray-200 pr-0 text-center lg:text-left "
             initial={ { opacity: 0 } }
             animate={ { opacity: 1 } }
             transition={ { duration: 0.6, delay: 0.1 } }
@@ -138,7 +138,7 @@ export default function Digital() {
             integrated squads deploy, optimise
           </motion.p>
 
-          <div className="flex flex-row lg:pl-32 items-center gap-4 mt-10 justify-center lg:justify-start">
+          <div className="flex flex-row lg:pl-18 items-center gap-4 mt-10 justify-center lg:justify-start">
             <motion.div whileHover={ { scale: 1.04 } } whileTap={ { scale: 0.98 } }>
               <Link
                 href="/contact"
@@ -151,7 +151,7 @@ export default function Digital() {
         </div>
       </section>
 
-      <div className="relative mx-auto max-w-6xl px-6">
+      <div className="relative mx-auto max-w-7xl xl:max-w-8xl lg:max-w-8xl px-2 lg:px-0 ">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
           { featureSections.map( ( feature, index ) => (
             <article
@@ -243,8 +243,8 @@ export default function Digital() {
       </div>
 
       <section>
-                <CTASection/>
-            </section>
+        <CTASection/>
+      </section>
       {/* <section
         className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
         style={ { background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" } }
