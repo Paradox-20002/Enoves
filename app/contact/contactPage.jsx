@@ -70,7 +70,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <main className="min-h-screen flex flex-col gap-16 py-30 px-4 md:px-8 bg-[#0a0a0d] relative overflow-hidden">
+    <main className="min-h-screen flex flex-col gap-16 py-30 px-0 lg:px-2 md:px-8 bg-[#0a0a0d] relative overflow-hidden">
       {/* Background radial gradient */ }
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(105,97,255,0.12),transparent_55%)] -z-10"></div>
 
@@ -86,8 +86,8 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods */ }
-      <section className="max-w-6xl mx-auto w-full">
-        <div className="grid  grid-cols-1 md:grid-cols-3 gap-6">
+      <section className="max-w-7xl mx-auto px-5 lg:px-0 lg:mx-15 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           { contactMethods.map( ( method, index ) => (
             <a
               key={ index }
@@ -107,7 +107,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map Section */ }
-      <section className="max-w-6xl mx-auto w-full py-20">
+      <section className="max-w-7xl px-5 lg:px-0 lg:mx-15 w-full py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form - Left Side */ }
           <div className="rounded-3xl p-8 md:p-12 border border-purple-500/30 bg-purple-800/5">

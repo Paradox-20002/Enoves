@@ -85,7 +85,8 @@ export default function Digital() {
         h-[60vh]                /* mobile */
         sm:h-[50vh]             /* small tablets */
         md:h-[60vh]             /* laptops */
-        lg:h-[90vh]             /* desktops */
+        lg:h-[90vh] 
+        xl:h-[90vh]            /* desktops */
         -mx-4 md:-mx-8 
         px-4 md:px-8 
         text-white 

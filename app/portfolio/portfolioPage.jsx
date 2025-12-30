@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { projects } from "./portfolio_card";
 import Link from "next/link";
+import CTASection from "../components/home/CTASection";
 
 /* -------------------- COUNT UP HOOK -------------------- */
 function useCountUp( finalValue, duration = 1500 ) {
@@ -87,7 +88,7 @@ export default function PortfolioPage() {
   }, [ activeProject ] );
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-[#0a0a0d] py-30 text-[#f5f5ff]">
+    <main className="relative min-h-screen xl:max-w-full lg:max-w-full overflow-hidden bg-[#0a0a0d] py-30 text-[#f5f5ff]">
 
       {/* HERO SECTION */ }
       <section className="relative mx-auto mb-20 flex max-w-6xl flex-col items-center gap-5 px-4 text-center">
@@ -100,13 +101,13 @@ export default function PortfolioPage() {
         <h1 className="z-10 text-2xl font-bold leading-tight lg:text-5xl">
           Experiences Engineered for Momentum
         </h1>
-        <p className="z-10 max-w-3xl text-base text-gray-300 sm:text-lg">
+        <p className="z-10 max-w-3xl px-4 lg:px-0 text-base text-gray-300 sm:text-lg">
           Explore conversion-first websites, product launches and campaign ecosystems designed to attract, nurture and retain modern buyers in high-velocity markets.
         </p>
       </section>
 
       {/* HIGHLIGHT STATS */ }
-      <section className="mx-auto mb-16 max-w-6xl px-4">
+      <section className="mx-auto mb-16 xl:max-w-7xl 2xl:max-w-[90%] px-4">
         <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           { highlightStats.map( ( stat ) => {
             const animatedValue = useCountUp( stat.value );
@@ -125,7 +126,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* PROJECT GRID */ }
-      <section className="max-w-6xl mx-5 lg:mx-auto my-30">
+      <section className="max-w-7xl mx-5 lg:mx-20 my-30">
         <div className="flex flex-col gap-6 text-center md:text-left md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-lg uppercase tracking-[0.2em] text-purple-300 mb-3">Work Gallery</p>
@@ -177,27 +178,9 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA SECTION */ }
-      <section className="mx-auto max-w-5xl px-4">
-        <div className="flex flex-col items-center justify-between gap-6 rounded-3xl border border-purple-500/20 bg-white/5 p-10 text-center shadow-lg shadow-purple-500/10 md:flex-row md:text-left">
-          <div className="space-y-4">
-            <p className="text-lg font-bold uppercase tracking-[0.2em] text-purple-300">Let's Collaborate</p>
-            <h2 className="text-2xl font-semibold lg:text-4xl text-white">Have a launch in mind? Let's explore it together.</h2>
-            <p className="text-sm text-gray-300 md:max-w-xl">
-              We partner with founders and marketing teams to plan, design, and ship the next wave of customer touchpoints.
-            </p>
-          </div>
-          <Link href="/contact">
-            <button
-              type="button"
-              className="mt-2 inline-flex items-center justify-center rounded-full w-[200px] font-bold border hover:scale-105 hover:shadow-lg hover:shadow-purple-500/30 border-purple-400/40 px-5 py-5 text-[16px] uppercase tracking-widest text-purple-200 transition hover:border-purple-300 hover:text-purple-100"
-              style={ { background: "linear-gradient(90deg, #6b5cff, #9260ff)" } }
-            >
-              Contact us
-            </button>
-          </Link>
-        </div>
-      </section>
-
+     <section className="mx-0 lg:mx-4">
+      <CTASection/>
+     </section>
       {/* PROJECT MODAL */ }
       { activeProject && (
         <div
