@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { projects } from "./portfolio_card";
-import Link from "next/link";
+// import Link from "next/link";
 import CTASection from "../components/home/CTASection";
 
 /* -------------------- COUNT UP HOOK -------------------- */
