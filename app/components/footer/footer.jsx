@@ -83,31 +83,31 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-slate-300">
             <li>
               <Link href="/about" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>About us</span>
               </Link>
             </li>
             <li>
               <Link href="/team" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Our team</span>
               </Link>
             </li>
             <li>
               <Link href="/portfolio" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Our portfolio</span>
               </Link>
             </li>
             <li>
               <Link href="/careers" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Careers</span>
               </Link>
             </li>
             <li>
               <Link href="/contact" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Contact us</span>
               </Link>
             </li>
@@ -120,31 +120,31 @@ export default function Footer() {
           <ul className="flex flex-col gap-3 text-slate-300">
             <li>
               <Link href="/services/digital-marketing" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Digital Marketing</span>
               </Link>
             </li>
             <li>
               <Link href="/services/web-development" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Web Development</span>
               </Link>
             </li>
             <li>
               <Link href="/services/custom-software-development" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Custom Software Development</span>
               </Link>
             </li>
             <li>
               <Link href="/services/product-hunt-support" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>Product Design</span>
               </Link>
             </li>
             <li>
               <Link href="/services" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
                 <span>More Services </span>
               </Link>
             </li>

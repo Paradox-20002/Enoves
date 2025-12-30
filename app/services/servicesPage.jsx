@@ -13,7 +13,7 @@ import './servicesPage.css'
 
 export default function ServicesPage() {
   return (
-    <main className="flex flex-col gap-24 px-6 lg:px-0 py-30 pb-24 bg-[#0a0a0d] text-[#f7f8ff]" style={{ background: 'radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d' }}>
+    <main className="flex flex-col gap-24 px-0 lg:px-0 py-30 pb-24 bg-[#0a0a0d] text-[#f7f8ff]" style={{ background: 'radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d' }}>
       {/* <section className="flex flex-col sm:flex-row justify-between items-center gap-6 px-6 py-5 rounded-full text-[#e1e2ff] text-base sm:text-xl backdrop-blur-xl" style={{background: 'linear-gradient(90deg, rgba(105, 97, 255, 0.3), rgba(145, 93, 255, 0.12))'}}>
         <p>Have a cool project for us?</p>
         <Link href="/contact" className="px-7 py-3 rounded-full bg-[#695aff] text-white font-semibold uppercase tracking-wider">
@@ -143,7 +143,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section>
+      <section className="mx-0 lg:mx-2">
         <CTASection />
       </section>
 

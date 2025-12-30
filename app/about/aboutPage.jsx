@@ -75,11 +75,11 @@ export default function AboutPage() {
   ];
   return (
     <main
-      className="min-h-screen flex flex-col gap-12 py-30 px-4 md:px-8"
+      className="min-h-screen flex flex-col gap-12 py-30 px-4 lg:px-0 md:px-8"
       style={{
         background:
           "radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d",
-        fontFamily: "Arial, Helvetica, sans-serif",
+        // fontFamily: "Arial, Helvetica, sans-serif",
       }}
     >
       {/* Banner Section */}
