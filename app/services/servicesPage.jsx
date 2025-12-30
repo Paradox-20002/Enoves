@@ -13,7 +13,7 @@ import './servicesPage.css'
 
 export default function ServicesPage() {
   return (
-    <main className="flex flex-col gap-24 px-6  py-30 pb-24 bg-[#0a0a0d] text-[#f7f8ff]" style={{ background: 'radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d' }}>
+    <main className="flex flex-col gap-24 px-6 lg:px-0 py-30 pb-24 bg-[#0a0a0d] text-[#f7f8ff]" style={{ background: 'radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d' }}>
       {/* <section className="flex flex-col sm:flex-row justify-between items-center gap-6 px-6 py-5 rounded-full text-[#e1e2ff] text-base sm:text-xl backdrop-blur-xl" style={{background: 'linear-gradient(90deg, rgba(105, 97, 255, 0.3), rgba(145, 93, 255, 0.12))'}}>
         <p>Have a cool project for us?</p>
         <Link href="/contact" className="px-7 py-3 rounded-full bg-[#695aff] text-white font-semibold uppercase tracking-wider">
@@ -21,7 +21,7 @@ export default function ServicesPage() {
         </Link>
       </section> */}
 
-      <section className="grid gap-12 mx-6 lg:mx-30 grid-cols-1 lg:grid-cols-2 items-center">
+      <section className="grid gap-12 mx-6 lg:mx-18 grid-cols-1 lg:grid-cols-2 items-center">
         <div>
           <p className="font-semibold text-[#8e89ff] uppercase tracking-[0.14em]">
             Revolutionizing the Way You Think Digital
@@ -70,7 +70,7 @@ export default function ServicesPage() {
 
       </section>
 
-      <section className="mx-6 lg:mx-30">
+      <section className="mx-6 lg:mx-18">
         <header className="max-w-[740px] flex flex-col gap-4">
           <h2 className="text-2xl lg:text-4xl font-bold">Revolutionizing the Way You Think Digital</h2>
           <p className="text-[#c6c8f4] text-base sm:text-lg">
@@ -100,7 +100,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="services-engagement mx-6 lg:mx-30">
+      <section className="services-engagement mx-6 lg:mx-18">
         <header className="section-heading max-w-[770px] flex flex-col gap-4">
           <h2 className="text-2xl lg:text-4xl font-bold">4 Ways to Get Started with Us</h2>
           <p>
@@ -122,7 +122,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="mx-6 lg:mx-30">
+      <section className="mx-6 lg:mx-18">
         <header className="max-w-[670px] flex flex-col gap-4">
           <h2 className="text-2xl font-bold lg:text-4xl m-0">Why Enoves</h2>
           <p className="text-[#c6c8f4] text-base sm:text-lg">
