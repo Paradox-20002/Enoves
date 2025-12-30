@@ -7,10 +7,10 @@ export default function CTASection() {
   return (
     <section
       data-home-section="cta"
-      className="relative bg-transparent mx-6 lg:px-10 lg:pb-30"
+      className="relative xl:max-w-full lg:max-w-7xl bg-transparent mx-6 lg:px-10 lg:py-15"
     >
 
-      <div className="mx-auto relative z-10 max-w-6xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-6 lg:p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
+      <div className="mx-auto relative z-10 max-w-7xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-6 lg:p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
         <motion.div
           initial={ { opacity: 0, y: 30 } }
           whileInView={ { opacity: 1, y: 0 } }
@@ -18,7 +18,7 @@ export default function CTASection() {
           transition={ { duration: 0.7 } }
           className="space-y-6 text-center text-white"
         >
-          <p className="text-lg lg:text-2xl uppercase tracking-[0.2em] text-white/80">
+          <p className="text-lg uppercase tracking-widest text-violet-400 font-bold">
             Ready when you are
           </p>
           <h2 className="text-2xl lg:text-4xl font-bold leading-tight md:text-3xl">

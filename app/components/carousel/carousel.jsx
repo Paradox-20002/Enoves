@@ -22,7 +22,7 @@ export default function Carousel( { img1, img2, img3, img4, img5, img6, classNam
   return (
     <section
       // ref={ containerRef }
-      className={ `relative isolate w-full overflow-hidden px-20 lg:pb-30 ${ className }` }
+      className={ `relative isolate w-full overflow-hidden px-20 py-15 ${ className }` }
       aria-label="Partner logos carousel"
       style={ { background: "linear-gradient(180deg, #05070E 0%, #0B0F1A 50%, #05070E 100%)" } }
     >

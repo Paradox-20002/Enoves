@@ -43,7 +43,7 @@ const Slider = ({ heading }) => {
   const goToSlide = (index) => setCurrentSlide(index);
 
   return (
-    <div className="w-full h-screen relative overflow-hidden bg-[#05070E]">
+    <div className="w-full xl:max-w-full lg:max-w-7xl h-screen relative overflow-hidden bg-[#05070E]">
       <AnimatePresence mode="wait">
         {slides.map(
           (slide, index) =>
@@ -80,7 +80,7 @@ const Slider = ({ heading }) => {
 
                 {/* CONTENT */}
                 <motion.div
-                  className="absolute top-[30%] left-8 md:left-16 lg:left-24 text-white z-[2] w-[90%] md:w-[85%] lg:w-[900px]"
+                  className="absolute top-[30%] left-8 md:left-16 lg:left-19 text-white z-[2] w-[90%] md:w-[85%] lg:"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}

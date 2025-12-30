@@ -8,12 +8,12 @@ const FaqSection = ({ faqs }) => {
   };
 
   return (
-    <section className="mt-5 lg:mb-20 flex flex-col mx-10 lg:mx-35 gap-10 text-white">
-      <header className="flex flex-col gap-4 text-left">
+    <section className="mt-5 lg:mb-20 flex flex-col mx-5 lg:mx-18 gap-10 text-white">
+      <header className="flex flex-col gap-4 text-left items-center">
         <h2 className="text-2xl lg:text-4xl font-bold md:text-4xl">
           Frequently Asked Questions
         </h2>
-        <p className="text-base text-white/70">
+        <p className="text-base text-white/70 text-center">
           Find answers to common questions about our services, engagement models, and how we work with clients to deliver exceptional results.
         </p>
       </header>

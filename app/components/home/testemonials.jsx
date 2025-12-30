@@ -45,11 +45,11 @@ export default function Testimonials() {
   return (
     <section className="relative lg:mt-0 min-h-screen max-h-screen flex items-center bg-transparent text-white overflow-hidden">
       {/* Subtle dark glows */ }
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[160px]" />
         <div className="absolute -bottom-40 left-0 w-96 h-96 bg-violet-500/8 rounded-full blur-[160px]" />
         <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-violet-400/5 rounded-full blur-[110px]" />
-      </div>
+      </div> */}
 
       <div className="relative z-10 container mx-auto px-4 w-full">
         {/* Header */ }

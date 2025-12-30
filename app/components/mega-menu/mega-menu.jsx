@@ -9,7 +9,7 @@ export default function MegaMenu({ columns = [], onClose }) {
   return (
     <div 
       id="mega-menu" 
-      className="absolute top-full -right-180 -translate-x-1/2 -translate-y-2.5 w-full max-w-[120vw] bg-white/98 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200 ease-in-out z-[999] overflow-x-hidden overflow-y-auto max-h-[calc(100vh-6rem)] py-10 shadow-2xl border border-gray-200 [.has-mega.is-open_&]:opacity-100 [.has-mega.is-open_&]:pointer-events-auto [.has-mega.is-open_&]:translate-y-1" 
+      className="absolute top-full -right-177 -translate-x-1/2 -translate-y-2.5 w-full max-w-[120vw] bg-white/98 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-200 ease-in-out z-[999] overflow-x-hidden overflow-y-auto max-h-[calc(100vh-6rem)] py-10 shadow-2xl border border-gray-200 [.has-mega.is-open_&]:opacity-100 [.has-mega.is-open_&]:pointer-events-auto [.has-mega.is-open_&]:translate-y-1" 
       role="menu" 
       aria-label="Services"
     >

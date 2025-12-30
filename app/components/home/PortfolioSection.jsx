@@ -11,13 +11,13 @@ export default function PortfolioSection() {
   return (
     <section
       data-home-section="portfolio"
-      className="relative overflow-hidden bg-transparent px-6 sm:px-10 lg:px-12"
+      className="relative overflow-hidden xl:max-w-full lg:max-w-7xl bg-transparent py-15 px-6 sm:px-10 lg:px-12"
     >
 
-      <div className="mx-auto relative z-10 max-w-6xl">
+      <div className="mx-auto relative xl:max-w-full 2xl:max-w-[90%] z-10 lg:px-6 xl:px-6 md:px-6 ">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <p className="text-lg lg:text-2xl font-bold uppercase tracking-[0.3em] text-violet-400">Portfolio</p>
+            <p className="text-lg lg:text-lg font-bold uppercase tracking-widest text-violet-400">Portfolio</p>
             <h2 className="text-2xl font-bold text-gray-100 md:text-4xl lg:text-4xl ">Case Studies That Convert</h2>
             <p className="mt-4 max-w-2xl text-base text-gray-300">
               We launch brands and marketplaces that feel cinematic, measurable, and built-to-scale. Here are a few recent shipping logs.

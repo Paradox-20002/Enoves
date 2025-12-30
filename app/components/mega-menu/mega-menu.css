@@ -8,9 +8,9 @@
 .mega-menu {
   position: absolute;
   top: 100%;
-  left: 125%;
+  left: 40%;
   transform: translateX(-50%) translateY(-10px);
-  width: 110vw;
+  width: 100vw;
   max-width: 110vw;
   background: rgba(6, 8, 12, 0.96);
   opacity: 0;

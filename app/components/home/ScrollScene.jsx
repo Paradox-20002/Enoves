@@ -80,13 +80,26 @@ export default function TechStackOrbit() {
   const descriptionText =
     'Our engineering teams leverage a modern, scalable technology stack and industry best practices to deliver Fortune-100-quality digital experiences. By combining cutting-edge tools, robust architectures, and meticulous attention to detail, we ensure every solution is high-performing, secure, and built to scale.';
 
-  const category = useTypingEffect(categoryText, 50, 0);
-  const title = useTypingEffect(mainTitleText, 60, categoryText.length * 50 + 200);
-  const description = useTypingEffect(
-    descriptionText,
-    40,
-    categoryText.length * 50 + mainTitleText.length * 60 + 500
-  );
+const CATEGORY_SPEED = 20;
+const TITLE_SPEED = 10;
+const DESCRIPTION_SPEED = 0.5;
+
+const category = useTypingEffect(categoryText, CATEGORY_SPEED, 0);
+
+const title = useTypingEffect(
+  mainTitleText,
+  TITLE_SPEED,
+  categoryText.length * CATEGORY_SPEED + 100
+);
+
+const description = useTypingEffect(
+  descriptionText,
+  DESCRIPTION_SPEED,
+  categoryText.length * CATEGORY_SPEED +
+    mainTitleText.length * TITLE_SPEED +
+    200
+);
+
 
   const isCategoryDone = !category.isTyping;
   const isTitleDone = !title.isTyping;
@@ -103,7 +116,7 @@ export default function TechStackOrbit() {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const SPHERE_RADIUS = 6.5;
+    const SPHERE_RADIUS = 8.5;
     const LOGO_SIZE = 1.5;
     const CAMERA_Z = 25;
 
@@ -329,9 +342,9 @@ export default function TechStackOrbit() {
   }, []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#04060D] py-30 lg:px-24">
+    <section className="relative 2xl:max-w-full xl:max-w-full lg:max-w-7xl w-full overflow-hidden bg-[#04060D] pt-30 pb-15 lg:px-12">
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pointer-events-none">
+      <div className="relative z-10  mx-auto px-6 pointer-events-none lg:max-w-full 2xl:max-w-[90%]">
         <div className="text-center">
 
           <h2 className="text-2xl md:text-4xl lg:text-4xl font-bold text-gray-100 leading-tight flex flex-wrap items-center justify-center gap-1 mb-4 lg:items-start lg:justify-start">
@@ -359,11 +372,11 @@ export default function TechStackOrbit() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 xl:max-w-[94%] lg:max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-between items-center">
 
           <div className="text-center py-10 lg:text-left lg:py-0 pointer-events-auto">
-            <p className="text-lg uppercase tracking-[0.1em] text-violet-400 font-bold mb-4">
+            <p className="text-lg uppercase tracking-widest text-violet-400 font-bold mb-4">
               The Engineering Philosophy
             </p>
 

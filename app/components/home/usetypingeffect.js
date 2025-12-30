@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react';
 
 // Use a NAMED EXPORT (as you imported it that way)
-export const useTypingEffect = ( text, delay = 50, startDelay = 0 ) => {
+export const useTypingEffect = ( text, delay = 10, startDelay = 0 ) => {
   const [ displayedText, setDisplayedText ] = useState( '' );
-  const [ isTyping, setIsTyping ] = useState( true );
+  const [ isTyping, setIsTyping ] = useState( false );
   const [ currentIndex, setCurrentIndex ] = useState( 0 );
 
   // 1. Handle Initial Start Delay
