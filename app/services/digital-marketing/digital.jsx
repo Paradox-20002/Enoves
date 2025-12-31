@@ -119,7 +119,7 @@ export default function Digital() {
 
         <div className="relative z-30 max-w-2xl ">
           <motion.h1
-            className="text-4xl mb-2 text-center lg:text-left mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pl-18"
+            className="text-3xl lg:text-5xl font-bold mb-2 text-center lg:text-left mt-12 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:mt-10 lg:pl-18"
             initial={ { opacity: 0, y: 10 } }
             animate={ { opacity: 1, y: 0 } }
             transition={ { duration: 0.6 } }
@@ -151,14 +151,14 @@ export default function Digital() {
         </div>
       </section>
 
-     <div className="relative mx-auto max-w-full px-2 lg:px-0 lg:mx-16">
+     <div className="relative mx-auto pt-15 max-w-full px-2 lg:px-0 lg:mx-16">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
           { featureSections.map( ( feature, index ) => (
             <article
               key={ feature.title }
               className={ `relative z-10 flex flex-col gap-5 text-white ${ feature.articleClassName }` }
             >
-              <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-2xl lg:text-4xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 { feature.title }
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed">
@@ -244,7 +244,7 @@ export default function Digital() {
       <section>
         <CTASection/>
       </section>
-      <section className="relative mx-auto max-w-full px-3 lg:px-0 lg:mx-16">
+      <section className="relative mx-auto max-w-full pb-15 px-3 lg:px-0 lg:mx-16">
         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
         <div className="relative z-10 flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -252,7 +252,7 @@ export default function Digital() {
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-purple-200/80">
                 Discover
               </span>
-              <h2 className="mt-4 text-white text-2xl md:text-3xl font-bold">
+              <h2 className="mt-4 text-white text-2xl lg:text-4xl md:text-3xl font-bold">
                 Explore more services
               </h2>
               <p className="mt-2 max-w-2xl text-sm md:text-base text-gray-300">

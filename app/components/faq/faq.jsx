@@ -8,7 +8,7 @@ const FaqSection = ({ faqs }) => {
   };
 
   return (
-    <section className="mt-5 lg:mb-20 flex flex-col mx-5 lg:mx-18 gap-10 text-white">
+    <section className="my-15 lg:mb-20 flex flex-col mx-5 lg:mx-18 gap-10 text-white">
       <header className="flex flex-col gap-4 text-left items-center">
         <h2 className="text-2xl lg:text-4xl font-bold md:text-4xl">
           Frequently Asked Questions

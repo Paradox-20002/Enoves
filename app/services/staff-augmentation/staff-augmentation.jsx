@@ -104,7 +104,7 @@ export default function StaffAugmentation() {
         />
         <div className="relative z-30 max-w-2xl">
           <motion.h1
-            className="text-4xl md:text-[2.75rem] lg:text-4xl mb-2 text-center lg:text-left mt-12 lg:mt-10 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:pl-18"
+            className="text-2xl font-bold md:text-[2.75rem] lg:text-5xl mb-2 text-center lg:text-left mt-12 lg:mt-10 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:pl-18"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}

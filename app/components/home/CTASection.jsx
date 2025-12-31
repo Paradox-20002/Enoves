@@ -7,7 +7,7 @@ export default function CTASection() {
   return (
     <section
       data-home-section="cta"
-      className="relative xl:max-w-full lg:max-w-7xl bg-transparent mx-6 lg:px-10 lg:py-15"
+      className="relative xl:max-w-full lg:max-w-7xl bg-transparent mx-6 lg:px-10 py-15"
     >
 
       <div className="mx-auto relative z-10 max-w-7xl overflow-hidden rounded-[36px] border border-white/10 bg-gradient-to-br from-[#0f172a] via-[#05070e] to-[#111826] p-6 lg:p-10 shadow-[0_40px_120px_rgba(5,7,14,0.85)]">
