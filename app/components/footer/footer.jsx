@@ -133,7 +133,7 @@ export default function Footer() {
             <li>
               <Link href="/services/custom-software-development" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
-                <span>Custom Software Development</span>
+                <span>Custom SWD</span>
               </Link>
             </li>
             <li>

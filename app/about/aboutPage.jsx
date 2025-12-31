@@ -75,7 +75,7 @@ export default function AboutPage() {
   ];
   return (
     <main
-      className="min-h-screen flex flex-col gap-12 py-30 px-4 lg:px-0 md:px-8"
+      className="min-h-screen flex flex-col px-6 lg:px-19 gap-12 py-30 md:px-8"
       style={{
         background:
           "radial-gradient(circle at top right, rgba(105, 97, 255, 0.12), transparent 55%), #0a0a0d",
@@ -84,10 +84,10 @@ export default function AboutPage() {
     >
       {/* Banner Section */}
       <section
-        className="flex flex-col md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full rounded-full hover:border-purple-500/60 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-purple-500/20"
+        className="flex justify-between items-center gap-6 px-6 py-6 max-w-full rounded-full hover:border-purple-500/60 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-purple-500/20"
         style={{ background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" }}
       >
-        <p className="text-white font-medium text-lg text-center md:text-left">
+        <p className="text-white font-semibold text-[11px] lg:text-lg text-center md:text-left">
           Have a cool project for us?
         </p>
         <Link href="/contact">
@@ -101,7 +101,7 @@ export default function AboutPage() {
       </section>
 
       {/* Hero Section */}
-      <section className="max-w-6xl mx-auto w-full">
+      <section className="max-w-full w-full">
         <h3
           className="font-bold text-sm md:text-base uppercase tracking-widest mb-4"
           style={{ color: "#695aff" }}
@@ -130,7 +130,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto w-full">
+      <section className="max-w-full w-full">
         <h1 className="text-3xl md:text-5xl text-white font-bold mt-16 mb-12">
           Our Mission & Vision
         </h1>
@@ -161,7 +161,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="max-w-6xl mx-auto w-full">
+      <section className="max-w-full w-full">
         <h2 className="text-2xl md:text-4xl text-white font-bold mt-16 mb-12">
           Our Core Values
         </h2>
@@ -189,7 +189,7 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-      <section className="max-w-6xl mx-auto w-full pb-20">
+      <section className="max-w-full w-full pb-5">
         <h2 className="text-2xl md:text-5xl text-white font-bold mt-16 mb-12">
           Why Choose Enoves
         </h2>
