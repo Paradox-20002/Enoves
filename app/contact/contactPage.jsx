@@ -86,7 +86,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods */ }
-      <section className="max-w-7xl mx-auto px-5 lg:px-0 lg:mx-15 w-full">
+      <section className="max-w-7xl px-5 lg:mx-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           { contactMethods.map( ( method, index ) => (
             <a
@@ -107,7 +107,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form & Map Section */ }
-      <section className="max-w-7xl px-5 lg:px-0 lg:mx-15 w-full py-20">
+      <section className="max-w-7xl px-5 lg:px-0 lg:mx-15 py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form - Left Side */ }
           <div className="rounded-3xl p-8 md:p-12 border border-purple-500/30 bg-purple-800/5">

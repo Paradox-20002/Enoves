@@ -43,7 +43,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="relative lg:mt-0 min-h-screen max-h-screen flex items-center bg-transparent text-white overflow-hidden">
+    <section className="relative max-h-screen lg:mt-0 flex items-center bg-transparent text-white overflow-hidden">
       {/* Subtle dark glows */ }
       {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[160px]" />
