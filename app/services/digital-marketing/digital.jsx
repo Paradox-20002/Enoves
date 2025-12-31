@@ -12,7 +12,7 @@ export default function Digital() {
     {
       title: "Campaign Execution",
       description:
-        "Transform strategy into targeted results. Our email team builds engaging narratives and high-impact campaigns that resonate with your audience, drive engagement, and convert subscribers into loyal customers across every touchpoint.",
+        "Transform strategy into targeted results. Our email team builds engaging narratives and high-impact campaigns that resonate with your audience and convert subscribers into customers across every touchpoint.",
       highlights: [
         { label: "Subscriber Targeting", color: "bg-green-400" },
         { label: "Email Design", color: "bg-teal-400", delay: "0.3s" },
@@ -82,29 +82,28 @@ export default function Digital() {
     >
       <section
         className="relative 
-        h-[60vh]                /* mobile */
+        h-[50vh]                /* mobile */
         sm:h-[50vh]             /* small tablets */
         md:h-[60vh]             /* laptops */
-        lg:h-[90vh] 
-        xl:h-[90vh]            /* desktops */
-        -mx-4 md:-mx-8 
-        px-4 md:px-8 
+        lg:h-[80vh] 
+        xl:h-[80vh]            /* desktops */
         text-white 
         overflow-hidden 
         flex flex-col 
         justify-center 
-        gap-8 
+        gap-8
+        max-w-full 
         rounded-b-[48px] 
         md:rounded-b-[72px]"
       >
-        <div className="absolute inset-0 z-0 overflow-hidden rounded-b-[48px] md:rounded-b-[72px]">
+        <div className="absolute max-w-full inset-0 z-0 rounded-b-[48px] md:rounded-b-[72px]">
           <Image
             src="/images/digital7.webp"
             alt="Digital marketing background"
             fill
             priority
-            className="object-cover"
-            sizes="100vh"
+            className="object-cover object-center"
+            // sizes="100vw"
           />
         </div>
 
@@ -152,7 +151,7 @@ export default function Digital() {
         </div>
       </section>
 
-      <div className="relative mx-auto max-w-7xl xl:max-w-8xl lg:max-w-8xl px-2 lg:px-0 ">
+     <div className="relative mx-auto max-w-full px-2 lg:px-0 lg:mx-16">
         <div className="relative flex flex-col gap-12 md:h-[720px]">
           { featureSections.map( ( feature, index ) => (
             <article
@@ -242,34 +241,10 @@ export default function Digital() {
           ) }
         </div>
       </div>
-
       <section>
         <CTASection/>
       </section>
-      {/* <section
-        className="md:flex-row justify-between items-center gap-6 px-6 py-6 mx-auto max-w-6xl w-full transition-all duration-300 backdrop-blur-md shadow-lg rounded-[40px]"
-        style={ { background: "linear-gradient(90deg, #6961ff4d, #915dff1f)" } }
-      >
-        <h1 className="text-2xl md:text-3xl text-white font-extrabold">
-          Let's build momentum across every touchpoint
-        </h1>
-        <p className="text-gray-300 text-base md:text-lg mb-12 max-w-2xl mt-4">
-          Book a working session with our senior strategists to uncover where
-          the next breakthroughs sit within your funnel. We will bring the
-          roadmap, frameworks, and playbooks.
-        </p>
-        <Link href="/contact">
-          <motion.button
-            className="px-8 py-5 text-[16px] text-white font-semibold rounded-full transition-all duration-300 uppercase tracking-wider hover:shadow-lg hover:shadow-purple-500/30 hover:bg-purple-500/10"
-            style={ { background: "linear-gradient(90deg, #6b5cff, #9260ff)" } }
-            whileHover={ { scale: 1.04 } }
-            whileTap={ { scale: 0.98 } }
-          >
-            Book a strategy call
-          </motion.button>
-        </Link>
-      </section> */}
-      <section className="relative mx-auto max-w-6xl w-full px-6">
+      <section className="relative mx-auto max-w-full px-3 lg:px-0 lg:mx-16">
         <div className="absolute inset-0 rounded-[36px] bg-gradient-to-br from-white/6 via-purple-500/5 to-transparent blur-3xl opacity-60" />
         <div className="relative z-10 flex flex-col gap-6">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
