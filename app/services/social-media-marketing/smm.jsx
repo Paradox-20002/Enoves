@@ -52,9 +52,9 @@ export default function SocialMediaMarketing() {
         </div>
         <div className="absolute inset-0 z-10 rounded-b-[48px] md:rounded-b-[72px] bg-gradient-to-br from-[#0a0a0d]/70 via-[#120d2b]/55 to-[#0a0a0d]/80"/>
         <div className="absolute inset-0 z-20 rounded-b-[48px] md:rounded-b-[72px] blur-3xl opacity-30 pointer-events-none" style={{ background: "radial-gradient(600px 240px at 20% 10%, rgba(99,102,241,0.25), transparent 60%)" }}/>
-        <div className="relative z-30 max-w-2xl">
-          <motion.h1 className="text-4xl md:text-[2.75rem] lg:text-4xl mb-2 mt-12 text-center lg:text-left bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent lg:pl-18" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            Grow communities with social that earns attention
+        <div className="relative z-30 max-w-3xl">
+          <motion.h1 className="text-3xl md:text-[2.75rem] lg:text-5xl font-bold mb-2 mt-12 text-center lg:text-left bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent lg:pl-18" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            Grow Communities With Social That Earns Attention
           </motion.h1>
           <motion.p className="max-w-xl md:max-w-lg lg:max-w-2xl px-5 lg:pl-18 text-sm md:text-[15px] lg:text-base text-gray-200 pr-0 text-center lg:text-left" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.1 }}>
             Enoves pairs strategists, creatives, and analysts to architect social ecosystems where every post compounds reach, engagement, and brand affinity.

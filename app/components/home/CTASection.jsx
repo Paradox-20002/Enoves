@@ -21,7 +21,7 @@ export default function CTASection() {
           <p className="text-lg uppercase tracking-widest text-violet-400 font-bold">
             Ready when you are
           </p>
-          <h2 className="text-2xl lg:text-4xl font-bold leading-tight md:text-3xl">
+          <h2 className="text-2xl capitalize lg:text-4xl font-bold leading-tight md:text-3xl">
             Ship your next launch with Enoves.
           </h2>
           <p className="text-base text-white/80 md:text-lg">

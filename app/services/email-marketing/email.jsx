@@ -136,12 +136,13 @@ export default function EmailMarketing() {
           }}
         />
 
-        <div className="relative z-30 max-w-2xl">
+        <div className="relative z-30 max-w-3xl">
           <motion.h1
             className="
-              text-4xl
+              text-3xl
               md:text-[2.75rem]
-              lg:text-4xl
+              lg:text-5xl
+              font-bold
               mb-2
               text-center
               lg:text-left
@@ -156,7 +157,7 @@ export default function EmailMarketing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Measure impact across your campaigns
+            Measure Impact Across Your Campaigns
           </motion.h1>
 
           <motion.p

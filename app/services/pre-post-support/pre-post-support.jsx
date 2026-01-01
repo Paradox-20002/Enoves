@@ -96,14 +96,14 @@ export default function PrePostSupport() {
               "radial-gradient(600px 240px at 20% 10%, rgba(99,102,241,0.25), transparent 60%)",
           }}
         />
-        <div className="relative z-30 max-w-2xl">
+        <div className="relative z-30 max-w-3xl">
           <motion.h1
-            className="text-4xl md:text-[2.75rem] lg:text-4xl mb-2 text-center lg:text-left mt-12 lg:mt-10 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:pl-18"
+            className="text-3xl md:text-[2.75rem] lg:text-5xl font-bold mb-2 text-center lg:text-left mt-12 lg:mt-10 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent digital-hero-title lg:pl-18"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Keep customers engaged before, during, and after launch
+            Keep Customers Engaged Before, During, and After Launch
           </motion.h1>
           <motion.p
             className="max-w-xl md:max-w-lg lg:max-w-2xl px-5 lg:pl-18 text-sm md:text-[15px] lg:text-base text-gray-200 pr-0 text-center lg:text-left"

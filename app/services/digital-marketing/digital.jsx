@@ -124,7 +124,7 @@ export default function Digital() {
             animate={ { opacity: 1, y: 0 } }
             transition={ { duration: 0.6 } }
           >
-            Measure growth across all channels
+            Measure Growth Across All Channels
           </motion.h1>
 
           <motion.p
@@ -158,7 +158,7 @@ export default function Digital() {
               key={ feature.title }
               className={ `relative z-10 flex flex-col gap-5 text-white ${ feature.articleClassName }` }
             >
-              <h2 className="text-2xl lg:text-4xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <h2 className="text-2xl md:text-4xl font-bold leading-snug md:leading-normal bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 { feature.title }
               </h2>
               <p className="text-gray-300 text-base md:text-lg leading-relaxed">

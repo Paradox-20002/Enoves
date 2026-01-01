@@ -118,12 +118,13 @@ export default function Uiux() {
               "radial-gradient(600px 240px at 20% 10%, rgba(99,102,241,0.25), transparent 60%)",
           }}
         />
-        <div className="relative z-30 max-w-2xl">
+        <div className="relative z-30 max-w-3xl">
           <motion.h1
             className="
-              text-4xl
+              text-3xl
               md:text-[2.75rem]
-              lg:text-4xl
+              lg:text-5xl
+              font-bold
               mb-2
               text-center
               lg:text-left
@@ -138,7 +139,7 @@ export default function Uiux() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Enhance experiences across every interface
+            Enhance Experiences Across Every Interface
           </motion.h1>
 
           <motion.p
