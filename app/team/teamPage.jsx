@@ -11,9 +11,9 @@ import { useEffect, useState } from "react";
 
 
 // 2. Placeholder/Mock for Social Icons (You must define/import these in your actual project)
-const MockLinkedInIcon = ( props ) => (
+const MockLinkedInIcon = (props) => (
   <svg
-    { ...props }
+    {...props}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
@@ -21,9 +21,9 @@ const MockLinkedInIcon = ( props ) => (
     <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 17h4v4H4v-4zM6 4a2 2 0 100 4 2 2 0 000-4z" />
   </svg>
 );
-const MockTwitterIcon = ( props ) => (
+const MockTwitterIcon = (props) => (
   <svg
-    { ...props }
+    {...props}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     fill="currentColor"
@@ -33,15 +33,15 @@ const MockTwitterIcon = ( props ) => (
 );
 
 export default function TeamPage() {
-  const [ typing, setTyping ] = useState( false );
-  useEffect( () => {
-    const timer = setTimeout( () => {
-      setTyping( true );
-    }, 12000 );
-    return () => clearTimeout( timer );
-  }, [] );
+  const [typing, setTyping] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTyping(true);
+    }, 12000);
+    return () => clearTimeout(timer);
+  }, []);
   // Use the first member of leadershipTeam as the CEO for the large section
-  const ceo = leadershipTeam[ 0 ] || {
+  const ceo = leadershipTeam[0] || {
     name: "Jane Doe",
     title: "Chief Executive Officer",
     image: "/ceo-placeholder.jpg", // REPLACE with actual CEO image path
@@ -88,11 +88,11 @@ export default function TeamPage() {
   };
 
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-[#0a0a0d] py-20 text-[#f5f5ff]">
-      {/* --------------------------------------------- */ }
-      {/* SECTION 1: HERO & HEADING (KEEP AS IS) */ }
-      {/* --------------------------------------------- */ }
-      <section className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center">
+    <main className="relative min-h-screen max-w-full overflow-hidden bg-[#0a0a0d] py-20 text-[#f5f5ff]">
+      {/* --------------------------------------------- */}
+      {/* SECTION 1: HERO & HEADING (KEEP AS IS) */}
+      {/* --------------------------------------------- */}
+      <section className="relative mx-auto flex max-w-full flex-col items-center gap-6 px-10 text-center">
         <span
           className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-purple-500/25 blur-3xl"
           aria-hidden="true"
@@ -114,43 +114,43 @@ export default function TeamPage() {
         </p>
       </section>
 
-      {/* --------------------------------------------- */ }
-      {/* SECTION 2: CEO VISION (NEW) */ }
-      {/* --------------------------------------------- */ }
-      <section className="mx-auto mt-24 max-w-6xl px-4">
+      {/* --------------------------------------------- */}
+      {/* SECTION 2: CEO VISION (NEW) */}
+      {/* --------------------------------------------- */}
+      <section className="mx-8 lg:mx-20 mt-24 max-w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* LEFT: CEO Image Card (Animated) */ }
+          {/* LEFT: CEO Image Card (Animated) */}
           <motion.div
             className="w-full h-[500px] lg:h-[600px] relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-900/40"
-            variants={ cardVariants }
+            variants={cardVariants}
             initial="initial"
             animate="animate"
             whileHover="hover"
-            transition={ { duration: 0.5, type: "spring", stiffness: 100 } }
+            transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
           >
             <Image
-              src={ ceo.image }
-              alt={ ceo.name }
+              src={ceo.image}
+              alt={ceo.name}
               fill
-              style={ { objectFit: "cover" } }
+              style={{ objectFit: "cover" }}
               className="transition-transform h-300 duration-500 hover:scale-105"
             />
-            {/* Dark Overlay with CEO Info */ }
+            {/* Dark Overlay with CEO Info */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0d]/90 via-transparent to-transparent flex flex-col justify-end p-8">
               <h3 className="text-3xl font-bold text-white mb-1">
-                { ceo.name }
+                {ceo.name}
               </h3>
               <p className="text-xl font-medium text-purple-300 mb-4">
-                { ceo.title }
+                {ceo.title}
               </p>
-              {/* Social Icons (Only for CEO) */ }
+              {/* Social Icons (Only for CEO) */}
               <div className="flex gap-3">
-                { ceo.socials?.map( ( social ) => {
+                {ceo.socials?.map((social) => {
                   const Icon = social.icon;
                   return (
                     <a
-                      key={ social.label }
-                      href={ social.href }
+                      key={social.label}
+                      href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-purple-400/40 bg-purple-900/20 text-purple-200 transition-all duration-300 hover:scale-110 hover:border-purple-300 hover:bg-purple-500/30 hover:text-purple-100"
@@ -158,34 +158,34 @@ export default function TeamPage() {
                       <Icon className="h-5 w-5" />
                     </a>
                   );
-                } ) }
+                })}
               </div>
             </div>
           </motion.div>
 
-          {/* RIGHT: CEO Vision Text (Typing Effect) */ }
+          {/* RIGHT: CEO Vision Text (Typing Effect) */}
           <div className="flex flex-col justify-center">
             <motion.p
               className="text-sm uppercase tracking-[0.3em] text-cyan-300 mb-4 font-medium"
-              initial={ { opacity: 0 } }
-              animate={ { opacity: 1 } }
-              transition={ { delay: 0.2, duration: 0.5 } }
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
             >
               {/* CEO Vision */}
             </motion.p>
             <motion.h2
               className="text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-8 leading-tight"
-              initial={ { opacity: 0, y: 10 } }
-              animate={ { opacity: 1, y: 0 } }
-              transition={ { delay: 0.4, duration: 0.6 } }
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
             >
               Our CEO's Vision
             </motion.h2>
 
             <motion.div
-              initial={ { opacity: 0 } }
-              animate={ { opacity: 1 } }
-              transition={ { delay: 0.6, duration: 0.8 } }
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
               className="p-6 rounded-xl bg-purple-900/20 border border-purple-500/30 backdrop-blur-sm relative min-h-[150px]">
               <div>
                 <span className="text-3xl relative top-0 text-indigo-400">“</span>
@@ -194,19 +194,19 @@ export default function TeamPage() {
               </div>
 
               <div className="text-right mt-4 text-sm font-semibold text-white">
-                { typing && <TypingEffect text="Aqeel" /> }
+                {typing && <TypingEffect text="Aqeel" />}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-      <section className="mx-auto mt-20 max-w-6xl px-4 text-center">
+      <section className="mx-auto mt-20 max-w-full px-4 text-center">
         <motion.h2
           className="text-5xl font-extrabold text-white"
-          initial={ { opacity: 0, scale: 0.8 } }
-          whileInView={ { opacity: 1, scale: 1 } }
-          viewport={ { once: true, amount: 0.5 } }
-          transition={ { duration: 0.8 } }
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
           <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
             Our Leadership
@@ -216,47 +216,47 @@ export default function TeamPage() {
           Meet the exceptional leadership driving our momentum across all departments.
         </p>
       </section>
-<section className="mt-14">
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-    {MoreLeaders.map((team, index) => (
-      <motion.div
-        key={team.name}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
-        viewport={{ once: true }}
-        className="flex flex-col bg-gradient-to-b from-[#2a2a45] to-[#1a1a2e] border border-white/10 rounded-3xl shadow-xl shadow-black/20 overflow-hidden backdrop-blur-xl"
-      >
-        <Image
-          className="rounded-t-3xl object-cover w-100 h-110"
-          src={team.images}
-          alt={team.name}
-          width={100}
-          height={110}
-        />
+      <section className="mt-14 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-full mx-9 lg:mx-20">
+          {MoreLeaders.map((team, index) => (
+            <motion.div
+              key={team.name}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
+              viewport={{ once: true }}
+              className="flex flex-col bg-gradient-to-b from-[#2a2a45] to-[#1a1a2e] border border-white/10 rounded-3xl shadow-xl shadow-black/20 overflow-hidden backdrop-blur-xl"
+            >
+              <Image
+                className="rounded-t-3xl object-cover w-100 h-110"
+                src={team.images}
+                alt={team.name}
+                width={100}
+                height={110}
+              />
 
-        <div className="p-6 text-center space-y-1">
-          <p className="text-3xl font-extrabold text-purple-300 tracking-wide drop-shadow-md">
-            {team.title}
-          </p>
-          <h2 className="text-lg font-semibold text-gray-200 uppercase tracking-wide">
-            {team.name}
-          </h2>
+              <div className="p-6 text-center space-y-1">
+                <p className="text-3xl font-extrabold text-purple-300 tracking-wide drop-shadow-md">
+                  {team.title}
+                </p>
+                <h2 className="text-lg font-semibold text-gray-200 uppercase tracking-wide">
+                  {team.name}
+                </h2>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </motion.div>
-    ))}
-  </div>
-</section>
+      </section>
 
 
 
       <section className="mx-auto mt-20 max-w-6xl px-4 text-center">
         <motion.h2
           className="text-5xl font-extrabold text-white"
-          initial={ { opacity: 0, scale: 0.8 } }
-          whileInView={ { opacity: 1, scale: 1 } }
-          viewport={ { once: true, amount: 0.5 } }
-          transition={ { duration: 0.8 } }
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
           <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
             Our Team
@@ -267,9 +267,9 @@ export default function TeamPage() {
         </p>
       </section>
 
-      {/* --------------------------------------------- */ }
-      {/* SECTION 4: DEVELOPMENT TEAM (MODIFIED) */ }
-      {/* --------------------------------------------- */ }
+      {/* --------------------------------------------- */}
+      {/* SECTION 4: DEVELOPMENT TEAM (MODIFIED) */}
+      {/* --------------------------------------------- */}
       <section className="mx-auto mt-16 max-w-6xl">
         <div className="relative mb-10 text-center">
           <span
@@ -286,75 +286,75 @@ export default function TeamPage() {
 
         <motion.div
           className="flex flex-wrap justify-center gap-18"
-          variants={ containerVariants }
+          variants={containerVariants}
           initial="hidden"
           whileInView="show"
-          viewport={ { once: true, amount: 0.2 } }
+          viewport={{ once: true, amount: 0.2 }}
         >
-          { DevTeam.map( ( member, index ) => {
-            const [ isActive, setIsActive ] = useState( false );
+          {DevTeam.map((member, index) => {
+            const [isActive, setIsActive] = useState(false);
 
             return (
               <motion.div
-                key={ index }
-                className={ `
-        group relative overflow-hidden rounded-xl
-        bg-gradient-to-b from-[#1a1a2e]/80 to-[#14141f]/80
-        backdrop-blur-sm border border-purple-500/10
-        transition-all duration-500
-        hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10
-        hover:-translate-y-2 max-w-[350px]
-        ${ isActive ? 'border-purple-500/30 shadow-xl shadow-purple-500/10 -translate-y-2' : '' }
-      `}
-                variants={ itemVariants }
+                key={index}
+                className={
+                  `group relative overflow-hidden rounded-xl
+                  bg-gradient-to-b from-[#1a1a2e]/80 to-[#14141f]/80
+                  backdrop-blur-sm border border-purple-500/10
+                  transition-all duration-500
+                  hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10
+                  hover:-translate-y-2 max-w-[350px] min-w-[300px]
+                  ${isActive ? 'border-purple-500/30 shadow-xl shadow-purple-500/10 -translate-y-2' : ''}`
+                }
+                variants={itemVariants}
                 whileHover="hover"
-                custom={ index }
-                onClick={ () => setIsActive( !isActive ) } // Toggle effect on click
+                custom={index}
+                onClick={() => setIsActive(!isActive)} // Toggle effect on click
               >
                 <div className="relative h-82 w-full overflow-hidden">
                   <Image
-                    src={ member.image }
-                    alt={ member.name }
-                    width={ 350 }
-                    height={ 388 }
-                    className={ `h-full w-full object-cover transition-transform duration-700 
-            ${ isActive ? 'scale-110' : 'group-hover:scale-110' }` }
+                    src={member.image}
+                    alt={member.name}
+                    width={350}
+                    height={388}
+                    className={`h-full w-full object-cover transition-transform duration-700 
+            ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}
                   />
                   <div
-                    className={ `absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-[#0a0a0d]/60 to-transparent
+                    className={`absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-[#0a0a0d]/60 to-transparent
             opacity-80 transition-opacity duration-500
-            ${ isActive ? 'opacity-90' : 'group-hover:opacity-90' }` }
+            ${isActive ? 'opacity-90' : 'group-hover:opacity-90'}`}
                   />
 
-                  {/* Shine effect */ }
-                  <div className={ `absolute inset-0 opacity-0 transition-opacity duration-700
-          ${ isActive ? 'opacity-100' : 'group-hover:opacity-100' }` }>
+                  {/* Shine effect */}
+                  <div className={`absolute inset-0 opacity-0 transition-opacity duration-700
+          ${isActive ? 'opacity-100' : 'group-hover:opacity-100'}`}>
                     <div className="absolute inset-0 translate-x-[-100%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[100%]" />
                   </div>
                 </div>
 
                 <div className="relative p-6 space-y-1.5 bg-gradient-to-b from-transparent to-[#0a0a0d]/40 text-center">
-                  <h3 className={ `text-xl font-semibold text-white transition-colors duration-300
-      ${ isActive ? 'text-purple-200' : 'group-hover:text-purple-200' }` }
+                  <h3 className={`text-xl font-semibold text-white transition-colors duration-300
+      ${isActive ? 'text-purple-200' : 'group-hover:text-purple-200'}`}
                   >
-                    { member.name }
+                    {member.name}
                   </h3>
-                  <p className={ `text-sm text-purple-300/70 opacity-0 transition-opacity duration-300
-      ${ isActive ? 'opacity-100' : 'group-hover:opacity-100' }` }
+                  <p className={`text-sm text-purple-300/70 opacity-0 transition-opacity duration-300
+      ${isActive ? 'opacity-100' : 'group-hover:opacity-100'}`}
                   >
-                    { member.title }
+                    {member.title}
                   </p>
                 </div>
 
               </motion.div>
             );
-          } ) }
+          })}
 
         </motion.div>
       </section>
 
-      {/* Leadership Team (Original section is removed since the CEO card replaced it) */ }
-      {/* To re-add the rest of the leadership team, you would need to iterate over leadershipTeam.slice(1) or create a separate, smaller Leadership Team section */ }
+      {/* Leadership Team (Original section is removed since the CEO card replaced it) */}
+      {/* To re-add the rest of the leadership team, you would need to iterate over leadershipTeam.slice(1) or create a separate, smaller Leadership Team section */}
     </main>
   );
 }
