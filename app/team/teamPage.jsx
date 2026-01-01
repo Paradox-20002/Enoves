@@ -104,7 +104,7 @@ export default function TeamPage() {
         <p className="z-10 inline-flex rounded-full border border-purple-400/40 px-5 py-2 text-xs font-semibold uppercase tracking-[0.35em] text-purple-200">
           The Enoves Crew
         </p>
-        <h1 className="z-10 text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
+        <h1 className="z-10 text-3xl lg:text-5xl font-bold leading-tight sm:text-5xl md:text-6xl">
           We Build Momentum With Crafted Teams
         </h1>
         <p className="z-10 max-w-3xl text-base text-gray-300 sm:text-lg">
@@ -174,7 +174,7 @@ export default function TeamPage() {
               {/* CEO Vision */}
             </motion.p>
             <motion.h2
-              className="text-4xl lg:text-5xl font-extrabold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-8 leading-tight"
+              className="text-2xl lg:text-4xl font-extrabold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent mb-8 leading-tight"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
@@ -202,7 +202,7 @@ export default function TeamPage() {
       </section>
       <section className="mx-auto mt-20 max-w-full px-4 text-center">
         <motion.h2
-          className="text-5xl font-extrabold text-white"
+          className="text-2xl lg:text-4xl font-bold text-white"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}
@@ -250,9 +250,9 @@ export default function TeamPage() {
 
 
 
-      <section className="mx-auto mt-20 max-w-6xl px-4 text-center">
+      <section className="mx-auto mt-20 max-w-full px-4 text-center">
         <motion.h2
-          className="text-5xl font-extrabold text-white"
+          className="text-2xl lg:text-4xl font-bold text-white"
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.5 }}
