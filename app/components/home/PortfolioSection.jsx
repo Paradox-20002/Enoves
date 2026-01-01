@@ -11,10 +11,10 @@ export default function PortfolioSection() {
   return (
     <section
       data-home-section="portfolio"
-      className="relative overflow-hidden xl:max-w-full lg:max-w-7xl bg-transparent py-15 px-6 sm:px-10 lg:px-12"
-    >
+      className="relative overflow-hidden xl:max-w-full 2xl:max-w-full lg:max-w-full bg-transparent py-15 px-6 sm:px-10 lg:px-12"
+    > 
 
-      <div className="mx-auto relative xl:max-w-full 2xl:max-w-[90%] z-10 lg:px-6 xl:px-6 md:px-6 ">
+      <div className="mx-auto relative xl:max-w-full 2xl:max-w-full z-10 lg:px-6 xl:px-6 md:px-6 ">
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-lg lg:text-lg font-bold uppercase tracking-widest text-violet-400">Portfolio</p>

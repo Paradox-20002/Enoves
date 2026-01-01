@@ -53,7 +53,7 @@ export default function ServicesSection() {
       data-home-section="services"
       className="relative overflow-hidden bg-transparent max-w-6xl xl:max-w-full px-6 py-15 lg:py-15 sm:px-10 lg:px-12"
     >
-      <div className="mx-auto relative z-10 grid gap-14 lg:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] xl:max-w-full 2xl:max-w-[94%]">
+      <div className="mx-auto relative z-10 grid gap-14 lg:px-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] xl:max-w-full 2xl:max-w-full">
 
         {/* Left Column */}
         <motion.div

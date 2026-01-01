@@ -80,7 +80,7 @@ const Slider = ({ heading }) => {
 
                 {/* CONTENT */}
                 <motion.div
-                  className="absolute top-[30%] left-8 md:left-16 lg:left-19 text-white z-[2] w-[90%] md:w-[85%] lg:"
+                  className="absolute top-[30%] left-8 md:left-16 lg:left-19 text-white z-[2] w-[90%] md:w-[85%]"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3, duration: 0.8 }}

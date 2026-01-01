@@ -344,7 +344,7 @@ const description = useTypingEffect(
   return (
     <section className="relative 2xl:max-w-full xl:max-w-full lg:max-w-7xl w-full overflow-hidden bg-[#04060D] pt-30 pb-15 lg:px-12">
 
-      <div className="relative z-10  mx-auto px-6 pointer-events-none lg:max-w-full 2xl:max-w-[90%]">
+      <div className="relative z-10  mx-auto px-6 pointer-events-none lg:max-w-full 2xl:max-w-full">
         <div className="text-center">
 
           <h2 className="text-2xl md:text-4xl lg:text-4xl font-bold text-gray-100 leading-tight flex flex-wrap items-center justify-center gap-1 mb-4 lg:items-start lg:justify-start">
