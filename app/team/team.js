@@ -2,11 +2,11 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 
 export const leadershipTeam = [
   {
-    name: "Aqeel",
+    name: "Muhammad Aqeel ",
     title: "CEO",
     bio: "Product storyteller focused on pairing market insight with differentiated brand experiences.",
     image:
-      "/emp-images/tashfeen.jpg",
+      "/emp-images/aqeel.png",
     socials: [
       { label: "Facebook", href: "https://facebook.com", icon: FaFacebookF },
       { label: "Instagram", href: "https://instagram.com", icon: FaInstagram },
@@ -17,109 +17,104 @@ export const leadershipTeam = [
 
 export const MoreLeaders = [
   {
-    name: "Tashfeen",
+    name: "Muhammad Tashfeen Wakeel",
     title: "COO",
     bio: "",
-    images: "/emp-images/noman.png"
+    images: "/emp-images/tashfeen2.svg"
   },
   {
-    name: "Faizan",
+    name: "Faizan Wakeel",
     title: "CTO",
     bio: "",
-    images: "/emp-images/noman.png"
+    images: "/emp-images/faizan7.svg"
   },
   {
-    name: "Noman",
+    name: "M Arslan Abid",
     title: "CFO",
     bio: "",
-    images: "/emp-images/noman.png"
+    images: "/emp-images/arslan3.svg"
+  },
+  {
+    name: "Zeeshan",
+    title: "CFO",
+    bio: "",
+    images: "/emp-images/zeeshan.svg"
+  },
+  {
+    name: "Bilal Ahmed",
+    title: "CFO",
+    bio: "",
+    images: "/emp-images/bilal14.svg"
   },
 ]
 // dev team ----------------------------
 export const DevTeam = [
   {
-    name: "Noman Ejaz",
-    title: "Senior Web Developer",
-    bio: "",
-    image: "/emp-images/noman12.png",
-  },
-  {
     name: "M Arsalan Abid",
     title: "Marketing Manager",
     bio: "",
-    image: "/emp-images/arslan.jpg",
+    image: "/emp-images/arslan.png",
+  },
+  {
+    name: "Noman Ejaz",
+    title: "Senior Web Developer",
+    bio: "",
+    image: "/emp-images/noman.png",
   },
   {
     name: "Usama",
-    title: "Marketing Executive",
+    title: "Marketing Associate",
     bio: "",
-    image: "/emp-images/usama.jpg",
-  },
-  {
-    name: "Abid",
-    title: "Senior Web Developer",
-    bio: "",
-    image: "/emp-images/abid.jpg",
+    image: "/emp-images/usama.png",
   },
   {
     name: "Fahad Yaseen",
-    title: "Marketing Executive",
+    title: "Marketing Associate",
     bio: "",
-    image: "/emp-images/fahad.jpg",
-  },
-  {
-    name: "Ali",
-    title: "Marketing Executive",
-    bio: "",
-    image: "/emp-images/abid.jpg",
-  },
-  {
-    name: "Ahmad",
-    title: "Associate Marketing Executive",
-    bio: "",
-    image: "/emp-images/abid.jpg",
-  },
-  {
-    name: "Daniyal",
-    title: "Associate Marketing Executive",
-    bio: "",
-    image: "/emp-images/daniyal.jpg",
-  },
-  {
-    name: "Tahif",
-    title: "Marketing Trainee",
-    bio: "",
-    image: "/emp-images/abid.jpg",
-  },
-  {
-    name: "Bilal",
-    title: "Marketing Trainee",
-    bio: "",
-    image: "/emp-images/bilal.jpg",
-  },
-  {
-    name: "Ubaid",
-    title: "Marketing Trainee",
-    bio: "",
-    image: "/emp-images/abid.jpg",
-  },
-  {
-    name: "Umer",
-    title: "Marketing Trainee",
-    bio: "",
-    image: "/emp-images/abid.jpg",
+    image: "/emp-images/fahad.png",
   },
   {
     name: "Abubakr",
     title: "Associate Web Developer",
     bio: "",
-    image: "/emp-images/abubakr.jpg",
+    image: "/emp-images/abubakr.png",
   },
   {
-    name: "Noman",
-    title: "Trainee Web Developer",
+    name: "Noman Safdar",
+    title: "Associate Web Developer",
     bio: "",
     image: "/emp-images/noman.png",
   },
+  {
+    name: "Ahmad",
+    title: "Marketing Associate",
+    bio: "",
+    image: "/emp-images/ahmad.png",
+  },
+  {
+    name: "Bilal",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/emp-images/bilal.png",
+  },
+  {
+    name: "Taif",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/emp-images/noman.png",
+  },
+  {
+    name: "Ubaid",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/emp-images/ubaid.png",
+  },
+  {
+    name: "Umer",
+    title: "Marketing Trainee",
+    bio: "",
+    image: "/emp-images/umer.png",
+  },
+
 ];
 // seo team ----------------------------

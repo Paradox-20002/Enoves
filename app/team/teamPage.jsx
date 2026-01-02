@@ -1,14 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import { leadershipTeam, DevTeam, MarketingTeam, SEOteam, MoreLeaders } from "./team";
+import {
+  leadershipTeam,
+  DevTeam,
+  MarketingTeam,
+  SEOteam,
+  MoreLeaders,
+} from "./team";
 // 1. Framer Motion Import
 import { motion } from "framer-motion";
 import TypingEffect from "./typingeffect";
 import { useEffect, useState } from "react";
-
-
-
 
 // 2. Placeholder/Mock for Social Icons (You must define/import these in your actual project)
 const MockLinkedInIcon = (props) => (
@@ -34,6 +37,7 @@ const MockTwitterIcon = (props) => (
 
 export default function TeamPage() {
   const [typing, setTyping] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       setTyping(true);
@@ -58,7 +62,6 @@ export default function TeamPage() {
       },
     ],
   };
-
 
   // Framer Motion Variants
   const containerVariants = {
@@ -137,9 +140,7 @@ export default function TeamPage() {
             />
             {/* Dark Overlay with CEO Info */}
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0d]/90 via-transparent to-transparent flex flex-col justify-end p-8">
-              <h3 className="text-3xl font-bold text-white mb-1">
-                {ceo.name}
-              </h3>
+              <h3 className="text-3xl font-bold text-white mb-1">{ceo.name}</h3>
               <p className="text-xl font-medium text-purple-300 mb-4">
                 {ceo.title}
               </p>
@@ -186,20 +187,26 @@ export default function TeamPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="p-6 rounded-xl bg-purple-900/20 border border-purple-500/30 backdrop-blur-sm relative min-h-[150px]">
+              className="p-6 rounded-xl bg-purple-900/20 border border-purple-500/30 backdrop-blur-sm relative min-h-[150px]"
+            >
               <div>
-                <span className="text-3xl relative top-0 text-indigo-400">“</span>
+                <span className="text-3xl relative top-0 text-indigo-400">
+                  “
+                </span>
                 <TypingEffect text="Our vision is to empower every client to achieve their fullest potential. We strive to deliver innovative solutions, create meaningful impact, and build lasting partnerships. Your success drives our purpose, and together we turn ambition into reality." />
-                <span className="text-3xl relative top-3 text-indigo-400">”</span>
+                <span className="text-3xl relative top-3 text-indigo-400">
+                  ”
+                </span>
               </div>
 
               <div className="text-right mt-4 text-sm font-semibold text-white">
-                {typing && <TypingEffect text="Aqeel" />}
+                {typing && <TypingEffect text="Muhammad Aqeel" />}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
+
       <section className="mx-auto mt-20 max-w-full px-4 text-center">
         <motion.h2
           className="text-2xl lg:text-4xl font-bold text-white"
@@ -213,145 +220,81 @@ export default function TeamPage() {
           </span>
         </motion.h2>
         <p className="mt-4 text-lg text-gray-400">
-          Meet the exceptional leadership driving our momentum across all departments.
+          Meet the exceptional leadership driving our momentum across all
+          departments.
         </p>
       </section>
-      <section className="mt-14 ">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 max-w-full mx-9 lg:mx-20">
-          {MoreLeaders.map((team, index) => (
+     <section className="mt-20 relative">
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12 max-w-full mx-6 lg:mx-20">
+    {MoreLeaders.map((team, index) => (
+      <motion.div
+        key={team.name}
+        initial={{ opacity: 0, y: 60 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.9,
+          delay: index * 0.15,
+          ease: [0.22, 1, 0.36, 1],
+        }}
+        viewport={{ once: true }}
+        whileHover={{
+          y: -14,
+          rotateX: 4,
+          rotateY: -4,
+        }}
+        className="relative group perspective-1000"
+      >
+        {/* Glow layer */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-purple-500/20 via-fuchsia-500/10 to-transparent opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500" />
+
+        {/* Card */}
+        <div className="relative flex flex-col rounded-3xl bg-gradient-to-br from-[#2b2b4f] via-[#1f1f38] to-[#151527] border border-white/10 shadow-[0_30px_80px_-20px_rgba(128,90,213,0.45)] overflow-hidden">
+          
+          {/* Image frame */}
+          <div className="relative mx-6 mt-6 rounded-2xl bg-white overflow-hidden aspect-[4/5]">
             <motion.div
-              key={team.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.12, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="flex flex-col bg-gradient-to-b from-[#2a2a45] to-[#1a1a2e] border border-white/10 rounded-3xl shadow-xl shadow-black/20 overflow-hidden backdrop-blur-xl"
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="w-full h-full"
             >
               <Image
-                className="rounded-t-3xl object-cover w-100 h-110"
                 src={team.images}
                 alt={team.name}
-                width={100}
-                height={110}
+                fill
+                className="object-contain"
+                quality={100}
+                priority={index < 3}
               />
-
-              <div className="p-6 text-center space-y-1">
-                <p className="text-3xl font-extrabold text-purple-300 tracking-wide drop-shadow-md">
-                  {team.title}
-                </p>
-                <h2 className="text-lg font-semibold text-gray-200 uppercase tracking-wide">
-                  {team.name}
-                </h2>
-              </div>
             </motion.div>
-          ))}
+          </div>
+
+          {/* Content */}
+          <div className="relative px-6 py-8 text-center">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 + 0.3, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-2xl font-extrabold text-purple-300 tracking-wide"
+            >
+              {team.title}
+            </motion.p>
+
+            <motion.h2
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.15 + 0.45, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="mt-2 text-sm font-semibold text-gray-300 uppercase tracking-[0.2em]"
+            >
+              {team.name}
+            </motion.h2>
+          </div>
         </div>
-      </section>
-
-
-
-      <section className="mx-auto mt-20 max-w-full px-4 text-center">
-        <motion.h2
-          className="text-2xl lg:text-4xl font-bold text-white"
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-            Our Team
-          </span>
-        </motion.h2>
-        <p className="mt-4 text-lg text-gray-400">
-          Meet the exceptional talent driving our momentum across all departments.
-        </p>
-      </section>
-
-      {/* --------------------------------------------- */}
-      {/* SECTION 4: DEVELOPMENT TEAM (MODIFIED) */}
-      {/* --------------------------------------------- */}
-      <section className="mx-auto mt-16 max-w-6xl">
-        <div className="relative mb-10 text-center">
-          <span
-            className="pointer-events-none absolute -top-12 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full bg-purple-500/15 blur-3xl"
-            aria-hidden="true"
-          />
-          {/* <h2 className="relative z-10 text-3xl font-semibold text-white mb-2">
-            Development Team 🧑‍💻
-          </h2>
-          <p className="relative z-10 text-base text-gray-400">
-            Building the future, one line of code at a time
-          </p> */}
-        </div>
-
-        <motion.div
-          className="flex flex-wrap justify-center gap-18"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {DevTeam.map((member, index) => {
-            const [isActive, setIsActive] = useState(false);
-
-            return (
-              <motion.div
-                key={index}
-                className={
-                  `group relative overflow-hidden rounded-xl
-                  bg-gradient-to-b from-[#1a1a2e]/80 to-[#14141f]/80
-                  backdrop-blur-sm border border-purple-500/10
-                  transition-all duration-500
-                  hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10
-                  hover:-translate-y-2 max-w-[350px] min-w-[300px]
-                  ${isActive ? 'border-purple-500/30 shadow-xl shadow-purple-500/10 -translate-y-2' : ''}`
-                }
-                variants={itemVariants}
-                whileHover="hover"
-                custom={index}
-                onClick={() => setIsActive(!isActive)} // Toggle effect on click
-              >
-                <div className="relative h-82 w-full overflow-hidden">
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    width={350}
-                    height={388}
-                    className={`h-full w-full object-cover transition-transform duration-700 
-            ${isActive ? 'scale-110' : 'group-hover:scale-110'}`}
-                  />
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t from-[#0a0a0d] via-[#0a0a0d]/60 to-transparent
-            opacity-80 transition-opacity duration-500
-            ${isActive ? 'opacity-90' : 'group-hover:opacity-90'}`}
-                  />
-
-                  {/* Shine effect */}
-                  <div className={`absolute inset-0 opacity-0 transition-opacity duration-700
-          ${isActive ? 'opacity-100' : 'group-hover:opacity-100'}`}>
-                    <div className="absolute inset-0 translate-x-[-100%] skew-x-[-15deg] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 ease-out group-hover:translate-x-[100%]" />
-                  </div>
-                </div>
-
-                <div className="relative p-6 space-y-1.5 bg-gradient-to-b from-transparent to-[#0a0a0d]/40 text-center">
-                  <h3 className={`text-xl font-semibold text-white transition-colors duration-300
-      ${isActive ? 'text-purple-200' : 'group-hover:text-purple-200'}`}
-                  >
-                    {member.name}
-                  </h3>
-                  <p className={`text-sm text-purple-300/70 opacity-0 transition-opacity duration-300
-      ${isActive ? 'opacity-100' : 'group-hover:opacity-100'}`}
-                  >
-                    {member.title}
-                  </p>
-                </div>
-
-              </motion.div>
-            );
-          })}
-
-        </motion.div>
-      </section>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
       {/* Leadership Team (Original section is removed since the CEO card replaced it) */}
       {/* To re-add the rest of the leadership team, you would need to iterate over leadershipTeam.slice(1) or create a separate, smaller Leadership Team section */}
