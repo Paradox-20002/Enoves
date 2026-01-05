@@ -99,7 +99,7 @@ export default function CareersPage() {
   const benefits = [
     {
       icon: Users,
-      title: "Remote-First Culture",
+      title: "Flexible Culture",
       description:
         "Work from anywhere with flexible hours that fit your lifestyle.",
     },
@@ -163,12 +163,12 @@ export default function CareersPage() {
             </span>
           </motion.div>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
             <span className="bg-gradient-to-r from-white via-violet-200 to-white bg-clip-text text-transparent">
               Build the Future
             </span>
             <br />
-            <span className="text-gray-400 text-4xl md:text-5xl lg:text-6xl">
+            <span className="text-gray-400 text-2xl md:text-3xl lg:text-4xl">
               with Enoves
             </span>
           </h1>
@@ -207,7 +207,7 @@ export default function CareersPage() {
           className="max-w-7xl mx-auto"
         >
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-violet-200 bg-clip-text text-transparent">
+            <h2 className="text-2xl lg:text-4xl py-1 font-bold mb-4 bg-gradient-to-r from-white to-violet-200 bg-clip-text text-transparent">
               Why Join Enoves?
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -265,7 +265,7 @@ export default function CareersPage() {
           className="max-w-6xl mx-auto relative"
         >
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-white to-violet-200 bg-clip-text text-transparent">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-4 py-1 bg-gradient-to-r from-white to-violet-200 bg-clip-text text-transparent">
               Our Hiring Journey
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto">
