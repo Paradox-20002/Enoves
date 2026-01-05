@@ -18,25 +18,25 @@ export const leadershipTeam = [
 export const MoreLeaders = [
   {
     name: "Muhammad Tashfeen Wakeel",
-    title: "COO",
+    title: "CTO",
     bio: "",
     images: "/emp-images/tashfeen2.svg"
   },
   {
     name: "Faizan Wakeel",
-    title: "CTO",
+    title: "CFO",
     bio: "",
     images: "/emp-images/faizan7.svg"
   },
   {
     name: "M Arslan Abid",
-    title: "CFO",
+    title: "MD",
     bio: "",
     images: "/emp-images/arslan3.svg"
   },
   {
     name: "Zeeshan",
-    title: "CFO",
+    title: "CBDO",
     bio: "",
     images: "/emp-images/zeeshan.svg"
   },

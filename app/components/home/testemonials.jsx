@@ -1,207 +1,214 @@
 "use client";
+
 import { useState, useEffect } from "react";
-import { testemonials } from "./content-testemonials";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { testemonials } from "./content-testemonials";
 
 export default function Testimonials() {
-  const [ slideIndex, setSlideIndex ] = useState( 0 );
-  const [ direction, setDirection ] = useState( 1 );
+  const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
 
-  useEffect( () => {
-    const interval = setInterval( () => nextSlide(), 5000 );
-    return () => clearInterval( interval );
-  }, [ slideIndex ] );
+  // Auto-slide with pause on hover
+  useEffect(() => {
+    if (isPaused) return;
+    const id = setInterval(() => {
+      setDirection(1);
+      setActive((i) => (i === testemonials.length - 1 ? 0 : i + 1));
+    }, 5000);
+    return () => clearInterval(id);
+  }, [isPaused]);
 
-  const nextSlide = () => {
-    setDirection( 1 );
-    setSlideIndex( ( prev ) => ( prev === testemonials.length - 1 ? 0 : prev + 1 ) );
-  };
-
-  const prevSlide = () => {
-    setDirection( -1 );
-    setSlideIndex( ( prev ) => ( prev === 0 ? testemonials.length - 1 : prev - 1 ) );
-  };
-
-  const slideVariants = {
-    enter: ( direction ) => ( {
-      x: direction > 0 ? 500 : -500,
-      opacity: 0,
-      scale: 0.9,
-    } ),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-    },
-    exit: ( direction ) => ( {
-      x: direction < 0 ? 500 : -500,
-      opacity: 0,
-      scale: 0.9,
-    } ),
+  const navigate = (newDirection) => {
+    setDirection(newDirection);
+    setActive((i) => {
+      if (newDirection === 1) {
+        return i === testemonials.length - 1 ? 0 : i + 1;
+      } else {
+        return i === 0 ? testemonials.length - 1 : i - 1;
+      }
+    });
   };
 
   return (
-    <section className="relative max-h-screen lg:mt-0 flex items-center bg-transparent text-white overflow-hidden">
-      {/* Subtle dark glows */ }
-      {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[160px]" />
-        <div className="absolute -bottom-40 left-0 w-96 h-96 bg-violet-500/8 rounded-full blur-[160px]" />
-        <div className="absolute top-1/2 left-1/2 w-72 h-72 bg-violet-400/5 rounded-full blur-[110px]" />
-      </div> */}
+    <section className="relative py-20 overflow-hidden bg-transparent">
+      {/* Large Quote Icon Background */}
+      <motion.div
+        initial={{ opacity: 0, rotate: -5 }}
+        animate={{ opacity: 0.03, rotate: 0 }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none -z-10"
+      >
+        <Quote className="w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] text-violet-500" strokeWidth={0.5} />
+      </motion.div>
 
-      <div className="relative z-10 container mx-auto px-4 w-full">
-        {/* Header */ }
+      {/* Ambient background effects */}
+      <div className="absolute inset-0 -z-20">
+        <div className="absolute top-20 left-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-violet-600/15 blur-[120px] sm:blur-[140px] rounded-full animate-pulse" />
+        <div className="absolute bottom-20 right-1/4 w-72 h-72 sm:w-96 sm:h-96 bg-indigo-500/15 blur-[120px] sm:blur-[140px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+      </div>
+
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
         <motion.div
-          initial={ { opacity: 0, y: 20 } }
-          whileInView={ { opacity: 1, y: 0 } }
-          viewport={ { once: true } }
-          transition={ { duration: 0.6 } }
-          className="text-center mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
         >
-          {/* <motion.div
-            initial={ { scale: 0 } }
-            whileInView={ { scale: 1 } }
-            viewport={ { once: true } }
-            transition={ { duration: 0.5, delay: 0.2 } }
-            className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-violet-600 to-violet-800 rounded-full shadow-[0_0_15px_rgba(139,92,246,0.3)] mb-4"
-          >
-            <Quote className="w-6 h-6 text-white" />
-          </motion.div> */}
-          <h2 className="text-2xl md:text-4xl lg:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-200">
-            What People Say
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Quote className="w-6 h-6 text-violet-500" />
+            <span className="text-sm font-medium text-violet-400 uppercase tracking-wider">Testimonials</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-violet-200 to-white bg-clip-text text-transparent mb-4">
+            Voices of Trust
           </h2>
-          <p className="text-base text-gray-300 mt-2 max-w-2xl mx-auto">
-            A beautifully contrasting experience powered by real voices.
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            Insights from leaders who experienced excellence firsthand
           </p>
         </motion.div>
 
-        {/* Carousel */ }
-        <div className="relative max-w-4xl mx-auto">
-          <AnimatePresence initial={ false } custom={ direction } mode="wait">
-            { testemonials.map(
-              ( item, index ) =>
-                index === slideIndex && (
-                  <motion.div
-                    key={ index }
-                    custom={ direction }
-                    variants={ slideVariants }
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={ {
-                      x: { type: "spring", stiffness: 260, damping: 30 },
-                      opacity: { duration: 0.4 },
-                    } }
-                    className="w-full"
-                  >
-                    <div className="bg-zinc-900/60 backdrop-blur-xl rounded-2xl shadow-[0_0_20px_rgba(139,92,246,0.1)] border border-violet-900/20 p-8 md:p-10 relative overflow-hidden">
-                      {/* Glow Accent */ }
-                      <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-violet-700/15 blur-2xl" />
+        {/* Testimonial stack */}
+        <div 
+          className="relative h-[400px] md:h-[380px]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Previous / Next buttons - hidden on small screens */}
+          <button
+            onClick={() => navigate(-1)}
+            className="hidden md:flex absolute top-1/2 -left-6 -translate-y-1/2 p-3 rounded-full bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 hover:bg-zinc-800 transition-all duration-300 z-30"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-400 hover:text-violet-400 transition-colors" />
+          </button>
 
-                      {/* Stars */ }
-                      <div className="flex justify-center gap-1 mb-6 relative z-10">
-                        { [ ...Array( 5 ) ].map( ( _, i ) => (
-                          <motion.div
-                            key={ i }
-                            initial={ { opacity: 0, scale: 0 } }
-                            animate={ { opacity: 1, scale: 1 } }
-                            transition={ { delay: 0.1 * i } }
-                          >
-                            <Star className="w-5 h-5 fill-amber-400 text-amber-400 drop-shadow-[0_0_4px_rgba(255,200,0,0.5)]" />
-                          </motion.div>
-                        ) ) }
-                      </div>
+          <button
+            onClick={() => navigate(1)}
+            className="hidden md:flex absolute top-1/2 -right-6 -translate-y-1/2 p-3 rounded-full bg-zinc-900 border border-zinc-800 hover:border-violet-500/50 hover:bg-zinc-800 transition-all duration-300 z-30"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-6 h-6 text-gray-400 hover:text-violet-400 transition-colors" />
+          </button>
 
-                      <motion.p
-                        initial={ { opacity: 0 } }
-                        animate={ { opacity: 1 } }
-                        transition={ { delay: 0.2 } }
-                        className="text-lg md:text-xl text-gray-300 text-center leading-relaxed mb-6 italic"
-                      >
-                        "{ item.content }"
-                      </motion.p>
+          <AnimatePresence initial={false} mode="popLayout">
+            {testemonials.map((item, i) => {
+              const offset = i - active;
+              if (Math.abs(offset) > 1) return null;
 
-                      {/* Author */ }
+              const isActive = offset === 0;
+
+              return (
+                <motion.div
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    y: direction * 100,
+                    scale: 0.9,
+                  }}
+                  animate={{
+                    opacity: isActive ? 1 : 0.4,
+                    y: offset * 50,
+                    scale: isActive ? 1 : 0.92,
+                    filter: isActive ? "blur(0px)" : "blur(3px)",
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: direction * -100,
+                    scale: 0.88,
+                  }}
+                  transition={{
+                    duration: 0.5,
+                    ease: [0.32, 0.72, 0, 1],
+                  }}
+                  className="absolute inset-x-0 mx-auto max-w-4xl"
+                  style={{ 
+                    zIndex: isActive ? 10 : 5,
+                    pointerEvents: isActive ? 'auto' : 'none'
+                  }}
+                >
+                  <div className="relative group">
+                    {/* Glow effect on hover */}
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-3xl opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500" />
+                    
+                    <div className="relative bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 backdrop-blur-2xl border border-zinc-800/50 rounded-3xl px-6 md:px-12 py-10 md:py-14 shadow-[0_20px_70px_-15px_rgba(0,0,0,0.8)]">
+                      {/* Decorative quote icon */}
+                      <Quote className="absolute top-6 left-6 w-10 h-10 text-violet-500/20" strokeWidth={1.5} />
+                      
+                      {/* Quote text without inverted commas */}
                       <motion.div
-                        initial={ { opacity: 0, y: 20 } }
-                        animate={ { opacity: 1, y: 0 } }
-                        transition={ { delay: 0.3 } }
-                        className="flex flex-col items-center"
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="relative z-10"
                       >
-                        { item.image && (
-                          <div className="relative mb-3">
-                            <div className="absolute inset-0 bg-gradient-to-br from-violet-600 to-violet-800 rounded-full blur-md opacity-40" />
+                        <p className="text-lg sm:text-xl md:text-2xl font-light text-gray-100 leading-relaxed mb-12 pl-8">
+                          {item.content}
+                        </p>
+                      </motion.div>
+
+                      {/* Author section */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        className="flex items-center gap-4 md:gap-5 pl-8"
+                      >
+                        <div className="relative">
+                          <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full blur-sm opacity-75" />
+                          <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-zinc-800">
                             <Image
-                              src={ item.image }
-                              width={ 170 }
-                              height={ 170 }
-                              alt={ item.name }
-                              className="relative rounded-full border-3 border-zinc-900 shadow-[0_0_15px_rgba(139,92,246,0.3)] object-cover"
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              sizes="64px"
+                              className="object-cover"
                             />
                           </div>
-                        ) }
-                        <h3 className="text-xl font-bold text-white drop-shadow-md">{ item.name }</h3>
-                        <p className="text-violet-400 font-medium text-sm">{ item.designation }</p>
+                        </div>
+
+                        <div>
+                          <p className="font-semibold text-white text-base md:text-lg">{item.name}</p>
+                          <p className="text-xs md:text-sm text-violet-400 font-medium mt-0.5">
+                            {item.designation}
+                          </p>
+                        </div>
                       </motion.div>
                     </div>
-                  </motion.div>
-                )
-            ) }
+                  </div>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
-
-          {/* Navigation */ }
-          <div className="flex items-center justify-center gap-4 mt-8">
-            {/* <motion.button
-              whileHover={ { scale: 1.15 } }
-              whileTap={ { scale: 0.9 } }
-              onClick={ prevSlide }
-              className="w-12 h-12 rounded-full bg-zinc-900 text-violet-400 border border-violet-800/30 shadow-[0_0_10px_rgba(139,92,246,0.15)] flex items-center justify-center hover:bg-violet-700 hover:text-white transition-all"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </motion.button> */}
-
-            {/* Dots */ }
-            <div className="flex gap-2">
-              { testemonials.map( ( _, index ) => (
-                <motion.button
-                  key={ index }
-                  whileHover={ { scale: 1.2 } }
-                  whileTap={ { scale: 0.95 } }
-                  onClick={ () => {
-                    setDirection( index > slideIndex ? 1 : -1 );
-                    setSlideIndex( index );
-                  } }
-                  className={ `rounded-full transition-all duration-300 shadow-[0_0_8px_rgba(139,92,246,0.3)] ${ index === slideIndex
-                    ? "w-8 h-2.5 bg-violet-500"
-                    : "w-2.5 h-2.5 bg-violet-800 hover:bg-violet-600"
-                    }` }
-                />
-              ) ) }
-            </div>
-{/* 
-            <motion.button
-              whileHover={ { scale: 1.15 } }
-              whileTap={ { scale: 0.9 } }
-              onClick={ nextSlide }
-              className="w-12 h-12 rounded-full bg-zinc-900 text-violet-400 border border-violet-800/30 shadow-[0_0_10px_rgba(139,92,246,0.15)] flex items-center justify-center hover:bg-violet-700 hover:text-white transition-all"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </motion.button> */}
-          </div>
         </div>
 
-        {/* Footer text */ }
-        {/* <motion.p
-          initial={ { opacity: 0, y: 10 } }
-          whileInView={ { opacity: 1, y: 0 } }
-          viewport={ { once: true } }
-          transition={ { delay: 0.4 } }
-          className="text-center mt-8 text-gray-500 text-sm"
-        >
-          Join { testemonials.length }+ people who trust us.
-        </motion.p> */}
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2.5 mt-12">
+          {testemonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                setDirection(i > active ? 1 : -1);
+                setActive(i);
+              }}
+              className="group relative"
+              aria-label={`Go to testimonial ${i + 1}`}
+            >
+              <motion.div
+                className={`transition-all duration-300 rounded-full ${
+                  i === active
+                    ? "w-10 h-2.5 bg-gradient-to-r from-violet-600 to-indigo-600"
+                    : "w-2.5 h-2.5 bg-zinc-700 group-hover:bg-zinc-500"
+                }`}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              />
+            </button>
+          ))}
+        </div>
       </div>
     </section>
   );

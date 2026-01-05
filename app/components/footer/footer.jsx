@@ -84,19 +84,19 @@ export default function Footer() {
             <li>
               <Link href="/about" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 {/* <span className="group-hover:opacity-100 transition-opacity">→</span> */}
-                <span>About us</span>
+                <span>About Us</span>
               </Link>
             </li>
             <li>
               <Link href="/team" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 {/* <span className="group-hover:opacity-100 transition-opacity">→</span> */}
-                <span>Our team</span>
+                <span>Our Team</span>
               </Link>
             </li>
             <li>
               <Link href="/portfolio" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
-                <span>Our portfolio</span>
+                <span>Our Portfolio</span>
               </Link>
             </li>
             <li>
@@ -108,7 +108,7 @@ export default function Footer() {
             <li>
               <Link href="/contact" className="group inline-flex items-center gap-2 hover:text-indigo-500 transition-colors">
                 {/* <span className="opacity-0 group-hover:opacity-100 transition-opacity">→</span> */}
-                <span>Contact us</span>
+                <span>Contact Us</span>
               </Link>
             </li>
           </ul>
