@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import CTASection from "../components/home/CTASection";
 
 export default function ContactPage() {
@@ -52,19 +52,25 @@ export default function ContactPage() {
     {
       icon: "fa-solid fa-envelope",
       title: "Email",
-      value: "hello@enoves.com",
-      href: "mailto:hello@enoves.com",
+      value: "support@enoves.com",
+      href: "mailto:support@enoves.com",
     },
-    {
-      icon: "fa-solid fa-phone",
-      title: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
-    },
+    // {
+    //   icon: "fa-solid fa-phone",
+    //   title: "Phone",
+    //   value: "+1 (555) 123-4567",
+    //   href: "tel:+15551234567",
+    // },
     {
       icon: "fa-solid fa-map-marker-alt",
       title: "Location",
       value: "Lahore, Pakistan",
+      href: "#",
+    },
+    {
+      icon: "fa-solid fa-map-marker-alt",
+      title: "Location",
+      value: "California, USA",
       href: "#",
     },
   ];

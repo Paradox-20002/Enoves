@@ -105,7 +105,7 @@ export default function DesktopNav( {
           <ModeToggle />
         </li> */}
         <li>
-          <Link href="https://wa.me/919811222222" className="lets-talk-btn">
+          <Link href="/contact" className="lets-talk-btn">
             Let's Talk
           </Link>
         </li>

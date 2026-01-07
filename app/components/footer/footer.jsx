@@ -61,17 +61,17 @@ export default function Footer() {
           </h3>
 
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2 md:justify-start max-sm:justify-center">
+            {/* <div className="flex items-center gap-2 md:justify-start max-sm:justify-center">
               <i className="fa-solid fa-phone"></i>
               <a href="https://wa.me/923216013698" className="text-white hover:text-indigo-500">
                 +92 321 6013698
               </a>
-            </div>
+            </div> */}
 
             <div className="flex items-center gap-2 md:justify-start max-sm:justify-center">
               <i className="fa-solid fa-envelope"></i>
-              <a href="mailto:hello@enoves.com" className="text-white hover:text-indigo-500">
-                hello@enoves.com
+              <a href="mailto:support@enoves.com" className="text-white hover:text-indigo-500">
+                support@enoves.com
               </a>
             </div>
           </div>

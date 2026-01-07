@@ -60,9 +60,23 @@ export default function Sidebar() {
 
               {/* City and Address */}
               <div className="flex flex-col flex-1 min-w-0">
-                <h2 className="text-base font-semibold text-white m-0">New York</h2>
+                <h2 className="text-base font-semibold text-white m-0">California, USA</h2>
                 <h5 className="text-xs text-gray-400 m-0 mt-1" style={{color: '#cbd5e1'}}>
-                  123 Business St, Suite 456, City, State, ZIP Code 3456, Country.
+                  4441 Merle St montclair CA, USA 91763
+                </h5>
+              </div>
+            </div>
+            <div className="flex items-center gap-4 p-2 mt-6 rounded-md border cursor-pointer hover:bg-white/5 transition-all" style={{border: '1px solid rgba(255, 255, 255, 0.04)', background: 'rgba(255, 255, 255, 0.01)'}}>
+              {/* Icon */}
+              <span className="flex items-center justify-center text-xl text-white flex-shrink-0" style={{width: '44px'}}>
+                <i className="fa-solid fa-location-dot"></i>
+              </span>
+
+              {/* City and Address */}
+              <div className="flex flex-col flex-1 min-w-0">
+                <h2 className="text-base font-semibold text-white m-0">Lahore, Pakistan</h2>
+                <h5 className="text-xs text-gray-400 m-0 mt-1" style={{color: '#cbd5e1'}}>
+                  Office Number 9 2nd Floor AB Heights Plaza Airport Road Lahore Cantt, 54000
                 </h5>
               </div>
             </div>
@@ -73,10 +87,10 @@ export default function Sidebar() {
               </div>
               <div className="sidebar-mail-text">
                 <h6>send us mail</h6>
-                <h3>info@example.com</h3>
+                <h3>support@enoves.com</h3>
               </div>
             </div>
-            <div className="sidebar-mail">
+            {/* <div className="sidebar-mail">
               <div className="sidebar-mail-icon">
                 <span><i className="fa-solid fa-phone"></i></span>
               </div>
@@ -84,7 +98,7 @@ export default function Sidebar() {
                 <h6>Call 24/7</h6>
                 <h3>{ "+92 321 601369" } </h3>
               </div>
-            </div>
+            </div> */}
             <h4 className="sidebar-subscribe">Subscribe to get free updates</h4>
             <form className="relative mt-2" action={ "https://getform.io/f/amdjppjb" } method="POST" >
               <input
