@@ -42,7 +42,7 @@ export const MoreLeaders = [
   },
   {
     name: "Bilal Ahmed",
-    title: "CFO",
+    title: "CMO",
     bio: "",
     images: "/emp-images/bilal14.svg"
   },
