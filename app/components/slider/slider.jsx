@@ -10,7 +10,7 @@ const Slider = ({ heading }) => {
   const slides = [
     {
       type: "video",
-      src: "/slider-images/video1.mp4",
+      src: "/slider-images/low-quality.mp4",
       label: "Growth Engineering",
       title: "AI-Powered",
       spann: "Solutions",
@@ -19,8 +19,8 @@ const Slider = ({ heading }) => {
       cta: { text: "Explore Services", href: "/services" },
     },
     {
-      type: "video",
-      src: "/slider-images/video2.mp4",
+      type: "image",
+      src: "/slider-images/buildings.gif",
       label: "Innovation First",
       title: "Motion-Powered",
       spann: "Story",

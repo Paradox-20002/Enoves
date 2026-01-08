@@ -32,7 +32,7 @@ export const MoreLeaders = [
     name: "M Arslan Abid",
     title: "MD",
     bio: "",
-    images: "/emp-images/arslan3.svg"
+    images: "/emp-images/arslan6.jpeg"
   },
   {
     name: "Zeeshan",
