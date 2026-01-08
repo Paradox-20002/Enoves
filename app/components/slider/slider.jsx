@@ -10,7 +10,7 @@ const Slider = ({ heading }) => {
   const slides = [
     {
       type: "video",
-      src: "/slider-images/low-quality.mp4",
+      src: "/slider-images/social.mp4",
       label: "Growth Engineering",
       title: "AI-Powered",
       spann: "Solutions",
