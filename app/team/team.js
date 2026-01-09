@@ -44,7 +44,7 @@ export const MoreLeaders = [
     name: "Bilal Ahmed",
     title: "CMO",
     bio: "",
-    images: "/emp-images/bilal14.svg"
+    images: "/emp-images/bilal2.png"
   },
 ]
 // dev team ----------------------------
